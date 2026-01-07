@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@material-wc/core": ["./packages/core/src/index.ts"],
+      "@material-wc/core/*": ["./packages/core/src/*"],
+      "@material-wc/buttons": ["./packages/buttons/src/index.ts"],
+      "@material-wc/buttons/*": ["./packages/buttons/src/*"]
+    }
+  },
+  "include": ["packages/*/src/**/*.ts", "types/**/*.d.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}

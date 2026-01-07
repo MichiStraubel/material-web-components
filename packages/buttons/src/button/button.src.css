@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* Base Button Styles */
+.md-button {
+  @apply relative inline-flex items-center justify-center gap-2;
+  @apply px-6 h-10 rounded-full;
+  @apply font-medium text-sm leading-5;
+  @apply border-none outline-none cursor-pointer;
+  transition: all var(--duration-medium-1) var(--easing-standard);
+  font-family: var(--font-family-plain);
+}
+
+.md-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.md-button:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.38;
+}
+
+/* State Layer */
+.md-button::before {
+  @apply absolute inset-0 rounded-full;
+  opacity: 0;
+  transition: opacity var(--duration-short-2) var(--easing-standard);
+  content: '';
+}
+
+.md-button:hover::before {
+  opacity: var(--state-hover-opacity);
+}
+
+.md-button:focus-visible::before {
+  opacity: var(--state-focus-opacity);
+}
+
+.md-button:active::before {
+  opacity: var(--state-pressed-opacity);
+}
+
+/* Filled Button */
+.md-button--filled {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.md-button--filled::before {
+  background-color: var(--color-on-primary);
+}
+
+.md-button--filled:hover {
+  box-shadow: var(--shadow-elevation-2);
+}
+
+.md-button--filled:disabled {
+  background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+  box-shadow: none;
+}
+
+/* Outlined Button */
+.md-button--outlined {
+  @apply bg-transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-outline);
+}
+
+.md-button--outlined::before {
+  background-color: var(--color-primary);
+}
+
+.md-button--outlined:disabled {
+  border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* Text Button */
+.md-button--text {
+  @apply bg-transparent px-3;
+  color: var(--color-primary);
+}
+
+.md-button--text::before {
+  background-color: var(--color-primary);
+}
+
+.md-button--text:disabled {
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* Elevated Button */
+.md-button--elevated {
+  background-color: var(--color-surface-container-low);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.md-button--elevated::before {
+  background-color: var(--color-primary);
+}
+
+.md-button--elevated:hover {
+  box-shadow: var(--shadow-elevation-2);
+}
+
+.md-button--elevated:disabled {
+  background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+  box-shadow: none;
+}
+
+/* Tonal Button */
+.md-button--tonal {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+.md-button--tonal::before {
+  background-color: var(--color-on-secondary-container);
+}
+
+.md-button--tonal:disabled {
+  background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* Icon slot */
+.md-button__icon {
+  @apply w-5 h-5 flex items-center justify-center;
+}
+
+.md-button__icon ::slotted(svg),
+.md-button__icon ::slotted(img) {
+  width: 18px;
+  height: 18px;
+}

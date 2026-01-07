@@ -1,0 +1,35 @@
+{
+  "name": "@material-wc/buttons",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./button": {
+      "types": "./dist/button/button.d.ts",
+      "import": "./dist/button/button.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn build:css && vite build",
+    "build:css": "node ../../tools/css-builder/build.js --package=buttons",
+    "dev": "vite build --watch"
+  },
+  "dependencies": {
+    "@material-wc/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.0.0"
+  }
+}

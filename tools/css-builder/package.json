@@ -1,0 +1,15 @@
+{
+  "name": "@material-wc/css-builder",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "build-css": "./build.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^7.0.0",
+    "glob": "^11.0.0",
+    "postcss": "^8.5.0"
+  }
+}
