@@ -12,7 +12,13 @@ const config: StorybookConfig = {
     'storybook-addon-tag-badges',
   ],
   framework: '@storybook/web-components-vite',
+  staticDirs: ['../public'],
   viteFinal: async (config) => {
+    // Set base path for GitHub Pages deployment
+    if (process.env.STORYBOOK_BASE) {
+      config.base = process.env.STORYBOOK_BASE;
+    }
+
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...config.resolve.alias,
