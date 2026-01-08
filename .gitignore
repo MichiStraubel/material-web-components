@@ -28,8 +28,8 @@ coverage/
 *.swo
 .DS_Store
 
-# Storybook
-storybook-static/
+# Storybook dev build (deployed version is in /storybook-static)
+apps/storybook/storybook-static/
 
 # Logs
 *.log
