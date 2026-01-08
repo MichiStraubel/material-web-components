@@ -6,7 +6,7 @@ import type { MdIconButton } from '@material-wc/buttons';
 type IconButtonArgs = Pick<MdIconButton, 'variant' | 'size' | 'shape' | 'width' | 'disabled' | 'selected' | 'toggle'>;
 
 const meta: Meta<IconButtonArgs> = {
-  title: 'Components/Icon Button',
+  title: 'Buttons/Icon Button',
   component: 'md-icon-button',
   tags: ['autodocs', 'new'],
   argTypes: {

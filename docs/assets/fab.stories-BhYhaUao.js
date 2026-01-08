@@ -1,4 +1,4 @@
-import{b as a}from"./iframe-DG8e7EWe.js";import"./segmented-button-set-DbpxmoL2.js";import"./preload-helper-Dp1pzeXC.js";const R={title:"Components/FAB",component:"md-fab",tags:["autodocs","new"],argTypes:{variant:{control:"select",options:["surface","primary","secondary","tertiary"],description:"The color variant of the FAB",table:{defaultValue:{summary:"primary"}}},size:{control:"select",options:["small","medium","large"],description:"The size of the FAB",table:{defaultValue:{summary:"medium"}}},disabled:{control:"boolean",description:"Whether the FAB is disabled",table:{defaultValue:{summary:"false"}}},extended:{control:"boolean",description:"Whether the FAB shows a label",table:{defaultValue:{summary:"false"}}},lowered:{control:"boolean",description:"Whether the FAB has lowered elevation",table:{defaultValue:{summary:"false"}}},label:{control:"text",description:"The label text (for extended FAB)"}},args:{variant:"primary",size:"medium",disabled:!1,extended:!1,lowered:!1,label:""},render:e=>a`
+import{b as a}from"./iframe-DS-FJ8Sb.js";import"./segmented-button-set-CyuJlzAd.js";import"./preload-helper-BmHEkTjc.js";const R={title:"Buttons/FAB",component:"md-fab",tags:["autodocs","new"],argTypes:{variant:{control:"select",options:["surface","primary","secondary","tertiary"],description:"The color variant of the FAB",table:{defaultValue:{summary:"primary"}}},size:{control:"select",options:["small","medium","large"],description:"The size of the FAB",table:{defaultValue:{summary:"medium"}}},disabled:{control:"boolean",description:"Whether the FAB is disabled",table:{defaultValue:{summary:"false"}}},extended:{control:"boolean",description:"Whether the FAB shows a label",table:{defaultValue:{summary:"false"}}},lowered:{control:"boolean",description:"Whether the FAB has lowered elevation",table:{defaultValue:{summary:"false"}}},label:{control:"text",description:"The label text (for extended FAB)"}},args:{variant:"primary",size:"medium",disabled:!1,extended:!1,lowered:!1,label:""},render:e=>a`
     <md-fab
       variant=${e.variant}
       size=${e.size}
@@ -127,7 +127,7 @@ import{b as a}from"./iframe-DG8e7EWe.js";import"./segmented-button-set-DbpxmoL2.
       disable: true
     }
   }
-}`,...(E=(z=t.parameters)==null?void 0:z.docs)==null?void 0:E.source}}};var C,V,L;d.parameters={...d.parameters,docs:{...(C=d.parameters)==null?void 0:C.docs,source:{originalSource:`{
+}`,...(E=(z=t.parameters)==null?void 0:z.docs)==null?void 0:E.source}}};var V,C,L;d.parameters={...d.parameters,docs:{...(V=d.parameters)==null?void 0:V.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 24px; align-items: center;">
       <md-fab size="small" aria-label="Small FAB">
@@ -146,7 +146,7 @@ import{b as a}from"./iframe-DG8e7EWe.js";import"./segmented-button-set-DbpxmoL2.
       disable: true
     }
   }
-}`,...(L=(V=d.parameters)==null?void 0:V.docs)==null?void 0:L.source}}};var N,T,D;i.parameters={...i.parameters,docs:{...(N=i.parameters)==null?void 0:N.docs,source:{originalSource:`{
+}`,...(L=(C=d.parameters)==null?void 0:C.docs)==null?void 0:L.source}}};var N,T,D;i.parameters={...i.parameters,docs:{...(N=i.parameters)==null?void 0:N.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 24px; align-items: center;">
       <md-fab extended size="small" aria-label="Small Extended FAB">

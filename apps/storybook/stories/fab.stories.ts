@@ -8,7 +8,7 @@ type FabArgs = Pick<MdFab, 'variant' | 'size' | 'disabled' | 'extended' | 'lower
 };
 
 const meta: Meta<FabArgs> = {
-  title: 'Components/FAB',
+  title: 'Buttons/FAB',
   component: 'md-fab',
   tags: ['autodocs', 'new'],
   argTypes: {

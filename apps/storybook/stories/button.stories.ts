@@ -8,7 +8,7 @@ type ButtonArgs = Pick<MdButton, 'variant' | 'size' | 'disabled' | 'fullWidth' |
 };
 
 const meta: Meta<ButtonArgs> = {
-  title: 'Components/Button',
+  title: 'Buttons/Button',
   component: 'md-button',
   tags: ['autodocs', 'new'],
   argTypes: {

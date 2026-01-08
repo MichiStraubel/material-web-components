@@ -6,7 +6,7 @@ import type { MdButtonGroup } from '@material-wc/buttons';
 type ButtonGroupArgs = Pick<MdButtonGroup, 'selectionMode' | 'disabled' | 'size'>;
 
 const meta: Meta<ButtonGroupArgs> = {
-  title: 'Components/Button Group',
+  title: 'Buttons/Button Group',
   component: 'md-button-group',
   tags: ['autodocs', 'new'],
   argTypes: {
