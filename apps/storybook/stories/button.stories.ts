@@ -3,14 +3,14 @@ import { html } from 'lit';
 import '@material-wc/buttons';
 import type { MdButton } from '@material-wc/buttons';
 
-type ButtonArgs = Pick<MdButton, 'variant' | 'disabled'> & {
+type ButtonArgs = Pick<MdButton, 'variant' | 'size' | 'disabled' | 'fullWidth' | 'iconPosition'> & {
   label: string;
 };
 
 const meta: Meta<ButtonArgs> = {
   title: 'Components/Button',
   component: 'md-button',
-  tags: ['autodocs'],
+  tags: ['autodocs', 'new'],
   argTypes: {
     variant: {
       control: 'select',
@@ -20,11 +20,34 @@ const meta: Meta<ButtonArgs> = {
         defaultValue: { summary: 'filled' },
       },
     },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+      description: 'The size of the button',
+      table: {
+        defaultValue: { summary: 'medium' },
+      },
+    },
     disabled: {
       control: 'boolean',
       description: 'Whether the button is disabled',
       table: {
         defaultValue: { summary: 'false' },
+      },
+    },
+    fullWidth: {
+      control: 'boolean',
+      description: 'Whether the button takes the full width',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+    iconPosition: {
+      control: 'select',
+      options: ['start', 'end'],
+      description: 'Position of the icon relative to the text',
+      table: {
+        defaultValue: { summary: 'start' },
       },
     },
     label: {
@@ -34,11 +57,19 @@ const meta: Meta<ButtonArgs> = {
   },
   args: {
     variant: 'filled',
+    size: 'medium',
     disabled: false,
+    fullWidth: false,
+    iconPosition: 'start',
     label: 'Button',
   },
   render: (args) => html`
-    <md-button variant=${args.variant} ?disabled=${args.disabled}>
+    <md-button
+      variant=${args.variant}
+      size=${args.size}
+      ?disabled=${args.disabled}
+      ?full-width=${args.fullWidth}
+    >
       ${args.label}
     </md-button>
   `,
@@ -105,6 +136,53 @@ export const AllVariants: Story = {
   },
 };
 
+export const AllSizes: Story = {
+  render: () => html`
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+      <md-button size="small">Small</md-button>
+      <md-button size="medium">Medium</md-button>
+      <md-button size="large">Large</md-button>
+    </div>
+  `,
+  parameters: {
+    controls: { disable: true },
+  },
+};
+
+export const SizesWithVariants: Story = {
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Filled</h4>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <md-button variant="filled" size="small">Small</md-button>
+          <md-button variant="filled" size="medium">Medium</md-button>
+          <md-button variant="filled" size="large">Large</md-button>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Outlined</h4>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <md-button variant="outlined" size="small">Small</md-button>
+          <md-button variant="outlined" size="medium">Medium</md-button>
+          <md-button variant="outlined" size="large">Large</md-button>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Tonal</h4>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <md-button variant="tonal" size="small">Small</md-button>
+          <md-button variant="tonal" size="medium">Medium</md-button>
+          <md-button variant="tonal" size="large">Large</md-button>
+        </div>
+      </div>
+    </div>
+  `,
+  parameters: {
+    controls: { disable: true },
+  },
+};
+
 export const DisabledStates: Story = {
   render: () => html`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
@@ -113,6 +191,19 @@ export const DisabledStates: Story = {
       <md-button variant="text" disabled>Text</md-button>
       <md-button variant="elevated" disabled>Elevated</md-button>
       <md-button variant="tonal" disabled>Tonal</md-button>
+    </div>
+  `,
+  parameters: {
+    controls: { disable: true },
+  },
+};
+
+export const FullWidth: Story = {
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;">
+      <md-button variant="filled" full-width>Full Width Filled</md-button>
+      <md-button variant="outlined" full-width>Full Width Outlined</md-button>
+      <md-button variant="tonal" full-width>Full Width Tonal</md-button>
     </div>
   `,
   parameters: {
@@ -133,12 +224,94 @@ export const AsLink: Story = {
 
 export const WithIcon: Story = {
   render: () => html`
-    <md-button variant="filled">
-      <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-      </svg>
-      Continue
-    </md-button>
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+      <md-button variant="filled" size="small">
+        <span slot="icon" class="material-symbols-outlined">add</span>
+        Add
+      </md-button>
+      <md-button variant="filled" size="medium">
+        <span slot="icon" class="material-symbols-outlined">add</span>
+        Add Item
+      </md-button>
+      <md-button variant="filled" size="large">
+        <span slot="icon" class="material-symbols-outlined">add</span>
+        Add New Item
+      </md-button>
+    </div>
+  `,
+  parameters: {
+    controls: { disable: true },
+  },
+};
+
+export const WithIconVariants: Story = {
+  render: () => html`
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+      <md-button variant="filled">
+        <span slot="icon" class="material-symbols-outlined">send</span>
+        Send
+      </md-button>
+      <md-button variant="outlined">
+        <span slot="icon" class="material-symbols-outlined">edit</span>
+        Edit
+      </md-button>
+      <md-button variant="tonal">
+        <span slot="icon" class="material-symbols-outlined">download</span>
+        Download
+      </md-button>
+      <md-button variant="elevated">
+        <span slot="icon" class="material-symbols-outlined">share</span>
+        Share
+      </md-button>
+      <md-button variant="text">
+        <span slot="icon" class="material-symbols-outlined">delete</span>
+        Delete
+      </md-button>
+    </div>
+  `,
+  parameters: {
+    controls: { disable: true },
+  },
+};
+
+export const IconPosition: Story = {
+  render: () => html`
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Icon Start (Default)</h4>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <md-button variant="filled">
+            <span slot="icon" class="material-symbols-outlined">arrow_back</span>
+            Back
+          </md-button>
+          <md-button variant="outlined">
+            <span slot="icon" class="material-symbols-outlined">add</span>
+            Add Item
+          </md-button>
+          <md-button variant="tonal">
+            <span slot="icon" class="material-symbols-outlined">download</span>
+            Download
+          </md-button>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Icon End</h4>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <md-button variant="filled" icon-position="end">
+            <span slot="icon" class="material-symbols-outlined">arrow_forward</span>
+            Next
+          </md-button>
+          <md-button variant="outlined" icon-position="end">
+            <span slot="icon" class="material-symbols-outlined">open_in_new</span>
+            Open Link
+          </md-button>
+          <md-button variant="tonal" icon-position="end">
+            <span slot="icon" class="material-symbols-outlined">send</span>
+            Send
+          </md-button>
+        </div>
+      </div>
+    </div>
   `,
   parameters: {
     controls: { disable: true },

@@ -4,9 +4,7 @@
 /* Base Button Styles */
 .md-button {
   @apply relative inline-flex items-center justify-center gap-2;
-  @apply px-6 h-10 rounded-full;
-  @apply font-medium text-sm leading-5;
-  @apply border-none outline-none cursor-pointer;
+  @apply font-medium border-none outline-none cursor-pointer;
   transition: all var(--duration-medium-1) var(--easing-standard);
   font-family: var(--font-family-plain);
 }
@@ -19,6 +17,93 @@
 .md-button:disabled {
   @apply cursor-not-allowed;
   opacity: 0.38;
+}
+
+/* ===========================================
+   SIZE VARIANTS
+   Based on Material Design 3 specifications:
+   - Small: 32dp height, 12dp horizontal padding
+   - Medium: 40dp height, 24dp horizontal padding (default)
+   - Large: 48dp height, 32dp horizontal padding
+   =========================================== */
+
+/* Small Size */
+.md-button--small {
+  @apply h-8 px-3 text-xs rounded-full;
+  min-width: 64px;
+}
+
+.md-button--small .md-button__icon {
+  @apply w-4 h-4;
+}
+
+.md-button--small .md-button__icon ::slotted(svg),
+.md-button--small .md-button__icon ::slotted(img) {
+  width: 16px;
+  height: 16px;
+}
+
+/* Medium Size (Default) */
+.md-button--medium {
+  @apply h-10 px-6 text-sm rounded-full;
+  min-width: 88px;
+}
+
+.md-button--medium .md-button__icon {
+  @apply w-5 h-5;
+}
+
+.md-button--medium .md-button__icon ::slotted(svg),
+.md-button--medium .md-button__icon ::slotted(img) {
+  width: 18px;
+  height: 18px;
+}
+
+/* Large Size */
+.md-button--large {
+  @apply h-12 px-8 text-base rounded-full;
+  min-width: 96px;
+}
+
+.md-button--large .md-button__icon {
+  @apply w-6 h-6;
+}
+
+.md-button--large .md-button__icon ::slotted(svg),
+.md-button--large .md-button__icon ::slotted(img) {
+  width: 20px;
+  height: 20px;
+}
+
+/* Full Width */
+.md-button--full-width {
+  @apply w-full;
+}
+
+/* Has Icon at start - reduce left padding */
+.md-button--has-icon:not(.md-button--icon-end).md-button--small {
+  @apply pl-2;
+}
+
+.md-button--has-icon:not(.md-button--icon-end).md-button--medium {
+  @apply pl-4;
+}
+
+.md-button--has-icon:not(.md-button--icon-end).md-button--large {
+  @apply pl-6;
+}
+
+/* Has Icon at end - reduce right padding */
+.md-button--icon-end.md-button--small {
+  @apply pr-2;
+}
+
+.md-button--icon-end.md-button--medium {
+  @apply pr-4;
+}
+
+.md-button--icon-end.md-button--large {
+  @apply pr-6;
 }
 
 /* State Layer */
@@ -40,6 +125,10 @@
 .md-button:active::before {
   opacity: var(--state-pressed-opacity);
 }
+
+/* ===========================================
+   VARIANT STYLES
+   =========================================== */
 
 /* Filled Button */
 .md-button--filled {
@@ -80,8 +169,21 @@
 
 /* Text Button */
 .md-button--text {
-  @apply bg-transparent px-3;
+  @apply bg-transparent;
   color: var(--color-primary);
+  min-width: auto;
+}
+
+.md-button--text.md-button--small {
+  @apply px-2;
+}
+
+.md-button--text.md-button--medium {
+  @apply px-3;
+}
+
+.md-button--text.md-button--large {
+  @apply px-4;
 }
 
 .md-button--text::before {
@@ -128,13 +230,14 @@
   color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
 }
 
-/* Icon slot */
+/* ===========================================
+   ICON SLOT
+   =========================================== */
+
 .md-button__icon {
-  @apply w-5 h-5 flex items-center justify-center;
+  @apply flex items-center justify-center flex-shrink-0;
 }
 
-.md-button__icon ::slotted(svg),
-.md-button__icon ::slotted(img) {
-  width: 18px;
-  height: 18px;
+.md-button__icon[hidden] {
+  @apply hidden;
 }

@@ -1,20 +1,22 @@
 import type { StorybookConfig } from '@storybook/web-components-vite';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(js|ts)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    '@storybook/addon-docs',
+    'storybook-addon-tag-badges',
   ],
-  framework: {
-    name: '@storybook/web-components-vite',
-    options: {},
-  },
+  framework: '@storybook/web-components-vite',
   viteFinal: async (config) => {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...config.resolve.alias,
+      '@material-wc/core/icon': resolve(__dirname, '../../../packages/core/src/icon/icon.ts'),
       '@material-wc/core': resolve(__dirname, '../../../packages/core/src/index.ts'),
       '@material-wc/buttons': resolve(__dirname, '../../../packages/buttons/src/index.ts'),
     };

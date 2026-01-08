@@ -192,4 +192,71 @@ describe('MdButton', () => {
       expect(innerButton).toHaveAttribute('aria-label', 'Close dialog');
     });
   });
+
+  describe('sizes', () => {
+    it('renders with medium size by default', async () => {
+      const button = await createButton();
+
+      const innerButton = button.shadowRoot!.querySelector('button');
+      expect(innerButton).toHaveClass('md-button--medium');
+    });
+
+    it('renders with small size', async () => {
+      const button = await createButton(
+        '<md-button size="small">Small</md-button>'
+      );
+
+      const innerButton = button.shadowRoot!.querySelector('button');
+      expect(innerButton).toHaveClass('md-button--small');
+    });
+
+    it('renders with large size', async () => {
+      const button = await createButton(
+        '<md-button size="large">Large</md-button>'
+      );
+
+      const innerButton = button.shadowRoot!.querySelector('button');
+      expect(innerButton).toHaveClass('md-button--large');
+    });
+  });
+
+  describe('full width', () => {
+    it('does not have full-width class by default', async () => {
+      const button = await createButton();
+
+      const innerButton = button.shadowRoot!.querySelector('button');
+      expect(innerButton).not.toHaveClass('md-button--full-width');
+    });
+
+    it('renders with full-width class when enabled', async () => {
+      const button = await createButton(
+        '<md-button full-width>Full Width</md-button>'
+      );
+
+      const innerButton = button.shadowRoot!.querySelector('button');
+      expect(innerButton).toHaveClass('md-button--full-width');
+    });
+  });
+
+  describe('icon slot', () => {
+    it('shows icon slot when icon is provided', async () => {
+      const button = await createButton(
+        '<md-button><svg slot="icon"></svg>With Icon</md-button>'
+      );
+
+      await button.updateComplete;
+      const iconSlot = button.shadowRoot!.querySelector('.md-button__icon');
+      expect(iconSlot).toBeTruthy();
+    });
+
+    it('adds has-icon class when icon is provided', async () => {
+      const button = await createButton(
+        '<md-button><svg slot="icon"></svg>With Icon</md-button>'
+      );
+
+      await button.updateComplete;
+      const innerButton = button.shadowRoot!.querySelector('button');
+      expect(innerButton).toHaveClass('md-button--has-icon');
+    });
+  });
 });

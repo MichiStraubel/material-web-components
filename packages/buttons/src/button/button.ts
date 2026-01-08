@@ -7,6 +7,8 @@ import { MdElement, adoptStyles } from '@material-wc/core';
 import buttonStyles from './button.css?inline';
 
 export type ButtonVariant = 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
+export type ButtonSize = 'small' | 'medium' | 'large';
+export type IconPosition = 'start' | 'end';
 
 /**
  * Material Design 3 Button Component
@@ -14,7 +16,7 @@ export type ButtonVariant = 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal
  * @element md-button
  *
  * @slot - Default slot for button text content
- * @slot icon - Slot for leading icon
+ * @slot icon - Slot for icon (position controlled by iconPosition property)
  *
  * @fires md-click - Fired when the button is clicked
  *
@@ -28,9 +30,21 @@ export class MdButton extends MdElement {
   @property({ type: String, reflect: true })
   variant: ButtonVariant = 'filled';
 
+  /** The size of the button */
+  @property({ type: String, reflect: true })
+  size: ButtonSize = 'medium';
+
   /** Whether the button is disabled */
   @property({ type: Boolean, reflect: true })
   disabled = false;
+
+  /** Whether the button should take the full width of its container */
+  @property({ type: Boolean, reflect: true, attribute: 'full-width' })
+  fullWidth = false;
+
+  /** Position of the icon relative to the text */
+  @property({ type: String, reflect: true, attribute: 'icon-position' })
+  iconPosition: IconPosition = 'start';
 
   /** The type of the button (submit, reset, button) */
   @property({ type: String })
@@ -55,6 +69,10 @@ export class MdButton extends MdElement {
     const classes = {
       'md-button': true,
       [`md-button--${this.variant}`]: true,
+      [`md-button--${this.size}`]: true,
+      'md-button--full-width': this.fullWidth,
+      'md-button--has-icon': this.hasIcon,
+      'md-button--icon-end': this.hasIcon && this.iconPosition === 'end',
     };
 
     if (this.href && !this.disabled) {
@@ -87,10 +105,21 @@ export class MdButton extends MdElement {
   }
 
   private renderContent(): TemplateResult {
-    return html`
+    const iconSlot = html`
       <span class="md-button__icon" ?hidden=${!this.hasIcon}>
         <slot name="icon" @slotchange=${this.handleIconSlotChange}></slot>
       </span>
+    `;
+
+    if (this.iconPosition === 'end') {
+      return html`
+        <slot></slot>
+        ${iconSlot}
+      `;
+    }
+
+    return html`
+      ${iconSlot}
       <slot></slot>
     `;
   }

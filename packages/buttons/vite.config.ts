@@ -9,6 +9,8 @@ export default mergeConfig(
         entry: {
           index: 'src/index.ts',
           'button/button': 'src/button/button.ts',
+          'icon-button/icon-button': 'src/icon-button/icon-button.ts',
+          'fab/fab': 'src/fab/fab.ts',
         },
       },
       outDir: 'dist',

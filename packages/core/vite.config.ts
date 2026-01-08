@@ -10,6 +10,7 @@ export default mergeConfig(
           index: 'src/index.ts',
           'styles/index': 'src/styles/index.ts',
           'tokens/index': 'src/tokens/index.ts',
+          'icon/icon': 'src/icon/icon.ts',
         },
       },
       outDir: 'dist',

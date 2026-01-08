@@ -1,0 +1,371 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   ICON BUTTON BASE STYLES
+   Material Design 3 Expressive Specification
+   https://m3.material.io/components/icon-buttons/specs
+
+   Features:
+   - 5 Sizes: XSmall (32dp), Small (36dp), Medium (40dp), Large (48dp), XLarge (56dp)
+   - 2 Shapes: Round, Square
+   - 3 Widths: Narrow, Default, Wide
+   - 4 Color Styles: Standard, Filled, Tonal, Outlined
+   =========================================== */
+
+.md-icon-button {
+  @apply relative inline-flex items-center justify-center;
+  @apply border-none outline-none cursor-pointer;
+  transition: all var(--duration-medium-1) var(--easing-standard);
+}
+
+.md-icon-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.md-icon-button:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.38;
+}
+
+/* ===========================================
+   SHAPE VARIANTS
+   MD3 Expressive: Round and Square shapes
+   =========================================== */
+
+/* Round Shape (default) - fully rounded */
+.md-icon-button--round {
+  border-radius: 9999px;
+}
+
+/* Square Shape - rounded corners based on size */
+.md-icon-button--square.md-icon-button--xsmall {
+  border-radius: 8px;
+}
+
+.md-icon-button--square.md-icon-button--small {
+  border-radius: 10px;
+}
+
+.md-icon-button--square.md-icon-button--medium {
+  border-radius: 12px;
+}
+
+.md-icon-button--square.md-icon-button--large {
+  border-radius: 14px;
+}
+
+.md-icon-button--square.md-icon-button--xlarge {
+  border-radius: 16px;
+}
+
+/* ===========================================
+   SIZE VARIANTS
+   MD3 Expressive Sizes:
+   - XSmall: 32dp container
+   - Small: 36dp container (default)
+   - Medium: 40dp container
+   - Large: 48dp container
+   - XLarge: 56dp container
+   - Icon size: always 24dp
+   - Touch target: 48dp minimum
+   =========================================== */
+
+/* XSmall Size - 32dp container */
+.md-icon-button--xsmall {
+  width: 32px;
+  height: 32px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px;
+}
+
+/* Small Size (Default) - 36dp container */
+.md-icon-button--small {
+  width: 36px;
+  height: 36px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 6px;
+}
+
+/* Medium Size - 40dp container */
+.md-icon-button--medium {
+  width: 40px;
+  height: 40px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 4px;
+}
+
+/* Large Size - 48dp container */
+.md-icon-button--large {
+  width: 48px;
+  height: 48px;
+}
+
+/* XLarge Size - 56dp container */
+.md-icon-button--xlarge {
+  width: 56px;
+  height: 56px;
+}
+
+/* ===========================================
+   WIDTH VARIANTS
+   MD3 Expressive Widths:
+   - Narrow: 0.75x width
+   - Default: 1x width
+   - Wide: 1.5x width
+   =========================================== */
+
+/* Narrow Width */
+.md-icon-button--width-narrow.md-icon-button--xsmall {
+  width: 24px;
+}
+
+.md-icon-button--width-narrow.md-icon-button--small {
+  width: 28px;
+}
+
+.md-icon-button--width-narrow.md-icon-button--medium {
+  width: 32px;
+}
+
+.md-icon-button--width-narrow.md-icon-button--large {
+  width: 36px;
+}
+
+.md-icon-button--width-narrow.md-icon-button--xlarge {
+  width: 42px;
+}
+
+/* Wide Width */
+.md-icon-button--width-wide.md-icon-button--xsmall {
+  width: 48px;
+}
+
+.md-icon-button--width-wide.md-icon-button--small {
+  width: 54px;
+}
+
+.md-icon-button--width-wide.md-icon-button--medium {
+  width: 60px;
+}
+
+.md-icon-button--width-wide.md-icon-button--large {
+  width: 72px;
+}
+
+.md-icon-button--width-wide.md-icon-button--xlarge {
+  width: 84px;
+}
+
+/* ===========================================
+   ICON CONTAINER
+   MD3: Icon is always 24dp
+   =========================================== */
+
+.md-icon-button__icon {
+  @apply flex items-center justify-center;
+  @apply relative z-10;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.md-icon-button__icon ::slotted(svg),
+.md-icon-button__icon ::slotted(img) {
+  width: 24px;
+  height: 24px;
+}
+
+.md-icon-button__icon ::slotted(svg) {
+  fill: currentColor;
+}
+
+/* ===========================================
+   STATE LAYER
+   MD3 State Layer Opacities:
+   - Hover: 0.08
+   - Focus: 0.12
+   - Pressed: 0.12
+   =========================================== */
+
+.md-icon-button::before {
+  @apply absolute inset-0;
+  opacity: 0;
+  transition: opacity var(--duration-short-2) var(--easing-standard);
+  content: '';
+  pointer-events: none;
+}
+
+/* Round shape state layer */
+.md-icon-button--round::before {
+  border-radius: 9999px;
+}
+
+/* Square shape state layer - match button radius */
+.md-icon-button--square.md-icon-button--xsmall::before {
+  border-radius: 8px;
+}
+
+.md-icon-button--square.md-icon-button--small::before {
+  border-radius: 10px;
+}
+
+.md-icon-button--square.md-icon-button--medium::before {
+  border-radius: 12px;
+}
+
+.md-icon-button--square.md-icon-button--large::before {
+  border-radius: 14px;
+}
+
+.md-icon-button--square.md-icon-button--xlarge::before {
+  border-radius: 16px;
+}
+
+.md-icon-button:hover::before {
+  opacity: var(--state-hover-opacity);
+}
+
+.md-icon-button:focus-visible::before {
+  opacity: var(--state-focus-opacity);
+}
+
+.md-icon-button:active::before {
+  opacity: var(--state-pressed-opacity);
+}
+
+/* ===========================================
+   STANDARD ICON BUTTON
+   MD3 Specs:
+   - Container: transparent
+   - Icon: on-surface-variant (unselected), primary (selected)
+   - State layer: on-surface-variant / primary
+   =========================================== */
+
+.md-icon-button--standard {
+  @apply bg-transparent;
+  color: var(--color-on-surface-variant);
+}
+
+.md-icon-button--standard::before {
+  background-color: var(--color-on-surface-variant);
+}
+
+.md-icon-button--standard.md-icon-button--selected {
+  color: var(--color-primary);
+}
+
+.md-icon-button--standard.md-icon-button--selected::before {
+  background-color: var(--color-primary);
+}
+
+/* ===========================================
+   FILLED ICON BUTTON
+   MD3 Specs:
+   Unselected:
+   - Container: surface-container-highest
+   - Icon: primary
+   Selected:
+   - Container: primary
+   - Icon: on-primary
+   =========================================== */
+
+.md-icon-button--filled {
+  background-color: var(--color-surface-container-highest);
+  color: var(--color-primary);
+}
+
+.md-icon-button--filled::before {
+  background-color: var(--color-primary);
+}
+
+.md-icon-button--filled.md-icon-button--selected {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.md-icon-button--filled.md-icon-button--selected::before {
+  background-color: var(--color-on-primary);
+}
+
+.md-icon-button--filled:disabled {
+  background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* ===========================================
+   TONAL ICON BUTTON
+   MD3 Specs:
+   Unselected:
+   - Container: surface-container-highest
+   - Icon: on-surface-variant
+   Selected:
+   - Container: secondary-container
+   - Icon: on-secondary-container
+   =========================================== */
+
+.md-icon-button--tonal {
+  background-color: var(--color-surface-container-highest);
+  color: var(--color-on-surface-variant);
+}
+
+.md-icon-button--tonal::before {
+  background-color: var(--color-on-surface-variant);
+}
+
+.md-icon-button--tonal.md-icon-button--selected {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+.md-icon-button--tonal.md-icon-button--selected::before {
+  background-color: var(--color-on-secondary-container);
+}
+
+.md-icon-button--tonal:disabled {
+  background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* ===========================================
+   OUTLINED ICON BUTTON
+   MD3 Specs:
+   Unselected:
+   - Container: transparent
+   - Outline: outline (1dp)
+   - Icon: on-surface-variant
+   Selected:
+   - Container: inverse-surface
+   - Outline: none
+   - Icon: inverse-on-surface
+   =========================================== */
+
+.md-icon-button--outlined {
+  @apply bg-transparent;
+  color: var(--color-on-surface-variant);
+  border: 1px solid var(--color-outline);
+}
+
+.md-icon-button--outlined::before {
+  background-color: var(--color-on-surface-variant);
+}
+
+.md-icon-button--outlined.md-icon-button--selected {
+  background-color: var(--color-inverse-surface);
+  color: var(--color-inverse-on-surface);
+  border-color: transparent;
+}
+
+.md-icon-button--outlined.md-icon-button--selected::before {
+  background-color: var(--color-inverse-on-surface);
+}
+
+.md-icon-button--outlined:disabled {
+  border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}

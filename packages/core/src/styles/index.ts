@@ -1,1 +1,1 @@
-export { StyleManager, adoptStyles } from './style-manager.js';
+export { adoptStyles, clearStyleCache } from './style-manager.js';

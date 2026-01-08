@@ -16,13 +16,18 @@
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
       "import": "./dist/tokens/index.js"
+    },
+    "./icon": {
+      "types": "./dist/icon/icon.d.ts",
+      "import": "./dist/icon/icon.js"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "yarn build:css && vite build",
+    "build:css": "node ../../tools/css-builder/build.js --package=core",
     "dev": "vite build --watch"
   },
   "peerDependencies": {

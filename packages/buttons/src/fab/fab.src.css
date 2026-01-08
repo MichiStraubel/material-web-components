@@ -1,0 +1,214 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   FAB BASE STYLES
+   =========================================== */
+
+.md-fab {
+  @apply relative inline-flex items-center justify-center gap-3;
+  @apply border-none outline-none cursor-pointer;
+  transition: all var(--duration-medium-1) var(--easing-standard);
+  font-family: var(--font-family-plain);
+}
+
+.md-fab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.md-fab:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.38;
+  box-shadow: none;
+}
+
+/* ===========================================
+   SIZE VARIANTS
+   Based on Material Design 3 specifications:
+   - Small: 40dp
+   - Medium: 56dp (default)
+   - Large: 96dp
+   =========================================== */
+
+/* Small Size */
+.md-fab--small {
+  @apply h-10 min-w-10;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevation-3);
+}
+
+.md-fab--small .md-fab__icon {
+  @apply w-6 h-6;
+}
+
+.md-fab--small .md-fab__icon ::slotted(svg),
+.md-fab--small .md-fab__icon ::slotted(img) {
+  width: 24px;
+  height: 24px;
+}
+
+/* Medium Size (Default) */
+.md-fab--medium {
+  @apply h-14 min-w-14;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevation-3);
+}
+
+.md-fab--medium .md-fab__icon {
+  @apply w-6 h-6;
+}
+
+.md-fab--medium .md-fab__icon ::slotted(svg),
+.md-fab--medium .md-fab__icon ::slotted(img) {
+  width: 24px;
+  height: 24px;
+}
+
+/* Large Size */
+.md-fab--large {
+  @apply h-24 min-w-24;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-elevation-3);
+}
+
+.md-fab--large .md-fab__icon {
+  @apply w-9 h-9;
+}
+
+.md-fab--large .md-fab__icon ::slotted(svg),
+.md-fab--large .md-fab__icon ::slotted(img) {
+  width: 36px;
+  height: 36px;
+}
+
+/* Extended FAB */
+.md-fab--extended {
+  @apply px-4;
+}
+
+.md-fab--extended.md-fab--small {
+  @apply h-10 px-3;
+  border-radius: var(--radius-md);
+}
+
+.md-fab--extended.md-fab--medium {
+  @apply h-14 px-4;
+  border-radius: var(--radius-lg);
+}
+
+.md-fab--extended.md-fab--large {
+  @apply h-24 px-6;
+  border-radius: var(--radius-xl);
+}
+
+/* Lowered Elevation */
+.md-fab--lowered {
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.md-fab--lowered:hover {
+  box-shadow: var(--shadow-elevation-2);
+}
+
+/* ===========================================
+   STATE LAYER
+   =========================================== */
+
+.md-fab::before {
+  @apply absolute inset-0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--duration-short-2) var(--easing-standard);
+  content: '';
+}
+
+.md-fab:hover {
+  box-shadow: var(--shadow-elevation-4);
+}
+
+.md-fab:hover::before {
+  opacity: var(--state-hover-opacity);
+}
+
+.md-fab:focus-visible::before {
+  opacity: var(--state-focus-opacity);
+}
+
+.md-fab:active::before {
+  opacity: var(--state-pressed-opacity);
+}
+
+/* ===========================================
+   VARIANT STYLES
+   =========================================== */
+
+/* Surface FAB */
+.md-fab--surface {
+  background-color: var(--color-surface-container-high);
+  color: var(--color-primary);
+}
+
+.md-fab--surface::before {
+  background-color: var(--color-primary);
+}
+
+/* Primary FAB */
+.md-fab--primary {
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.md-fab--primary::before {
+  background-color: var(--color-on-primary-container);
+}
+
+/* Secondary FAB */
+.md-fab--secondary {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+.md-fab--secondary::before {
+  background-color: var(--color-on-secondary-container);
+}
+
+/* Tertiary FAB */
+.md-fab--tertiary {
+  background-color: var(--color-tertiary-container);
+  color: var(--color-on-tertiary-container);
+}
+
+.md-fab--tertiary::before {
+  background-color: var(--color-on-tertiary-container);
+}
+
+/* ===========================================
+   ICON & LABEL
+   =========================================== */
+
+.md-fab__icon {
+  @apply flex items-center justify-center flex-shrink-0;
+  @apply relative z-10;
+}
+
+.md-fab__icon[hidden] {
+  @apply hidden;
+}
+
+.md-fab__icon ::slotted(svg) {
+  fill: currentColor;
+}
+
+.md-fab__label {
+  @apply font-medium text-sm relative z-10;
+  white-space: nowrap;
+}
+
+.md-fab__label[hidden] {
+  @apply hidden;
+}
+
+.md-fab--large .md-fab__label {
+  @apply text-base;
+}

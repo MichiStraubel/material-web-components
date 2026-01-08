@@ -12,6 +12,14 @@
     "./button": {
       "types": "./dist/button/button.d.ts",
       "import": "./dist/button/button.js"
+    },
+    "./icon-button": {
+      "types": "./dist/icon-button/icon-button.d.ts",
+      "import": "./dist/icon-button/icon-button.js"
+    },
+    "./fab": {
+      "types": "./dist/fab/fab.d.ts",
+      "import": "./dist/fab/fab.js"
     }
   },
   "files": [
