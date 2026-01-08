@@ -1,4 +1,4 @@
-import{b as a}from"./iframe-Cl3GIal8.js";import"./segmented-button-set-B3zWKp_V.js";import"./preload-helper-BmHEkTjc.js";const na={title:"Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],argTypes:{variant:{control:"select",options:["standard","filled","tonal","outlined"],description:"The visual style variant of the icon button",table:{defaultValue:{summary:"standard"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the icon button (MD3 Expressive)",table:{defaultValue:{summary:"small"}}},shape:{control:"select",options:["round","square"],description:"The shape of the icon button",table:{defaultValue:{summary:"round"}}},width:{control:"select",options:["narrow","default","wide"],description:"The width variant of the icon button",table:{defaultValue:{summary:"default"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},selected:{control:"boolean",description:"Whether the button is in a selected state",table:{defaultValue:{summary:"false"}}},toggle:{control:"boolean",description:"Whether the button acts as a toggle",table:{defaultValue:{summary:"false"}}}},args:{variant:"standard",size:"small",shape:"round",width:"default",disabled:!1,selected:!1,toggle:!1},render:t=>a`
+import{b as a}from"./iframe-DN5iL-vM.js";import"./segmented-button-set-DZ-RQz1P.js";import"./preload-helper-BmHEkTjc.js";const na={title:"Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],argTypes:{variant:{control:"select",options:["standard","filled","tonal","outlined"],description:"The visual style variant of the icon button",table:{defaultValue:{summary:"standard"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the icon button (MD3 Expressive)",table:{defaultValue:{summary:"small"}}},shape:{control:"select",options:["round","square"],description:"The shape of the icon button",table:{defaultValue:{summary:"round"}}},width:{control:"select",options:["narrow","default","wide"],description:"The width variant of the icon button",table:{defaultValue:{summary:"default"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},selected:{control:"boolean",description:"Whether the button is in a selected state",table:{defaultValue:{summary:"false"}}},toggle:{control:"boolean",description:"Whether the button acts as a toggle",table:{defaultValue:{summary:"false"}}}},args:{variant:"standard",size:"small",shape:"round",width:"default",disabled:!1,selected:!1,toggle:!1},render:t=>a`
     <md-icon-button
       variant=${t.variant}
       size=${t.size}
@@ -177,12 +177,15 @@ import{b as a}from"./iframe-Cl3GIal8.js";import"./segmented-button-set-B3zWKp_V.
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" toggle aria-label="Toggle favorite">
         <span class="material-symbols-outlined">favorite</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
       </md-icon-button>
       <md-icon-button variant="filled" toggle aria-label="Toggle star">
         <span class="material-symbols-outlined">star</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
       </md-icon-button>
       <md-icon-button variant="outlined" toggle aria-label="Toggle bookmark">
         <span class="material-symbols-outlined">bookmark</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
       </md-icon-button>
     </div>
   `,parameters:{controls:{disable:!0}}},c={render:()=>a`
@@ -302,7 +305,7 @@ import{b as a}from"./iframe-Cl3GIal8.js";import"./segmented-button-set-B3zWKp_V.
   args: {
     variant: 'outlined'
   }
-}`,...(L=(T=i.parameters)==null?void 0:T.docs)==null?void 0:L.source}}};var X,D,M;s.parameters={...s.parameters,docs:{...(X=s.parameters)==null?void 0:X.docs,source:{originalSource:`{
+}`,...(L=(T=i.parameters)==null?void 0:T.docs)==null?void 0:L.source}}};var X,F,D;s.parameters={...s.parameters,docs:{...(X=s.parameters)==null?void 0:X.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" aria-label="Standard">
@@ -324,7 +327,7 @@ import{b as a}from"./iframe-Cl3GIal8.js";import"./segmented-button-set-B3zWKp_V.
       disable: true
     }
   }
-}`,...(M=(D=s.parameters)==null?void 0:D.docs)==null?void 0:M.source}}};var W,q,F;o.parameters={...o.parameters,docs:{...(W=o.parameters)==null?void 0:W.docs,source:{originalSource:`{
+}`,...(D=(F=s.parameters)==null?void 0:F.docs)==null?void 0:D.source}}};var M,W,q;o.parameters={...o.parameters,docs:{...(M=o.parameters)==null?void 0:M.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -369,7 +372,7 @@ import{b as a}from"./iframe-Cl3GIal8.js";import"./segmented-button-set-B3zWKp_V.
       disable: true
     }
   }
-}`,...(F=(q=o.parameters)==null?void 0:q.docs)==null?void 0:F.source}}};var _,O,N;r.parameters={...r.parameters,docs:{...(_=r.parameters)==null?void 0:_.docs,source:{originalSource:`{
+}`,...(q=(W=o.parameters)==null?void 0:W.docs)==null?void 0:q.source}}};var _,I,O;r.parameters={...r.parameters,docs:{...(_=r.parameters)==null?void 0:_.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -418,7 +421,7 @@ import{b as a}from"./iframe-Cl3GIal8.js";import"./segmented-button-set-B3zWKp_V.
       disable: true
     }
   }
-}`,...(N=(O=r.parameters)==null?void 0:O.docs)==null?void 0:N.source}}};var R,I,V;d.parameters={...d.parameters,docs:{...(R=d.parameters)==null?void 0:R.docs,source:{originalSource:`{
+}`,...(O=(I=r.parameters)==null?void 0:I.docs)==null?void 0:O.source}}};var N,R,V;d.parameters={...d.parameters,docs:{...(N=d.parameters)==null?void 0:N.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -492,17 +495,20 @@ import{b as a}from"./iframe-Cl3GIal8.js";import"./segmented-button-set-B3zWKp_V.
       disable: true
     }
   }
-}`,...(V=(I=d.parameters)==null?void 0:I.docs)==null?void 0:V.source}}};var A,E,U;m.parameters={...m.parameters,docs:{...(A=m.parameters)==null?void 0:A.docs,source:{originalSource:`{
+}`,...(V=(R=d.parameters)==null?void 0:R.docs)==null?void 0:V.source}}};var A,E,U;m.parameters={...m.parameters,docs:{...(A=m.parameters)==null?void 0:A.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" toggle aria-label="Toggle favorite">
         <span class="material-symbols-outlined">favorite</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
       </md-icon-button>
       <md-icon-button variant="filled" toggle aria-label="Toggle star">
         <span class="material-symbols-outlined">star</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
       </md-icon-button>
       <md-icon-button variant="outlined" toggle aria-label="Toggle bookmark">
         <span class="material-symbols-outlined">bookmark</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
       </md-icon-button>
     </div>
   \`,

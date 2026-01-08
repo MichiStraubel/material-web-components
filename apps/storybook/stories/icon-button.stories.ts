@@ -313,12 +313,15 @@ export const Toggle: Story = {
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" toggle aria-label="Toggle favorite">
         <span class="material-symbols-outlined">favorite</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
       </md-icon-button>
       <md-icon-button variant="filled" toggle aria-label="Toggle star">
         <span class="material-symbols-outlined">star</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
       </md-icon-button>
       <md-icon-button variant="outlined" toggle aria-label="Toggle bookmark">
         <span class="material-symbols-outlined">bookmark</span>
+        <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
       </md-icon-button>
     </div>
   `,

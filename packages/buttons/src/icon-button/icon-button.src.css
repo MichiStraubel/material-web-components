@@ -258,6 +258,7 @@
 
 .md-icon-button--standard.md-icon-button--selected {
   color: var(--color-primary);
+  background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
 }
 
 .md-icon-button--standard.md-icon-button--selected::before {
