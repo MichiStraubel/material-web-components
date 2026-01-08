@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   MD3 EXPRESSIVE BUTTON GROUP
+   Container for connected toggle buttons
+   =========================================== */
+
+.md-button-group {
+  @apply inline-flex items-stretch;
+  gap: 4px; /* ConnectedSpaceBetween */
+  height: 48px; /* Tap target */
+  padding: 4px 0; /* Centers 40dp button in 48dp container */
+}
+
+/* Disabled state */
+.md-button-group--disabled {
+  pointer-events: none;
+}

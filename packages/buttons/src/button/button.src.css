@@ -241,3 +241,169 @@
 .md-button__icon[hidden] {
   @apply hidden;
 }
+
+/* ===========================================
+   BUTTON GROUP STYLES (MD3 Expressive)
+   When md-button is used inside md-button-group
+   =========================================== */
+
+/* Base styles for buttons in a group */
+.md-button--in-group {
+  @apply bg-transparent;
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-outline);
+  min-width: auto;
+  box-shadow: none;
+}
+
+.md-button--in-group::before {
+  background-color: var(--color-on-surface);
+}
+
+/* ===========================================
+   GROUP SIZE VARIANTS (MD3 Expressive)
+   =========================================== */
+
+/* XSmall: 32dp height */
+.md-button--in-group.md-button--xsmall {
+  @apply h-8 px-3 text-xs;
+  --button-radius-full: 16px;
+}
+
+.md-button--in-group.md-button--xsmall .md-button__icon {
+  @apply w-4 h-4;
+}
+
+.md-button--in-group.md-button--xsmall.md-button--icon-only {
+  @apply px-2;
+}
+
+/* Small: 36dp height */
+.md-button--in-group.md-button--small {
+  height: 36px;
+  @apply px-3.5 text-xs;
+  --button-radius-full: 18px;
+}
+
+.md-button--in-group.md-button--small .md-button__icon {
+  @apply w-4 h-4;
+}
+
+.md-button--in-group.md-button--small.md-button--icon-only {
+  padding: 0 10px;
+}
+
+/* Medium: 40dp height (default) */
+.md-button--in-group.md-button--medium {
+  @apply h-10 px-4 text-sm;
+  --button-radius-full: 20px;
+}
+
+.md-button--in-group.md-button--medium .md-button__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.md-button--in-group.md-button--medium.md-button--icon-only {
+  @apply px-3;
+}
+
+/* Large: 48dp height */
+.md-button--in-group.md-button--large {
+  @apply h-12 px-5 text-base;
+  --button-radius-full: 24px;
+}
+
+.md-button--in-group.md-button--large .md-button__icon {
+  @apply w-5 h-5;
+}
+
+.md-button--in-group.md-button--large.md-button--icon-only {
+  padding: 0 14px;
+}
+
+/* XLarge: 56dp height */
+.md-button--in-group.md-button--xlarge {
+  height: 56px;
+  @apply px-6 text-lg;
+  --button-radius-full: 28px;
+}
+
+.md-button--in-group.md-button--xlarge .md-button__icon {
+  @apply w-6 h-6;
+}
+
+.md-button--in-group.md-button--xlarge.md-button--icon-only {
+  @apply px-4;
+}
+
+/* ===========================================
+   POSITION-BASED SHAPES (Connected)
+   MD3 Expressive: Selected always fully rounded
+   Unselected: Position-based shapes
+   =========================================== */
+
+/* Leading button - rounded on left */
+.md-button--in-group.md-button--leading {
+  border-radius: var(--button-radius-full, 20px) 4px 4px var(--button-radius-full, 20px);
+}
+
+/* Middle button - slight rounding */
+.md-button--in-group.md-button--middle {
+  border-radius: 4px;
+}
+
+/* Trailing button - rounded on right */
+.md-button--in-group.md-button--trailing {
+  border-radius: 4px var(--button-radius-full, 20px) var(--button-radius-full, 20px) 4px;
+}
+
+/* Standalone button - fully rounded */
+.md-button--in-group.md-button--standalone {
+  border-radius: var(--button-radius-full, 20px);
+}
+
+/* ===========================================
+   SELECTED STATE
+   MD3 Expressive: Selected buttons are always
+   fully rounded regardless of position
+   =========================================== */
+
+.md-button--in-group.md-button--selected {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  border-radius: var(--button-radius-full, 20px);
+}
+
+.md-button--in-group.md-button--selected::before {
+  background-color: var(--color-on-secondary-container);
+}
+
+/* ===========================================
+   DISABLED STATE (in group)
+   =========================================== */
+
+.md-button--in-group:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.38;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+/* ===========================================
+   STATE LAYER (in group)
+   =========================================== */
+
+.md-button--in-group::before {
+  border-radius: inherit;
+}
+
+/* ===========================================
+   FOCUS STATE (in group)
+   =========================================== */
+
+.md-button--in-group:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  z-index: 2;
+}

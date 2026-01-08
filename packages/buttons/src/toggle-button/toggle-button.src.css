@@ -1,0 +1,304 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   MD3 EXPRESSIVE TOGGLE BUTTON
+   For use in Connected Button Groups
+
+   Container Height: 40dp
+   Tap Target: 48dp
+   Icon: 18dp
+   Horizontal Padding: 16dp (with label), 12dp (icon-only)
+   =========================================== */
+
+/* Base Toggle Button Styles */
+.md-toggle-button {
+  @apply relative inline-flex items-center justify-center gap-2;
+  @apply font-medium cursor-pointer;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+  border: none;
+  font-family: var(--font-family-plain);
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  transition: all var(--duration-medium-1) var(--easing-standard);
+}
+
+/* ===========================================
+   SIZE VARIANTS
+   MD3 Expressive Sizes:
+   - XSmall: 32dp height
+   - Small: 36dp height
+   - Medium: 40dp height (default)
+   - Large: 48dp height
+   - XLarge: 56dp height
+   =========================================== */
+
+/* XSmall Size - 32dp */
+.md-toggle-button--xsmall {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+
+.md-toggle-button--xsmall .md-toggle-button__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.md-toggle-button--xsmall .md-toggle-button__icon ::slotted(svg),
+.md-toggle-button--xsmall .md-toggle-button__icon ::slotted(img),
+.md-toggle-button--xsmall .md-toggle-button__icon ::slotted(md-icon),
+.md-toggle-button--xsmall .md-toggle-button__icon ::slotted(*) {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.md-toggle-button--xsmall.md-toggle-button--icon-only {
+  padding: 0 8px;
+}
+
+/* Small Size - 36dp */
+.md-toggle-button--small {
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+.md-toggle-button--small .md-toggle-button__icon {
+  width: 16px;
+  height: 16px;
+}
+
+.md-toggle-button--small .md-toggle-button__icon ::slotted(svg),
+.md-toggle-button--small .md-toggle-button__icon ::slotted(img),
+.md-toggle-button--small .md-toggle-button__icon ::slotted(md-icon),
+.md-toggle-button--small .md-toggle-button__icon ::slotted(*) {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}
+
+.md-toggle-button--small.md-toggle-button--icon-only {
+  padding: 0 10px;
+}
+
+/* Medium Size (default) - 40dp */
+.md-toggle-button--medium {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.md-toggle-button--medium .md-toggle-button__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.md-toggle-button--medium .md-toggle-button__icon ::slotted(svg),
+.md-toggle-button--medium .md-toggle-button__icon ::slotted(img),
+.md-toggle-button--medium .md-toggle-button__icon ::slotted(md-icon),
+.md-toggle-button--medium .md-toggle-button__icon ::slotted(*) {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
+.md-toggle-button--medium.md-toggle-button--icon-only {
+  padding: 0 12px;
+}
+
+/* Large Size - 48dp */
+.md-toggle-button--large {
+  height: 48px;
+  padding: 0 20px;
+  font-size: 15px;
+}
+
+.md-toggle-button--large .md-toggle-button__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.md-toggle-button--large .md-toggle-button__icon ::slotted(svg),
+.md-toggle-button--large .md-toggle-button__icon ::slotted(img),
+.md-toggle-button--large .md-toggle-button__icon ::slotted(md-icon),
+.md-toggle-button--large .md-toggle-button__icon ::slotted(*) {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+
+.md-toggle-button--large.md-toggle-button--icon-only {
+  padding: 0 14px;
+}
+
+/* XLarge Size - 56dp */
+.md-toggle-button--xlarge {
+  height: 56px;
+  padding: 0 24px;
+  font-size: 16px;
+}
+
+.md-toggle-button--xlarge .md-toggle-button__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.md-toggle-button--xlarge .md-toggle-button__icon ::slotted(svg),
+.md-toggle-button--xlarge .md-toggle-button__icon ::slotted(img),
+.md-toggle-button--xlarge .md-toggle-button__icon ::slotted(md-icon),
+.md-toggle-button--xlarge .md-toggle-button__icon ::slotted(*) {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.md-toggle-button--xlarge.md-toggle-button--icon-only {
+  padding: 0 16px;
+}
+
+/* ===========================================
+   POSITION-BASED SHAPES (Connected)
+   MD3 Expressive: Selected always fully rounded
+   Unselected: Position-based shapes
+   Border radius scales with size (half of height)
+   =========================================== */
+
+/* Size-based border radius custom properties */
+.md-toggle-button--xsmall {
+  --toggle-radius-full: 16px;
+}
+
+.md-toggle-button--small {
+  --toggle-radius-full: 18px;
+}
+
+.md-toggle-button--medium {
+  --toggle-radius-full: 20px;
+}
+
+.md-toggle-button--large {
+  --toggle-radius-full: 24px;
+}
+
+.md-toggle-button--xlarge {
+  --toggle-radius-full: 28px;
+}
+
+/* Leading button - rounded on left */
+.md-toggle-button--leading {
+  border-radius: var(--toggle-radius-full, 20px) 4px 4px var(--toggle-radius-full, 20px);
+}
+
+/* Middle button - slight rounding */
+.md-toggle-button--middle {
+  border-radius: 4px;
+}
+
+/* Trailing button - rounded on right */
+.md-toggle-button--trailing {
+  border-radius: 4px var(--toggle-radius-full, 20px) var(--toggle-radius-full, 20px) 4px;
+}
+
+/* Standalone button - fully rounded */
+.md-toggle-button--standalone {
+  border-radius: var(--toggle-radius-full, 20px);
+}
+
+/* ===========================================
+   SELECTED STATE
+   MD3 Expressive: Selected buttons are always
+   fully rounded regardless of position
+   =========================================== */
+
+.md-toggle-button--selected {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  border-radius: var(--toggle-radius-full, 20px);
+}
+
+/* ===========================================
+   STATE LAYER
+   =========================================== */
+
+.md-toggle-button__state-layer {
+  @apply absolute inset-0;
+  opacity: 0;
+  background-color: var(--color-on-surface);
+  border-radius: inherit;
+  transition: opacity var(--duration-short-2) var(--easing-standard);
+  pointer-events: none;
+}
+
+.md-toggle-button:hover .md-toggle-button__state-layer {
+  opacity: var(--state-hover-opacity);
+}
+
+.md-toggle-button:focus-visible .md-toggle-button__state-layer {
+  opacity: var(--state-focus-opacity);
+}
+
+.md-toggle-button:active .md-toggle-button__state-layer {
+  opacity: var(--state-pressed-opacity);
+}
+
+.md-toggle-button--selected .md-toggle-button__state-layer {
+  background-color: var(--color-on-secondary-container);
+}
+
+/* ===========================================
+   ICON SLOT
+   (Size-specific dimensions defined in SIZE VARIANTS above)
+   =========================================== */
+
+.md-toggle-button__icon {
+  @apply flex items-center justify-center flex-shrink-0;
+}
+
+.md-toggle-button__icon[hidden] {
+  display: none;
+}
+
+/* ===========================================
+   LABEL
+   =========================================== */
+
+.md-toggle-button__label {
+  @apply flex-shrink-0;
+}
+
+.md-toggle-button__label[hidden] {
+  display: none;
+}
+
+/* ===========================================
+   ICON-ONLY VARIANT
+   (Size-specific padding defined in SIZE VARIANTS above)
+   =========================================== */
+
+/* ===========================================
+   DISABLED STATE
+   =========================================== */
+
+.md-toggle-button:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.38;
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+}
+
+.md-toggle-button:disabled.md-toggle-button--selected {
+  background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+}
+
+/* ===========================================
+   FOCUS STATE
+   =========================================== */
+
+.md-toggle-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  z-index: 2;
+}

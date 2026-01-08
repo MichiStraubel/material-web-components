@@ -1,6 +1,7 @@
-import { html, type TemplateResult, type PropertyValues } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { html, nothing, type TemplateResult, type PropertyValues } from 'lit';
+import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { MdElement, adoptStyles } from '@material-wc/core';
 
 // This will be the generated CSS from button.src.css
@@ -8,7 +9,9 @@ import buttonStyles from './button.css?inline';
 
 export type ButtonVariant = 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
 export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonGroupSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 export type IconPosition = 'start' | 'end';
+export type ButtonPosition = 'leading' | 'middle' | 'trailing' | 'standalone';
 
 /**
  * Material Design 3 Button Component
@@ -62,18 +65,102 @@ export class MdButton extends MdElement {
   @property({ type: String, attribute: 'aria-label' })
   override ariaLabel: string | null = null;
 
+  // ============================================
+  // Toggle Button Properties (for use in groups)
+  // ============================================
+
+  /** Whether this button acts as a toggle button */
+  @property({ type: Boolean, reflect: true })
+  toggle = false;
+
+  /** Whether the toggle button is selected */
+  @property({ type: Boolean, reflect: true })
+  selected = false;
+
+  /** Value for toggle buttons (used in button groups) */
+  @property({ type: String, reflect: true })
+  value = '';
+
   /** Whether the icon slot has content */
   private hasIcon = false;
 
+  /** Whether the default slot has content (for icon-only detection) */
+  @state()
+  private hasLabel = false;
+
+  // ============================================
+  // Group Context (managed by parent md-button-group)
+  // ============================================
+
+  /** Position within a group (managed by parent) */
+  @state()
+  private groupPosition: ButtonPosition = 'standalone';
+
+  /** Whether this button is inside a group */
+  @state()
+  private isInsideGroup = false;
+
+  /** Selection mode from parent group */
+  @state()
+  private groupSelectionMode: 'single' | 'multi' = 'single';
+
+  /** Size override from parent group */
+  @state()
+  private groupSize: ButtonGroupSize | null = null;
+
+  // ============================================
+  // Group API (called by parent md-button-group)
+  // ============================================
+
+  /** Set position within group (called by parent) */
+  setGroupPosition(position: ButtonPosition): void {
+    this.groupPosition = position;
+  }
+
+  /** Set whether inside a group (called by parent) */
+  setInsideGroup(isInside: boolean): void {
+    this.isInsideGroup = isInside;
+  }
+
+  /** Set selection mode (called by parent) */
+  setGroupSelectionMode(mode: 'single' | 'multi'): void {
+    this.groupSelectionMode = mode;
+  }
+
+  /** Set size from group (called by parent) */
+  setGroupSize(size: ButtonGroupSize): void {
+    this.groupSize = size;
+  }
+
   protected override render(): TemplateResult {
+    // Determine effective size (group size overrides local size for grouped buttons)
+    const effectiveSize = this.isInsideGroup && this.groupSize ? this.groupSize : this.size;
+
     const classes = {
       'md-button': true,
-      [`md-button--${this.variant}`]: true,
-      [`md-button--${this.size}`]: true,
+      [`md-button--${this.variant}`]: !this.isInsideGroup,
+      [`md-button--${effectiveSize}`]: true,
       'md-button--full-width': this.fullWidth,
       'md-button--has-icon': this.hasIcon,
       'md-button--icon-end': this.hasIcon && this.iconPosition === 'end',
+      // Group-specific classes
+      'md-button--in-group': this.isInsideGroup,
+      [`md-button--${this.groupPosition}`]: this.isInsideGroup,
+      'md-button--selected': this.isInsideGroup && this.selected,
+      'md-button--icon-only': this.hasIcon && !this.hasLabel,
     };
+
+    // Determine ARIA attributes for grouped buttons
+    const role = this.isInsideGroup
+      ? this.groupSelectionMode === 'single'
+        ? 'radio'
+        : 'checkbox'
+      : this.toggle
+        ? 'button'
+        : undefined;
+
+    const ariaChecked: 'true' | 'false' | undefined = this.isInsideGroup ? (this.selected ? 'true' : 'false') : undefined;
+    const ariaPressed: 'true' | 'false' | undefined = this.toggle && !this.isInsideGroup ? (this.selected ? 'true' : 'false') : undefined;
 
     if (this.href && !this.disabled) {
       return html`
@@ -82,7 +169,7 @@ export class MdButton extends MdElement {
           href=${this.href}
           target=${this.target ?? '_self'}
           rel=${this.target === '_blank' ? 'noopener noreferrer' : ''}
-          aria-label=${this.ariaLabel || ''}
+          aria-label=${this.ariaLabel || nothing}
           part="button"
         >
           ${this.renderContent()}
@@ -95,7 +182,10 @@ export class MdButton extends MdElement {
         class=${classMap(classes)}
         type=${this.type}
         ?disabled=${this.disabled}
-        aria-label=${this.ariaLabel || ''}
+        role=${ifDefined(role)}
+        aria-label=${this.ariaLabel || nothing}
+        aria-checked=${ifDefined(ariaChecked)}
+        aria-pressed=${ifDefined(ariaPressed)}
         @click=${this.handleClick}
         part="button"
       >
@@ -131,7 +221,17 @@ export class MdButton extends MdElement {
       return;
     }
 
+    // Standard click event
     this.emit('md-click', { originalEvent: event });
+
+    // For toggle buttons in groups, emit the toggle-click event for parent group
+    if (this.isInsideGroup || this.toggle) {
+      this.emit('md-toggle-click', {
+        value: this.value,
+        selected: this.selected,
+        originalEvent: event,
+      });
+    }
   }
 
   private handleIconSlotChange(event: Event): void {

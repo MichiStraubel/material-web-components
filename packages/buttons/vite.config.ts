@@ -11,6 +11,11 @@ export default mergeConfig(
           'button/button': 'src/button/button.ts',
           'icon-button/icon-button': 'src/icon-button/icon-button.ts',
           'fab/fab': 'src/fab/fab.ts',
+          'toggle-button/toggle-button': 'src/toggle-button/toggle-button.ts',
+          'button-group/button-group': 'src/button-group/button-group.ts',
+          // Deprecated
+          'segmented-button/segmented-button': 'src/segmented-button/segmented-button.ts',
+          'segmented-button-set/segmented-button-set': 'src/segmented-button-set/segmented-button-set.ts',
         },
       },
       outDir: 'dist',

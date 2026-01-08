@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   MD3 SEGMENTED BUTTON SET
+   Container for segmented buttons
+   =========================================== */
+
+.md-segmented-button-set {
+  @apply inline-flex items-stretch;
+  height: 48px; /* Tap target */
+  padding: 4px 0; /* Centers 40dp button in 48dp container */
+}
+
+/* Compact density */
+.md-segmented-button-set--compact {
+  height: 40px;
+  padding: 4px 0;
+}
+
+.md-segmented-button-set--compact ::slotted(md-segmented-button) {
+  height: 32px;
+}
+
+/* Disabled state */
+.md-segmented-button-set--disabled {
+  pointer-events: none;
+}

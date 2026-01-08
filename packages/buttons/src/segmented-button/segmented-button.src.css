@@ -1,0 +1,215 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   MD3 SEGMENTED BUTTON
+   Container Height: 40dp
+   Tap Target: 48dp
+   Border-Radius: 20dp (full-rounded ends)
+   Icon: 18dp
+   Horizontal Padding: 12dp (icon-only) / 16dp (with label)
+   =========================================== */
+
+/* Base Segment Styles */
+.md-segmented-button {
+  @apply relative inline-flex items-center justify-center gap-2;
+  @apply font-medium cursor-pointer;
+  height: 40px;
+  padding: 0 16px;
+  background-color: transparent;
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-outline);
+  border-left-width: 0;
+  font-family: var(--font-family-plain);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  transition: all var(--duration-medium-1) var(--easing-standard);
+}
+
+/* Position-based border radius */
+.md-segmented-button--first {
+  border-radius: 20px 0 0 20px;
+  border-left-width: 1px;
+}
+
+.md-segmented-button--last {
+  border-radius: 0 20px 20px 0;
+}
+
+.md-segmented-button--only {
+  border-radius: 20px;
+  border-left-width: 1px;
+}
+
+.md-segmented-button--middle {
+  border-radius: 0;
+}
+
+/* Divider between segments (visual separator) */
+.md-segmented-button:not(.md-segmented-button--first):not(.md-segmented-button--only)::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background-color: var(--color-outline);
+  z-index: 1;
+}
+
+/* Hide divider when selected or next to selected */
+.md-segmented-button--selected::before {
+  background-color: transparent;
+}
+
+/* ===========================================
+   SELECTED STATE
+   =========================================== */
+
+.md-segmented-button--selected {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+}
+
+/* ===========================================
+   STATE LAYER
+   =========================================== */
+
+.md-segmented-button__state-layer {
+  @apply absolute inset-0;
+  opacity: 0;
+  background-color: var(--color-on-surface);
+  transition: opacity var(--duration-short-2) var(--easing-standard);
+  pointer-events: none;
+}
+
+/* Inherit border radius from position */
+.md-segmented-button--first .md-segmented-button__state-layer {
+  border-radius: 20px 0 0 20px;
+}
+
+.md-segmented-button--last .md-segmented-button__state-layer {
+  border-radius: 0 20px 20px 0;
+}
+
+.md-segmented-button--only .md-segmented-button__state-layer {
+  border-radius: 20px;
+}
+
+.md-segmented-button--middle .md-segmented-button__state-layer {
+  border-radius: 0;
+}
+
+.md-segmented-button:hover .md-segmented-button__state-layer {
+  opacity: var(--state-hover-opacity);
+}
+
+.md-segmented-button:focus-visible .md-segmented-button__state-layer {
+  opacity: var(--state-focus-opacity);
+}
+
+.md-segmented-button:active .md-segmented-button__state-layer {
+  opacity: var(--state-pressed-opacity);
+}
+
+.md-segmented-button--selected .md-segmented-button__state-layer {
+  background-color: var(--color-on-secondary-container);
+}
+
+/* ===========================================
+   CHECKMARK ICON
+   =========================================== */
+
+.md-segmented-button__checkmark {
+  @apply flex items-center justify-center flex-shrink-0;
+  width: 18px;
+  height: 18px;
+}
+
+.md-segmented-button__checkmark svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Hide checkmark when not selected */
+.md-segmented-button:not(.md-segmented-button--selected) .md-segmented-button__checkmark {
+  display: none;
+}
+
+/* Hide checkmark when noCheckmark is set */
+.md-segmented-button--no-checkmark .md-segmented-button__checkmark {
+  display: none;
+}
+
+/* ===========================================
+   ICON SLOT
+   =========================================== */
+
+.md-segmented-button__icon {
+  @apply flex items-center justify-center flex-shrink-0;
+  width: 18px;
+  height: 18px;
+}
+
+.md-segmented-button__icon ::slotted(svg),
+.md-segmented-button__icon ::slotted(img),
+.md-segmented-button__icon ::slotted(md-icon) {
+  width: 18px;
+  height: 18px;
+}
+
+.md-segmented-button__icon[hidden] {
+  display: none;
+}
+
+/* Hide icon when selected and checkmark is shown (icon gets replaced by checkmark) */
+.md-segmented-button--selected:not(.md-segmented-button--no-checkmark) .md-segmented-button__icon {
+  display: none;
+}
+
+/* ===========================================
+   LABEL
+   =========================================== */
+
+.md-segmented-button__label {
+  @apply flex-shrink-0;
+}
+
+.md-segmented-button__label[hidden] {
+  display: none;
+}
+
+/* ===========================================
+   ICON-ONLY VARIANT
+   =========================================== */
+
+.md-segmented-button--icon-only {
+  padding: 0 12px;
+}
+
+/* ===========================================
+   DISABLED STATE
+   =========================================== */
+
+.md-segmented-button:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.38;
+  background-color: transparent;
+  color: var(--color-on-surface);
+}
+
+.md-segmented-button:disabled.md-segmented-button--selected {
+  background-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+}
+
+/* ===========================================
+   FOCUS STATE
+   =========================================== */
+
+.md-segmented-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  z-index: 2;
+}

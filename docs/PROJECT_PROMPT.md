@@ -93,7 +93,7 @@ Entwickle eine moderne Web Component Bibliothek basierend auf **Material Design 
 │       └── vite.config.ts
 │
 ├── apps/
-│   └── docs/                 # Dokumentations-App (Storybook)
+│   └── storybook/                 # Dokumentations-App (Storybook)
 │
 ├── tools/
 │   └── css-builder/          # Tailwind CSS Build-Tool
