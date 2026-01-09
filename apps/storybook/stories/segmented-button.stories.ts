@@ -10,7 +10,7 @@ type SegmentedButtonSetArgs = Pick<MdSegmentedButtonSet, 'selectionMode' | 'disa
  * Segmented buttons are deprecated in MD3 Expressive in favor of connected button groups.
  */
 const meta: Meta<SegmentedButtonSetArgs> = {
-  title: 'Deprecated/Segmented Button',
+  title: 'MD3 Components/Deprecated/Segmented Button',
   component: 'md-segmented-button-set',
   tags: ['autodocs', 'deprecated'],
   argTypes: {

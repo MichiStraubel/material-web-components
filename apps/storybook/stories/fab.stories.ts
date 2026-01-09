@@ -3,14 +3,59 @@ import { html } from 'lit';
 import '@material-wc/buttons';
 import type { MdFab } from '@material-wc/buttons';
 
-type FabArgs = Pick<MdFab, 'variant' | 'size' | 'disabled' | 'extended' | 'lowered'> & {
-  label?: string;
-};
+type FabArgs = Pick<MdFab, 'variant' | 'size' | 'disabled' | 'lowered'>;
 
 const meta: Meta<FabArgs> = {
-  title: 'Buttons/FAB',
+  title: 'MD3 Components/Buttons/FAB',
   component: 'md-fab',
-  tags: ['autodocs', 'new'],
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+## Wann verwenden?
+
+Der Floating Action Button (FAB) repräsentiert die **wichtigste Aktion** auf einem Bildschirm. Er sollte sparsam eingesetzt werden:
+- **Eine FAB pro Bildschirm** - Der FAB hebt die primäre Aktion hervor
+- **Konstruktive Aktionen** - Erstellen, Hinzufügen, Teilen, Erkunden
+- **Nicht für destruktive Aktionen** - Löschen, Archivieren gehören nicht in einen FAB
+
+## Varianten-Auswahl
+
+| Variante | Verwendung |
+|----------|------------|
+| **Primary** | Standard für die wichtigste Aktion (Markenfarbe) |
+| **Surface** | Neutraler Hintergrund, wenn Primary zu dominant |
+| **Secondary** | Alternative Farbakzentuierung |
+| **Tertiary** | Dritte Farbvariante für spezielle Designs |
+
+## Größen
+
+| Größe | Maße | Verwendung |
+|-------|------|------------|
+| **Small** | 40dp | Kompakte UIs, sekundäre FABs |
+| **Medium** | 56dp | Standard, empfohlen für die meisten Fälle |
+| **Large** | 96dp | Besonders wichtige Aktionen, große Bildschirme |
+
+## Positionierung
+
+Der FAB wird typischerweise **unten rechts** positioniert:
+\`\`\`css
+position: fixed;
+bottom: 16px;
+right: 16px;
+\`\`\`
+
+## Best Practices
+
+- **Nur eine primäre Aktion:** Ein FAB pro Bildschirm, für die wichtigste Aktion
+- **Konsistente Position:** Immer an der gleichen Stelle im Layout
+- **Nicht bei Scroll verstecken:** Der FAB sollte immer sichtbar bleiben
+- **Lowered für weniger Dominanz:** Verwende \`lowered\` wenn der FAB weniger hervorstechen soll
+        `,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
@@ -35,13 +80,6 @@ const meta: Meta<FabArgs> = {
         defaultValue: { summary: 'false' },
       },
     },
-    extended: {
-      control: 'boolean',
-      description: 'Whether the FAB shows a label',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
     lowered: {
       control: 'boolean',
       description: 'Whether the FAB has lowered elevation',
@@ -49,30 +87,22 @@ const meta: Meta<FabArgs> = {
         defaultValue: { summary: 'false' },
       },
     },
-    label: {
-      control: 'text',
-      description: 'The label text (for extended FAB)',
-    },
   },
   args: {
     variant: 'primary',
     size: 'medium',
     disabled: false,
-    extended: false,
     lowered: false,
-    label: '',
   },
   render: (args) => html`
     <md-fab
       variant=${args.variant}
       size=${args.size}
       ?disabled=${args.disabled}
-      ?extended=${args.extended}
       ?lowered=${args.lowered}
       aria-label="Add"
     >
       <span slot="icon" class="material-symbols-outlined">add</span>
-      ${args.label}
     </md-fab>
   `,
 };
@@ -137,54 +167,6 @@ export const AllSizes: Story = {
       </md-fab>
       <md-fab size="large" aria-label="Large FAB">
         <span slot="icon" class="material-symbols-outlined">add</span>
-      </md-fab>
-    </div>
-  `,
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
-export const Extended: Story = {
-  render: () => html`
-    <div style="display: flex; gap: 24px; align-items: center;">
-      <md-fab extended size="small" aria-label="Small Extended FAB">
-        <span slot="icon" class="material-symbols-outlined">edit</span>
-        Edit
-      </md-fab>
-      <md-fab extended size="medium" aria-label="Medium Extended FAB">
-        <span slot="icon" class="material-symbols-outlined">add</span>
-        Create New
-      </md-fab>
-      <md-fab extended size="large" aria-label="Large Extended FAB">
-        <span slot="icon" class="material-symbols-outlined">mail</span>
-        Compose Message
-      </md-fab>
-    </div>
-  `,
-  parameters: {
-    controls: { disable: true },
-  },
-};
-
-export const ExtendedVariants: Story = {
-  render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <md-fab variant="surface" extended aria-label="Navigate">
-        <span slot="icon" class="material-symbols-outlined">navigation</span>
-        Navigate
-      </md-fab>
-      <md-fab variant="primary" extended aria-label="Compose">
-        <span slot="icon" class="material-symbols-outlined">edit</span>
-        Compose
-      </md-fab>
-      <md-fab variant="secondary" extended aria-label="Share">
-        <span slot="icon" class="material-symbols-outlined">share</span>
-        Share
-      </md-fab>
-      <md-fab variant="tertiary" extended aria-label="Download">
-        <span slot="icon" class="material-symbols-outlined">download</span>
-        Download
       </md-fab>
     </div>
   `,

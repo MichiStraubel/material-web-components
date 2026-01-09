@@ -9,9 +9,51 @@ type SplitButtonArgs = Pick<MdSplitButton, 'variant' | 'size' | 'disabled'> & {
 };
 
 const meta: Meta<SplitButtonArgs> = {
-  title: 'Buttons/Split Button',
+  title: 'MD3 Components/Buttons/Split Button',
   component: 'md-split-button',
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+## Wann verwenden?
+
+Der Split Button kombiniert eine **primäre Aktion** mit einem **Dropdown-Menü** für verwandte Optionen. Ideal für:
+- **Aktionen mit Varianten** - "Speichern" + "Speichern unter...", "Kopie speichern"
+- **Standard + Alternativen** - "Senden" + "Später senden", "Als Entwurf speichern"
+- **Kontextuelle Optionen** - "Download" + verschiedene Formate (PDF, DOCX, etc.)
+
+## Wann NICHT verwenden?
+
+- **Unabhängige Aktionen:** Wenn die Menü-Optionen nichts mit der primären Aktion zu tun haben
+- **Einfache Aktionen:** Wenn nur eine Aktion ohne Varianten existiert → normaler Button
+- **Navigation:** Für reine Navigation → Text Button oder Link
+
+## Struktur
+
+\`\`\`
+┌─────────────┬───┐
+│   Speichern │ ▼ │  ← Leading Button + Trailing Button
+└─────────────┴───┘
+       │
+       ▼
+┌─────────────────┐
+│ Speichern unter │  ← Dropdown-Menü
+│ Kopie speichern │
+│ Als Vorlage     │
+└─────────────────┘
+\`\`\`
+
+## Best Practices
+
+- **Klare Hierarchie:** Die primäre Aktion (Leading Button) sollte die häufigste Aktion sein
+- **Verwandte Optionen:** Menü-Items sollten Varianten der primären Aktion sein
+- **Konsistente Icons:** Verwende Icons in Menü-Items für bessere Erkennbarkeit
+- **Beschreibende Labels:** Menü-Items sollten klar beschreiben, was passiert
+        `,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',

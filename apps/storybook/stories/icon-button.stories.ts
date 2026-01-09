@@ -6,9 +6,39 @@ import type { MdIconButton } from '@material-wc/buttons';
 type IconButtonArgs = Pick<MdIconButton, 'variant' | 'size' | 'shape' | 'width' | 'disabled' | 'selected' | 'toggle'>;
 
 const meta: Meta<IconButtonArgs> = {
-  title: 'Buttons/Icon Button',
+  title: 'MD3 Components/Buttons/Icon Button',
   component: 'md-icon-button',
   tags: ['autodocs', 'new'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+## Wann verwenden?
+
+Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie eignen sich für:
+- **Toolbars und App Bars** - Navigation, Suche, Menü
+- **Inline-Aktionen** - Löschen, Bearbeiten, Teilen in Listen oder Karten
+- **Toggle-Zustände** - Favoriten, Lesezeichen, Sichtbarkeit
+
+## Varianten-Auswahl
+
+| Variante | Verwendung | Beispiele |
+|----------|------------|-----------|
+| **Standard** | Niedrige Priorität, häufig wiederholte Aktionen | Navigation Icons, Toolbar-Aktionen |
+| **Filled** | Höchste Priorität, wichtige Toggle-Aktionen | Favorit aktiv, Wichtig markiert |
+| **Tonal** | Mittlere Priorität, sanfter als Filled | Sekundäre Toggle-Aktionen |
+| **Outlined** | Wenn visueller Kontrast benötigt wird | Toggle-Aktionen mit klarer Grenze |
+
+## Best Practices
+
+- **Immer aria-label verwenden:** Icon Buttons haben kein sichtbares Label, daher ist ein beschreibendes aria-label für Barrierefreiheit erforderlich
+- **Toggle für Zustände:** Verwende das \`toggle\` Attribut für An/Aus-Zustände wie Favoriten oder Lesezeichen
+- **Konsistente Größen:** Verwende einheitliche Größen innerhalb einer Toolbar oder Liste
+- **Erkennbare Icons:** Nutze etablierte Icons, die Benutzer sofort verstehen (z.B. Herz für Favorit)
+        `,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',

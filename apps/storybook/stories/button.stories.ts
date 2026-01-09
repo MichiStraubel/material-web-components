@@ -8,9 +8,40 @@ type ButtonArgs = Pick<MdButton, 'variant' | 'size' | 'disabled' | 'fullWidth' |
 };
 
 const meta: Meta<ButtonArgs> = {
-  title: 'Buttons/Button',
+  title: 'MD3 Components/Buttons/Button',
   component: 'md-button',
   tags: ['autodocs', 'new'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+## Wann verwenden?
+
+Buttons kommunizieren Aktionen, die Benutzer ausführen können. Sie werden typischerweise in der gesamten UI platziert, in Bereichen wie:
+- Dialoge
+- Formulare
+- Karten
+- Toolbars
+
+## Varianten-Auswahl (nach Priorität)
+
+| Variante | Verwendung | Beispiele |
+|----------|------------|-----------|
+| **Filled** | Höchste Priorität, primäre Aktionen | "Speichern", "Senden", "Bestätigen" |
+| **Tonal** | Mittlere Priorität, sekundäre Aktionen | "Bearbeiten", "Teilen" |
+| **Elevated** | Wenn Abhebung vom Hintergrund nötig | Aktionen auf Bildern oder farbigen Flächen |
+| **Outlined** | Niedrigere Priorität, alternative Aktionen | "Abbrechen", "Zurück" |
+| **Text** | Niedrigste Priorität, tertiäre Aktionen | "Mehr erfahren", "Details anzeigen" |
+
+## Best Practices
+
+- **Eine primäre Aktion pro Ansicht:** Verwende nur einen Filled Button pro logischen Bereich
+- **Klare Labels:** Beschreibe die Aktion, nicht das Objekt ("Speichern" statt "Dokument")
+- **Konsistente Hierarchie:** Kombiniere Varianten sinnvoll (Filled + Outlined, nicht zwei Filled)
+        `,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: 'select',
@@ -83,12 +114,26 @@ export const Filled: Story = {
     variant: 'filled',
     label: 'Filled Button',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Höchste Priorität.** Für die wichtigste Aktion auf einer Seite oder in einem Abschnitt. Beispiele: "Kaufen", "Speichern", "Senden".',
+      },
+    },
+  },
 };
 
 export const Outlined: Story = {
   args: {
     variant: 'outlined',
     label: 'Outlined Button',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Mittlere Priorität.** Für sekundäre Aktionen, die eine Alternative zur primären Aktion darstellen. Beispiele: "Abbrechen", "Zurück", "Mehr Details".',
+      },
+    },
   },
 };
 
@@ -97,6 +142,13 @@ export const Text: Story = {
     variant: 'text',
     label: 'Text Button',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Niedrigste Priorität.** Für tertiäre Aktionen oder Navigation. Weniger visuelles Gewicht, ideal für "Mehr erfahren", "Überspringen", Links in Texten.',
+      },
+    },
+  },
 };
 
 export const Elevated: Story = {
@@ -104,12 +156,26 @@ export const Elevated: Story = {
     variant: 'elevated',
     label: 'Elevated Button',
   },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Für Kontrast.** Wenn der Button vom Hintergrund abgehoben werden muss, z.B. auf Bildern, farbigen Flächen oder in Karten mit wenig Kontrast.',
+      },
+    },
+  },
 };
 
 export const Tonal: Story = {
   args: {
     variant: 'tonal',
     label: 'Tonal Button',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Mittlere Priorität, sanfter.** Alternative zu Filled für weniger dominante primäre Aktionen. Gut für UI mit vielen Aktionen, wo Filled zu dominant wäre.',
+      },
+    },
   },
 };
 

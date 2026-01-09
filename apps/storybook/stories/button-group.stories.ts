@@ -6,9 +6,46 @@ import type { MdButtonGroup } from '@material-wc/buttons';
 type ButtonGroupArgs = Pick<MdButtonGroup, 'selectionMode' | 'disabled' | 'size'>;
 
 const meta: Meta<ButtonGroupArgs> = {
-  title: 'Buttons/Button Group',
+  title: 'MD3 Components/Buttons/Button Group',
   component: 'md-button-group',
   tags: ['autodocs', 'new'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+## Wann verwenden?
+
+Button Groups gruppieren zusammengehörige Optionen visuell und funktional. Sie eignen sich für:
+- **Ansichtswechsel** - Tag/Woche/Monat, Liste/Grid, Karte/Satellit
+- **Filter-Optionen** - Kategorien, Status-Filter, Sortierung
+- **Text-Formatierung** - Fett/Kursiv/Unterstrichen (Multi-Select)
+- **Ausrichtung** - Links/Zentriert/Rechts
+
+## Auswahlmodi
+
+| Modus | Verhalten | Verwendung |
+|-------|-----------|------------|
+| **Single** | Nur eine Option aktiv (wie Radio) | Ansichtswechsel, exklusive Optionen |
+| **Multi** | Mehrere Optionen möglich (wie Checkbox) | Formatierung, Filter-Kombinationen |
+
+## Accessibility
+
+Die Button Group verwendet automatisch die korrekten ARIA-Rollen:
+- **Single-Select:** \`role="radiogroup"\` mit \`role="radio"\` Kindern
+- **Multi-Select:** \`role="group"\` mit \`role="checkbox"\` Kindern
+- **Keyboard:** Pfeiltasten, Home/End, Space/Enter
+
+## Best Practices
+
+- **2-5 Optionen:** Zu viele Optionen verwirren, nutze ggf. ein Dropdown
+- **Kurze Labels:** Halte die Button-Labels kurz und prägnant
+- **Konsistente Länge:** Buttons sollten ähnlich lang sein für ein ausgewogenes Layout
+- **Icons für Klarheit:** Bei Icon-only Buttons immer \`aria-label\` verwenden
+- **Vorauswahl:** Bei Single-Select sollte immer eine Option vorausgewählt sein
+        `,
+      },
+    },
+  },
   argTypes: {
     selectionMode: {
       control: 'select',
