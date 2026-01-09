@@ -82,24 +82,31 @@
   height: 36px;
 }
 
-/* Extended FAB */
+/* Extended FAB
+   MD3 Spec: Extended FABs have a fixed height of 56dp regardless of size property.
+   They can optionally omit the icon but must have a label.
+   Padding: 16dp with icon, 24dp without icon (leading edge)
+   =========================================== */
 .md-fab--extended {
-  @apply px-4;
-}
-
-.md-fab--extended.md-fab--small {
-  @apply h-10 px-3;
-  border-radius: var(--radius-md);
-}
-
-.md-fab--extended.md-fab--medium {
   @apply h-14 px-4;
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevation-3);
 }
 
-.md-fab--extended.md-fab--large {
-  @apply h-24 px-6;
-  border-radius: var(--radius-xl);
+/* Extended FAB without icon - more padding on leading edge */
+.md-fab--extended .md-fab__icon[hidden] + .md-fab__label {
+  @apply pl-2;
+}
+
+/* Extended FAB icon size is always 24dp */
+.md-fab--extended .md-fab__icon {
+  @apply w-6 h-6;
+}
+
+.md-fab--extended .md-fab__icon ::slotted(svg),
+.md-fab--extended .md-fab__icon ::slotted(img) {
+  width: 24px;
+  height: 24px;
 }
 
 /* Lowered Elevation */

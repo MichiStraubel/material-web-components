@@ -61,11 +61,13 @@ export class MdFab extends MdElement {
   private hasLabel = false;
 
   protected override render(): TemplateResult {
+    // Extended FABs have fixed size (56dp), size property is ignored
+    const isExtended = this.extended || this.hasLabel;
     const classes = {
       'md-fab': true,
       [`md-fab--${this.variant}`]: true,
-      [`md-fab--${this.size}`]: true,
-      'md-fab--extended': this.extended || this.hasLabel,
+      [`md-fab--${this.size}`]: !isExtended,
+      'md-fab--extended': isExtended,
       'md-fab--lowered': this.lowered,
     };
 
