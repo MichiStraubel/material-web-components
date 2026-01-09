@@ -51,14 +51,16 @@ yarn test:run
 
 ## Git
 
+**Wichtig:** Nicht automatisch pushen! Nur committen, der Nutzer entscheidet wann gepusht wird.
+
 ```bash
 # Status anzeigen
 git status
 
-# Änderungen committen
+# Änderungen committen (NICHT automatisch pushen!)
 git add .
 git commit -m "feat: Beschreibung"
 
-# Pushen
+# Pushen (nur auf explizite Anfrage des Nutzers)
 git push
 ```
