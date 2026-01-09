@@ -1,13 +1,37 @@
-import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.js";import"./preload-helper-Dp1pzeXC.js";const ut={title:"Buttons/Button",component:"md-button",tags:["autodocs","new"],argTypes:{variant:{control:"select",options:["filled","outlined","text","elevated","tonal"],description:"The visual style variant of the button",table:{defaultValue:{summary:"filled"}}},size:{control:"select",options:["small","medium","large"],description:"The size of the button",table:{defaultValue:{summary:"medium"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},fullWidth:{control:"boolean",description:"Whether the button takes the full width",table:{defaultValue:{summary:"false"}}},iconPosition:{control:"select",options:["start","end"],description:"Position of the icon relative to the text",table:{defaultValue:{summary:"start"}}},label:{control:"text",description:"The text content of the button"}},args:{variant:"filled",size:"medium",disabled:!1,fullWidth:!1,iconPosition:"start",label:"Button"},render:n=>t`
+import{b as t}from"./iframe-B1C9tN0v.js";import"./segmented-button-set-C1yuADMH.js";import"./preload-helper-Dp1pzeXC.js";const ut={title:"MD3 Components/Buttons/Button",component:"md-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+## Wann verwenden?
+
+Buttons kommunizieren Aktionen, die Benutzer ausführen können. Sie werden typischerweise in der gesamten UI platziert, in Bereichen wie:
+- Dialoge
+- Formulare
+- Karten
+- Toolbars
+
+## Varianten-Auswahl (nach Priorität)
+
+| Variante | Verwendung | Beispiele |
+|----------|------------|-----------|
+| **Filled** | Höchste Priorität, primäre Aktionen | "Speichern", "Senden", "Bestätigen" |
+| **Tonal** | Mittlere Priorität, sekundäre Aktionen | "Bearbeiten", "Teilen" |
+| **Elevated** | Wenn Abhebung vom Hintergrund nötig | Aktionen auf Bildern oder farbigen Flächen |
+| **Outlined** | Niedrigere Priorität, alternative Aktionen | "Abbrechen", "Zurück" |
+| **Text** | Niedrigste Priorität, tertiäre Aktionen | "Mehr erfahren", "Details anzeigen" |
+
+## Best Practices
+
+- **Eine primäre Aktion pro Ansicht:** Verwende nur einen Filled Button pro logischen Bereich
+- **Klare Labels:** Beschreibe die Aktion, nicht das Objekt ("Speichern" statt "Dokument")
+- **Konsistente Hierarchie:** Kombiniere Varianten sinnvoll (Filled + Outlined, nicht zwei Filled)
+        `}}},argTypes:{variant:{control:"select",options:["filled","outlined","text","elevated","tonal"],description:"The visual style variant of the button",table:{defaultValue:{summary:"filled"}}},size:{control:"select",options:["small","medium","large"],description:"The size of the button",table:{defaultValue:{summary:"medium"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},fullWidth:{control:"boolean",description:"Whether the button takes the full width",table:{defaultValue:{summary:"false"}}},iconPosition:{control:"select",options:["start","end"],description:"Position of the icon relative to the text",table:{defaultValue:{summary:"start"}}},label:{control:"text",description:"The text content of the button"}},args:{variant:"filled",size:"medium",disabled:!1,fullWidth:!1,iconPosition:"start",label:"Button"},render:e=>t`
     <md-button
-      variant=${n.variant}
-      size=${n.size}
-      ?disabled=${n.disabled}
-      ?full-width=${n.fullWidth}
+      variant=${e.variant}
+      size=${e.size}
+      ?disabled=${e.disabled}
+      ?full-width=${e.fullWidth}
     >
-      ${n.label}
+      ${e.label}
     </md-button>
-  `},e={args:{variant:"filled",label:"Filled Button"}},a={args:{variant:"outlined",label:"Outlined Button"}},l={args:{variant:"text",label:"Text Button"}},o={args:{variant:"elevated",label:"Elevated Button"}},i={args:{variant:"tonal",label:"Tonal Button"}},s={args:{variant:"filled",label:"Disabled Button",disabled:!0}},d={render:()=>t`
+  `},n={args:{variant:"filled",label:"Filled Button"},parameters:{docs:{description:{story:'**Höchste Priorität.** Für die wichtigste Aktion auf einer Seite oder in einem Abschnitt. Beispiele: "Kaufen", "Speichern", "Senden".'}}}},a={args:{variant:"outlined",label:"Outlined Button"},parameters:{docs:{description:{story:'**Mittlere Priorität.** Für sekundäre Aktionen, die eine Alternative zur primären Aktion darstellen. Beispiele: "Abbrechen", "Zurück", "Mehr Details".'}}}},i={args:{variant:"text",label:"Text Button"},parameters:{docs:{description:{story:'**Niedrigste Priorität.** Für tertiäre Aktionen oder Navigation. Weniger visuelles Gewicht, ideal für "Mehr erfahren", "Überspringen", Links in Texten.'}}}},r={args:{variant:"elevated",label:"Elevated Button"},parameters:{docs:{description:{story:"**Für Kontrast.** Wenn der Button vom Hintergrund abgehoben werden muss, z.B. auf Bildern, farbigen Flächen oder in Karten mit wenig Kontrast."}}}},l={args:{variant:"tonal",label:"Tonal Button"},parameters:{docs:{description:{story:"**Mittlere Priorität, sanfter.** Alternative zu Filled für weniger dominante primäre Aktionen. Gut für UI mit vielen Aktionen, wo Filled zu dominant wäre."}}}},o={args:{variant:"filled",label:"Disabled Button",disabled:!0}},s={render:()=>t`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button variant="filled">Filled</md-button>
       <md-button variant="outlined">Outlined</md-button>
@@ -15,7 +39,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       <md-button variant="elevated">Elevated</md-button>
       <md-button variant="tonal">Tonal</md-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},r={render:()=>t`
+  `,parameters:{controls:{disable:!0}}},d={render:()=>t`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button size="small">Small</md-button>
       <md-button size="medium">Medium</md-button>
@@ -62,11 +86,11 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       <md-button variant="outlined" full-width>Full Width Outlined</md-button>
       <md-button variant="tonal" full-width>Full Width Tonal</md-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},b={render:()=>t`
+  `,parameters:{controls:{disable:!0}}},c={render:()=>t`
     <md-button href="https://material.io" target="_blank">
       Visit Material Design
     </md-button>
-  `,parameters:{controls:{disable:!0}}},c={render:()=>t`
+  `,parameters:{controls:{disable:!0}}},b={render:()=>t`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button variant="filled" size="small">
         <span slot="icon" class="material-symbols-outlined">add</span>
@@ -104,7 +128,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         Delete
       </md-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},x={render:()=>t`
+  `,parameters:{controls:{disable:!0}}},f={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Icon Start (Default)</h4>
@@ -141,38 +165,73 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         </div>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}};var f,g,y;e.parameters={...e.parameters,docs:{...(f=e.parameters)==null?void 0:f.docs,source:{originalSource:`{
+  `,parameters:{controls:{disable:!0}}};var g,h,x;n.parameters={...n.parameters,docs:{...(g=n.parameters)==null?void 0:g.docs,source:{originalSource:`{
   args: {
     variant: 'filled',
     label: 'Filled Button'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Höchste Priorität.** Für die wichtigste Aktion auf einer Seite oder in einem Abschnitt. Beispiele: "Kaufen", "Speichern", "Senden".'
+      }
+    }
   }
-}`,...(y=(g=e.parameters)==null?void 0:g.docs)==null?void 0:y.source}}};var h,w,z;a.parameters={...a.parameters,docs:{...(h=a.parameters)==null?void 0:h.docs,source:{originalSource:`{
+}`,...(x=(h=n.parameters)==null?void 0:h.docs)==null?void 0:x.source}}};var y,w,z;a.parameters={...a.parameters,docs:{...(y=a.parameters)==null?void 0:y.docs,source:{originalSource:`{
   args: {
     variant: 'outlined',
     label: 'Outlined Button'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Mittlere Priorität.** Für sekundäre Aktionen, die eine Alternative zur primären Aktion darstellen. Beispiele: "Abbrechen", "Zurück", "Mehr Details".'
+      }
+    }
   }
-}`,...(z=(w=a.parameters)==null?void 0:w.docs)==null?void 0:z.source}}};var S,T,F;l.parameters={...l.parameters,docs:{...(S=l.parameters)==null?void 0:S.docs,source:{originalSource:`{
+}`,...(z=(w=a.parameters)==null?void 0:w.docs)==null?void 0:z.source}}};var S,A,k;i.parameters={...i.parameters,docs:{...(S=i.parameters)==null?void 0:S.docs,source:{originalSource:`{
   args: {
     variant: 'text',
     label: 'Text Button'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Niedrigste Priorität.** Für tertiäre Aktionen oder Navigation. Weniger visuelles Gewicht, ideal für "Mehr erfahren", "Überspringen", Links in Texten.'
+      }
+    }
   }
-}`,...(F=(T=l.parameters)==null?void 0:T.docs)==null?void 0:F.source}}};var W,B,D;o.parameters={...o.parameters,docs:{...(W=o.parameters)==null?void 0:W.docs,source:{originalSource:`{
+}`,...(k=(A=i.parameters)==null?void 0:A.docs)==null?void 0:k.source}}};var F,B,T;r.parameters={...r.parameters,docs:{...(F=r.parameters)==null?void 0:F.docs,source:{originalSource:`{
   args: {
     variant: 'elevated',
     label: 'Elevated Button'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Für Kontrast.** Wenn der Button vom Hintergrund abgehoben werden muss, z.B. auf Bildern, farbigen Flächen oder in Karten mit wenig Kontrast.'
+      }
+    }
   }
-}`,...(D=(B=o.parameters)==null?void 0:B.docs)==null?void 0:D.source}}};var I,O,A;i.parameters={...i.parameters,docs:{...(I=i.parameters)==null?void 0:I.docs,source:{originalSource:`{
+}`,...(T=(B=r.parameters)==null?void 0:B.docs)==null?void 0:T.source}}};var W,D,M;l.parameters={...l.parameters,docs:{...(W=l.parameters)==null?void 0:W.docs,source:{originalSource:`{
   args: {
     variant: 'tonal',
     label: 'Tonal Button'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: '**Mittlere Priorität, sanfter.** Alternative zu Filled für weniger dominante primäre Aktionen. Gut für UI mit vielen Aktionen, wo Filled zu dominant wäre.'
+      }
+    }
   }
-}`,...(A=(O=i.parameters)==null?void 0:O.docs)==null?void 0:A.source}}};var E,V,L;s.parameters={...s.parameters,docs:{...(E=s.parameters)==null?void 0:E.docs,source:{originalSource:`{
+}`,...(M=(D=l.parameters)==null?void 0:D.docs)==null?void 0:M.source}}};var I,P,O;o.parameters={...o.parameters,docs:{...(I=o.parameters)==null?void 0:I.docs,source:{originalSource:`{
   args: {
     variant: 'filled',
     label: 'Disabled Button',
     disabled: true
   }
-}`,...(L=(V=s.parameters)==null?void 0:V.docs)==null?void 0:L.source}}};var _,k,M;d.parameters={...d.parameters,docs:{...(_=d.parameters)==null?void 0:_.docs,source:{originalSource:`{
+}`,...(O=(P=o.parameters)==null?void 0:P.docs)==null?void 0:O.source}}};var V,E,L;s.parameters={...s.parameters,docs:{...(V=s.parameters)==null?void 0:V.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button variant="filled">Filled</md-button>
@@ -187,7 +246,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(M=(k=d.parameters)==null?void 0:k.docs)==null?void 0:M.source}}};var P,$,N;r.parameters={...r.parameters,docs:{...(P=r.parameters)==null?void 0:P.docs,source:{originalSource:`{
+}`,...(L=(E=s.parameters)==null?void 0:E.docs)==null?void 0:L.source}}};var K,_,N;d.parameters={...d.parameters,docs:{...(K=d.parameters)==null?void 0:K.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button size="small">Small</md-button>
@@ -200,7 +259,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(N=($=r.parameters)==null?void 0:$.docs)==null?void 0:N.source}}};var j,q,C;m.parameters={...m.parameters,docs:{...(j=m.parameters)==null?void 0:j.docs,source:{originalSource:`{
+}`,...(N=(_=d.parameters)==null?void 0:_.docs)==null?void 0:N.source}}};var H,$,G;m.parameters={...m.parameters,docs:{...(H=m.parameters)==null?void 0:H.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -234,7 +293,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(C=(q=m.parameters)==null?void 0:q.docs)==null?void 0:C.source}}};var G,H,J;u.parameters={...u.parameters,docs:{...(G=u.parameters)==null?void 0:G.docs,source:{originalSource:`{
+}`,...(G=($=m.parameters)==null?void 0:$.docs)==null?void 0:G.source}}};var U,Z,j;u.parameters={...u.parameters,docs:{...(U=u.parameters)==null?void 0:U.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button variant="filled" disabled>Filled</md-button>
@@ -249,7 +308,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(J=(H=u.parameters)==null?void 0:H.docs)==null?void 0:J.source}}};var K,Q,R;p.parameters={...p.parameters,docs:{...(K=p.parameters)==null?void 0:K.docs,source:{originalSource:`{
+}`,...(j=(Z=u.parameters)==null?void 0:Z.docs)==null?void 0:j.source}}};var C,q,J;p.parameters={...p.parameters,docs:{...(C=p.parameters)==null?void 0:C.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 16px; max-width: 300px;">
       <md-button variant="filled" full-width>Full Width Filled</md-button>
@@ -262,7 +321,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(R=(Q=p.parameters)==null?void 0:Q.docs)==null?void 0:R.source}}};var U,X,Y;b.parameters={...b.parameters,docs:{...(U=b.parameters)==null?void 0:U.docs,source:{originalSource:`{
+}`,...(J=(q=p.parameters)==null?void 0:q.docs)==null?void 0:J.source}}};var Q,R,X;c.parameters={...c.parameters,docs:{...(Q=c.parameters)==null?void 0:Q.docs,source:{originalSource:`{
   render: () => html\`
     <md-button href="https://material.io" target="_blank">
       Visit Material Design
@@ -273,7 +332,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(Y=(X=b.parameters)==null?void 0:X.docs)==null?void 0:Y.source}}};var Z,tt,nt;c.parameters={...c.parameters,docs:{...(Z=c.parameters)==null?void 0:Z.docs,source:{originalSource:`{
+}`,...(X=(R=c.parameters)==null?void 0:R.docs)==null?void 0:X.source}}};var Y,tt,et;b.parameters={...b.parameters,docs:{...(Y=b.parameters)==null?void 0:Y.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button variant="filled" size="small">
@@ -295,7 +354,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(nt=(tt=c.parameters)==null?void 0:tt.docs)==null?void 0:nt.source}}};var et,at,lt;v.parameters={...v.parameters,docs:{...(et=v.parameters)==null?void 0:et.docs,source:{originalSource:`{
+}`,...(et=(tt=b.parameters)==null?void 0:tt.docs)==null?void 0:et.source}}};var nt,at,it;v.parameters={...v.parameters,docs:{...(nt=v.parameters)==null?void 0:nt.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
       <md-button variant="filled">
@@ -325,7 +384,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(lt=(at=v.parameters)==null?void 0:at.docs)==null?void 0:lt.source}}};var ot,it,st;x.parameters={...x.parameters,docs:{...(ot=x.parameters)==null?void 0:ot.docs,source:{originalSource:`{
+}`,...(it=(at=v.parameters)==null?void 0:at.docs)==null?void 0:it.source}}};var rt,lt,ot;f.parameters={...f.parameters,docs:{...(rt=f.parameters)==null?void 0:rt.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -369,4 +428,4 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(st=(it=x.parameters)==null?void 0:it.docs)==null?void 0:st.source}}};const pt=["Filled","Outlined","Text","Elevated","Tonal","Disabled","AllVariants","AllSizes","SizesWithVariants","DisabledStates","FullWidth","AsLink","WithIcon","WithIconVariants","IconPosition"];export{r as AllSizes,d as AllVariants,b as AsLink,s as Disabled,u as DisabledStates,o as Elevated,e as Filled,p as FullWidth,x as IconPosition,a as Outlined,m as SizesWithVariants,l as Text,i as Tonal,c as WithIcon,v as WithIconVariants,pt as __namedExportsOrder,ut as default};
+}`,...(ot=(lt=f.parameters)==null?void 0:lt.docs)==null?void 0:ot.source}}};const pt=["Filled","Outlined","Text","Elevated","Tonal","Disabled","AllVariants","AllSizes","SizesWithVariants","DisabledStates","FullWidth","AsLink","WithIcon","WithIconVariants","IconPosition"];export{d as AllSizes,s as AllVariants,c as AsLink,o as Disabled,u as DisabledStates,r as Elevated,n as Filled,p as FullWidth,f as IconPosition,a as Outlined,m as SizesWithVariants,i as Text,l as Tonal,b as WithIcon,v as WithIconVariants,pt as __namedExportsOrder,ut as default};

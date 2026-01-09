@@ -1,4 +1,4 @@
-import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.js";import"./preload-helper-Dp1pzeXC.js";const oe={title:"Deprecated/Segmented Button",component:"md-segmented-button-set",tags:["autodocs","deprecated"],argTypes:{selectionMode:{control:"select",options:["single","multi"],description:"Selection mode: single (radio) or multi (checkbox)",table:{defaultValue:{summary:"single"}}},disabled:{control:"boolean",description:"Whether all segments are disabled",table:{defaultValue:{summary:"false"}}},density:{control:"select",options:["default","compact"],description:"Density variant",table:{defaultValue:{summary:"default"}}}},args:{selectionMode:"single",disabled:!1,density:"default"},render:t=>e`
+import{b as e}from"./iframe-B1C9tN0v.js";import"./segmented-button-set-C1yuADMH.js";import"./preload-helper-Dp1pzeXC.js";const oe={title:"MD3 Components/Deprecated/Segmented Button",component:"md-segmented-button-set",tags:["autodocs","deprecated"],argTypes:{selectionMode:{control:"select",options:["single","multi"],description:"Selection mode: single (radio) or multi (checkbox)",table:{defaultValue:{summary:"single"}}},disabled:{control:"boolean",description:"Whether all segments are disabled",table:{defaultValue:{summary:"false"}}},density:{control:"select",options:["default","compact"],description:"Density variant",table:{defaultValue:{summary:"default"}}}},args:{selectionMode:"single",disabled:!1,density:"default"},render:t=>e`
     <md-segmented-button-set
       selection-mode=${t.selectionMode}
       ?disabled=${t.disabled}
@@ -233,7 +233,7 @@ Segmented buttons are deprecated in MD3 Expressive in favor of connected button 
       disable: true
     }
   }
-}`,...(M=(C=d.parameters)==null?void 0:C.docs)==null?void 0:M.source}}};var w,D,W;a.parameters={...a.parameters,docs:{...(w=a.parameters)==null?void 0:w.docs,source:{originalSource:`{
+}`,...(M=(C=d.parameters)==null?void 0:C.docs)==null?void 0:M.source}}};var D,w,W;a.parameters={...a.parameters,docs:{...(D=a.parameters)==null?void 0:D.docs,source:{originalSource:`{
   render: () => html\`
     <md-segmented-button-set aria-label="Price range">
       <md-segmented-button value="cheap" selected>$</md-segmented-button>
@@ -247,7 +247,7 @@ Segmented buttons are deprecated in MD3 Expressive in favor of connected button 
       disable: true
     }
   }
-}`,...(W=(D=a.parameters)==null?void 0:D.docs)==null?void 0:W.source}}};var F,B,A;m.parameters={...m.parameters,docs:{...(F=m.parameters)==null?void 0:F.docs,source:{originalSource:`{
+}`,...(W=(w=a.parameters)==null?void 0:w.docs)==null?void 0:W.source}}};var F,B,A;m.parameters={...m.parameters,docs:{...(F=m.parameters)==null?void 0:F.docs,source:{originalSource:`{
   render: () => html\`
     <md-segmented-button-set aria-label="Mode">
       <md-segmented-button value="light" selected>

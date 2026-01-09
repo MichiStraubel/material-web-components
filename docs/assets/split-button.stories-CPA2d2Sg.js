@@ -1,17 +1,51 @@
-import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.js";import"./preload-helper-Dp1pzeXC.js";const M={title:"Buttons/Split Button",component:"md-split-button",tags:["autodocs"],argTypes:{variant:{control:"select",options:["filled","tonal","outlined","elevated"],description:"The color variant of the split button",table:{defaultValue:{summary:"filled"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the split button",table:{defaultValue:{summary:"medium"}}},disabled:{control:"boolean",description:"Whether the split button is disabled",table:{defaultValue:{summary:"false"}}},expanded:{control:"boolean",description:"Whether the trailing button is expanded",table:{defaultValue:{summary:"false"}}},label:{control:"text",description:"The label text"},showIcon:{control:"boolean",description:"Whether to show a leading icon",table:{defaultValue:{summary:"false"}}}},args:{variant:"filled",size:"medium",disabled:!1,expanded:!1,label:"Save",showIcon:!1},render:t=>e`
+import{b as t}from"./iframe-B1C9tN0v.js";import"./segmented-button-set-C1yuADMH.js";import"./preload-helper-Dp1pzeXC.js";const B={title:"MD3 Components/Buttons/Split Button",component:"md-split-button",tags:["autodocs"],parameters:{docs:{description:{component:`
+## Wann verwenden?
+
+Der Split Button kombiniert eine **primäre Aktion** mit einem **Dropdown-Menü** für verwandte Optionen. Ideal für:
+- **Aktionen mit Varianten** - "Speichern" + "Speichern unter...", "Kopie speichern"
+- **Standard + Alternativen** - "Senden" + "Später senden", "Als Entwurf speichern"
+- **Kontextuelle Optionen** - "Download" + verschiedene Formate (PDF, DOCX, etc.)
+
+## Wann NICHT verwenden?
+
+- **Unabhängige Aktionen:** Wenn die Menü-Optionen nichts mit der primären Aktion zu tun haben
+- **Einfache Aktionen:** Wenn nur eine Aktion ohne Varianten existiert → normaler Button
+- **Navigation:** Für reine Navigation → Text Button oder Link
+
+## Struktur
+
+\`\`\`
+┌─────────────┬───┐
+│   Speichern │ ▼ │  ← Leading Button + Trailing Button
+└─────────────┴───┘
+       │
+       ▼
+┌─────────────────┐
+│ Speichern unter │  ← Dropdown-Menü
+│ Kopie speichern │
+│ Als Vorlage     │
+└─────────────────┘
+\`\`\`
+
+## Best Practices
+
+- **Klare Hierarchie:** Die primäre Aktion (Leading Button) sollte die häufigste Aktion sein
+- **Verwandte Optionen:** Menü-Items sollten Varianten der primären Aktion sein
+- **Konsistente Icons:** Verwende Icons in Menü-Items für bessere Erkennbarkeit
+- **Beschreibende Labels:** Menü-Items sollten klar beschreiben, was passiert
+        `}}},argTypes:{variant:{control:"select",options:["filled","tonal","outlined","elevated"],description:"The color variant of the split button",table:{defaultValue:{summary:"filled"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the split button",table:{defaultValue:{summary:"medium"}}},disabled:{control:"boolean",description:"Whether the split button is disabled",table:{defaultValue:{summary:"false"}}},label:{control:"text",description:"The label text"},showIcon:{control:"boolean",description:"Whether to show a leading icon",table:{defaultValue:{summary:"false"}}}},args:{variant:"filled",size:"medium",disabled:!1,label:"Save",showIcon:!1},render:e=>t`
     <md-split-button
-      variant=${t.variant}
-      size=${t.size}
-      ?disabled=${t.disabled}
-      ?expanded=${t.expanded}
+      variant=${e.variant}
+      size=${e.size}
+      ?disabled=${e.disabled}
     >
-      ${t.showIcon?e`<span slot="leading-icon" class="material-symbols-outlined">save</span>`:""}
-      ${t.label}
+      ${e.showIcon?t`<span slot="leading-icon" class="material-symbols-outlined">save</span>`:""}
+      ${e.label}
       <button slot="menu" role="menuitem" data-value="option1">Option 1</button>
       <button slot="menu" role="menuitem" data-value="option2">Option 2</button>
       <button slot="menu" role="menuitem" data-value="option3">Option 3</button>
     </md-split-button>
-  `},a={},n={args:{showIcon:!0}},l={render:()=>e`
+  `},n={},a={args:{showIcon:!0}},s={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 16px;">
       <md-split-button variant="filled">
         <span slot="leading-icon" class="material-symbols-outlined">save</span>
@@ -30,7 +64,7 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         Elevated
       </md-split-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},s={render:()=>e`
+  `,parameters:{controls:{disable:!0}}},l={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
       <md-split-button size="xsmall">
         <span slot="leading-icon" class="material-symbols-outlined">save</span>
@@ -53,13 +87,13 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         XLarge (56dp)
       </md-split-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},o={args:{disabled:!0}},i={args:{expanded:!0}},d={render:()=>e`
+  `,parameters:{controls:{disable:!0}}},o={args:{disabled:!0}},i={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <h3 style="margin: 0 0 8px; font-size: 14px; color: #666;">Save with Options (fixed primary action)</h3>
         <md-split-button
           @md-leading-click=${()=>console.log("Save clicked")}
-          @md-menu-item-click=${t=>console.log("Menu item:",t.detail.value)}
+          @md-menu-item-click=${e=>console.log("Menu item:",e.detail.value)}
         >
           <span slot="leading-icon" class="material-symbols-outlined">save</span>
           Save
@@ -71,7 +105,7 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       <div>
         <h3 style="margin: 0 0 8px; font-size: 14px; color: #666;">Send with Options</h3>
         <md-split-button variant="tonal"
-          @md-menu-item-click=${t=>console.log("Send option:",t.detail.value)}
+          @md-menu-item-click=${e=>console.log("Send option:",e.detail.value)}
         >
           <span slot="leading-icon" class="material-symbols-outlined">send</span>
           Send
@@ -83,7 +117,7 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       <div>
         <h3 style="margin: 0 0 8px; font-size: 14px; color: #666;">Download Formats</h3>
         <md-split-button variant="outlined"
-          @md-menu-item-click=${t=>console.log("Download format:",t.detail.value)}
+          @md-menu-item-click=${e=>console.log("Download format:",e.detail.value)}
         >
           <span slot="leading-icon" class="material-symbols-outlined">download</span>
           Download
@@ -93,17 +127,58 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         </md-split-button>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}},m={render:()=>e`
+  `,parameters:{controls:{disable:!0}}},d={render:()=>t`
     <md-split-button>
       <span slot="leading-icon" class="material-symbols-outlined">share</span>
       Share
       <span slot="trailing-icon" class="material-symbols-outlined">more_vert</span>
     </md-split-button>
-  `,parameters:{controls:{disable:!0}}};var r,u,p;a.parameters={...a.parameters,docs:{...(r=a.parameters)==null?void 0:r.docs,source:{originalSource:"{}",...(p=(u=a.parameters)==null?void 0:u.docs)==null?void 0:p.source}}};var c,b,v;n.parameters={...n.parameters,docs:{...(c=n.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  `,parameters:{controls:{disable:!0}}},r={render:()=>t`
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <h3 style="margin: 0 0 8px; font-size: 14px; color: #666;">File Actions</h3>
+        <md-split-button>
+          <span slot="leading-icon" class="material-symbols-outlined">save</span>
+          Save
+          <button slot="menu" role="menuitem" data-value="save-as">
+            <span class="material-symbols-outlined">save_as</span>
+            Save As...
+          </button>
+          <button slot="menu" role="menuitem" data-value="save-copy">
+            <span class="material-symbols-outlined">file_copy</span>
+            Save a Copy
+          </button>
+          <button slot="menu" role="menuitem" data-value="export">
+            <span class="material-symbols-outlined">upload</span>
+            Export
+          </button>
+        </md-split-button>
+      </div>
+      <div>
+        <h3 style="margin: 0 0 8px; font-size: 14px; color: #666;">Share Options</h3>
+        <md-split-button variant="tonal">
+          <span slot="leading-icon" class="material-symbols-outlined">share</span>
+          Share
+          <button slot="menu" role="menuitem" data-value="email">
+            <span class="material-symbols-outlined">mail</span>
+            Email
+          </button>
+          <button slot="menu" role="menuitem" data-value="link">
+            <span class="material-symbols-outlined">link</span>
+            Copy Link
+          </button>
+          <button slot="menu" role="menuitem" data-value="qr">
+            <span class="material-symbols-outlined">qr_code</span>
+            QR Code
+          </button>
+        </md-split-button>
+      </div>
+    </div>
+  `,parameters:{controls:{disable:!0}}};var m,u,p;n.parameters={...n.parameters,docs:{...(m=n.parameters)==null?void 0:m.docs,source:{originalSource:"{}",...(p=(u=n.parameters)==null?void 0:u.docs)==null?void 0:p.source}}};var c,b,v;a.parameters={...a.parameters,docs:{...(c=a.parameters)==null?void 0:c.docs,source:{originalSource:`{
   args: {
     showIcon: true
   }
-}`,...(v=(b=n.parameters)==null?void 0:b.docs)==null?void 0:v.source}}};var g,y,x;l.parameters={...l.parameters,docs:{...(g=l.parameters)==null?void 0:g.docs,source:{originalSource:`{
+}`,...(v=(b=a.parameters)==null?void 0:b.docs)==null?void 0:v.source}}};var g,y,h;s.parameters={...s.parameters,docs:{...(g=s.parameters)==null?void 0:g.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 16px;">
       <md-split-button variant="filled">
@@ -129,7 +204,7 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(x=(y=l.parameters)==null?void 0:y.docs)==null?void 0:x.source}}};var h,f,S;s.parameters={...s.parameters,docs:{...(h=s.parameters)==null?void 0:h.docs,source:{originalSource:`{
+}`,...(h=(y=s.parameters)==null?void 0:y.docs)==null?void 0:h.source}}};var x,S,f;l.parameters={...l.parameters,docs:{...(x=l.parameters)==null?void 0:x.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
       <md-split-button size="xsmall">
@@ -159,15 +234,11 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(S=(f=s.parameters)==null?void 0:f.docs)==null?void 0:S.source}}};var w,z,D;o.parameters={...o.parameters,docs:{...(w=o.parameters)==null?void 0:w.docs,source:{originalSource:`{
+}`,...(f=(S=l.parameters)==null?void 0:S.docs)==null?void 0:f.source}}};var w,k,z;o.parameters={...o.parameters,docs:{...(w=o.parameters)==null?void 0:w.docs,source:{originalSource:`{
   args: {
     disabled: true
   }
-}`,...(D=(z=o.parameters)==null?void 0:z.docs)==null?void 0:D.source}}};var T,$,O;i.parameters={...i.parameters,docs:{...(T=i.parameters)==null?void 0:T.docs,source:{originalSource:`{
-  args: {
-    expanded: true
-  }
-}`,...(O=($=i.parameters)==null?void 0:$.docs)==null?void 0:O.source}}};var k,E,C;d.parameters={...d.parameters,docs:{...(k=d.parameters)==null?void 0:k.docs,source:{originalSource:`{
+}`,...(z=(k=o.parameters)==null?void 0:k.docs)==null?void 0:z.source}}};var D,A,I;i.parameters={...i.parameters,docs:{...(D=i.parameters)==null?void 0:D.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -214,7 +285,7 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(C=(E=d.parameters)==null?void 0:E.docs)==null?void 0:C.source}}};var I,W,X;m.parameters={...m.parameters,docs:{...(I=m.parameters)==null?void 0:I.docs,source:{originalSource:`{
+}`,...(I=(A=i.parameters)==null?void 0:A.docs)==null?void 0:I.source}}};var O,T,C;d.parameters={...d.parameters,docs:{...(O=d.parameters)==null?void 0:O.docs,source:{originalSource:`{
   render: () => html\`
     <md-split-button>
       <span slot="leading-icon" class="material-symbols-outlined">share</span>
@@ -227,4 +298,52 @@ import{b as e}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(X=(W=m.parameters)==null?void 0:W.docs)==null?void 0:X.source}}};const L=["Default","WithIcon","AllVariants","AllSizes","Disabled","Expanded","WithMenu","WithCustomTrailingIcon"];export{s as AllSizes,l as AllVariants,a as Default,o as Disabled,i as Expanded,m as WithCustomTrailingIcon,n as WithIcon,d as WithMenu,L as __namedExportsOrder,M as default};
+}`,...(C=(T=d.parameters)==null?void 0:T.docs)==null?void 0:C.source}}};var E,M,W;r.parameters={...r.parameters,docs:{...(E=r.parameters)==null?void 0:E.docs,source:{originalSource:`{
+  render: () => html\`
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <h3 style="margin: 0 0 8px; font-size: 14px; color: #666;">File Actions</h3>
+        <md-split-button>
+          <span slot="leading-icon" class="material-symbols-outlined">save</span>
+          Save
+          <button slot="menu" role="menuitem" data-value="save-as">
+            <span class="material-symbols-outlined">save_as</span>
+            Save As...
+          </button>
+          <button slot="menu" role="menuitem" data-value="save-copy">
+            <span class="material-symbols-outlined">file_copy</span>
+            Save a Copy
+          </button>
+          <button slot="menu" role="menuitem" data-value="export">
+            <span class="material-symbols-outlined">upload</span>
+            Export
+          </button>
+        </md-split-button>
+      </div>
+      <div>
+        <h3 style="margin: 0 0 8px; font-size: 14px; color: #666;">Share Options</h3>
+        <md-split-button variant="tonal">
+          <span slot="leading-icon" class="material-symbols-outlined">share</span>
+          Share
+          <button slot="menu" role="menuitem" data-value="email">
+            <span class="material-symbols-outlined">mail</span>
+            Email
+          </button>
+          <button slot="menu" role="menuitem" data-value="link">
+            <span class="material-symbols-outlined">link</span>
+            Copy Link
+          </button>
+          <button slot="menu" role="menuitem" data-value="qr">
+            <span class="material-symbols-outlined">qr_code</span>
+            QR Code
+          </button>
+        </md-split-button>
+      </div>
+    </div>
+  \`,
+  parameters: {
+    controls: {
+      disable: true
+    }
+  }
+}`,...(W=(M=r.parameters)==null?void 0:M.docs)==null?void 0:W.source}}};const L=["Default","WithIcon","AllVariants","AllSizes","Disabled","WithMenu","WithCustomTrailingIcon","MenuItemsWithIcons"];export{l as AllSizes,s as AllVariants,n as Default,o as Disabled,r as MenuItemsWithIcons,d as WithCustomTrailingIcon,a as WithIcon,i as WithMenu,L as __namedExportsOrder,B as default};

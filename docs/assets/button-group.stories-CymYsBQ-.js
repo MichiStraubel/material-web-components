@@ -1,4 +1,34 @@
-import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.js";import"./preload-helper-Dp1pzeXC.js";const bt={title:"Buttons/Button Group",component:"md-button-group",tags:["autodocs","new"],argTypes:{selectionMode:{control:"select",options:["single","multi"],description:"Selection mode: single (radio) or multi (checkbox)",table:{defaultValue:{summary:"single"}}},disabled:{control:"boolean",description:"Whether all buttons are disabled",table:{defaultValue:{summary:"false"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"Size of all buttons in the group (MD3 Expressive)",table:{defaultValue:{summary:"medium"}}}},args:{selectionMode:"single",disabled:!1,size:"medium"},render:e=>t`
+import{b as t}from"./iframe-B1C9tN0v.js";import"./segmented-button-set-C1yuADMH.js";import"./preload-helper-Dp1pzeXC.js";const bt={title:"MD3 Components/Buttons/Button Group",component:"md-button-group",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+## Wann verwenden?
+
+Button Groups gruppieren zusammengehörige Optionen visuell und funktional. Sie eignen sich für:
+- **Ansichtswechsel** - Tag/Woche/Monat, Liste/Grid, Karte/Satellit
+- **Filter-Optionen** - Kategorien, Status-Filter, Sortierung
+- **Text-Formatierung** - Fett/Kursiv/Unterstrichen (Multi-Select)
+- **Ausrichtung** - Links/Zentriert/Rechts
+
+## Auswahlmodi
+
+| Modus | Verhalten | Verwendung |
+|-------|-----------|------------|
+| **Single** | Nur eine Option aktiv (wie Radio) | Ansichtswechsel, exklusive Optionen |
+| **Multi** | Mehrere Optionen möglich (wie Checkbox) | Formatierung, Filter-Kombinationen |
+
+## Accessibility
+
+Die Button Group verwendet automatisch die korrekten ARIA-Rollen:
+- **Single-Select:** \`role="radiogroup"\` mit \`role="radio"\` Kindern
+- **Multi-Select:** \`role="group"\` mit \`role="checkbox"\` Kindern
+- **Keyboard:** Pfeiltasten, Home/End, Space/Enter
+
+## Best Practices
+
+- **2-5 Optionen:** Zu viele Optionen verwirren, nutze ggf. ein Dropdown
+- **Kurze Labels:** Halte die Button-Labels kurz und prägnant
+- **Konsistente Länge:** Buttons sollten ähnlich lang sein für ein ausgewogenes Layout
+- **Icons für Klarheit:** Bei Icon-only Buttons immer \`aria-label\` verwenden
+- **Vorauswahl:** Bei Single-Select sollte immer eine Option vorausgewählt sein
+        `}}},argTypes:{selectionMode:{control:"select",options:["single","multi"],description:"Selection mode: single (radio) or multi (checkbox)",table:{defaultValue:{summary:"single"}}},disabled:{control:"boolean",description:"Whether all buttons are disabled",table:{defaultValue:{summary:"false"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"Size of all buttons in the group (MD3 Expressive)",table:{defaultValue:{summary:"medium"}}}},args:{selectionMode:"single",disabled:!1,size:"medium"},render:e=>t`
     <md-button-group
       selection-mode=${e.selectionMode}
       ?disabled=${e.disabled}
@@ -9,7 +39,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       <md-button toggle value="week">Week</md-button>
       <md-button toggle value="month">Month</md-button>
     </md-button-group>
-  `},o={args:{selectionMode:"single"}},n={args:{selectionMode:"multi"},render:e=>t`
+  `},n={args:{selectionMode:"single"}},o={args:{selectionMode:"multi"},render:e=>t`
     <md-button-group
       selection-mode=${e.selectionMode}
       ?disabled=${e.disabled}
@@ -73,7 +103,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         Dark
       </md-button>
     </md-button-group>
-  `,parameters:{controls:{disable:!0}}},u={render:()=>t`
+  `,parameters:{controls:{disable:!0}}},i={render:()=>t`
     <md-button-group aria-label="Rating">
       <md-button toggle value="1" selected>1</md-button>
       <md-button toggle value="2">2</md-button>
@@ -115,7 +145,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         </md-button-group>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}},i={args:{disabled:!0}},m={render:()=>t`
+  `,parameters:{controls:{disable:!0}}},u={args:{disabled:!0}},m={render:()=>t`
     <md-button-group aria-label="Options">
       <md-button toggle value="a" selected>Option A</md-button>
       <md-button toggle value="b" disabled>Option B (disabled)</md-button>
@@ -271,11 +301,11 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         </md-button-group>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}};var y,f,h;o.parameters={...o.parameters,docs:{...(y=o.parameters)==null?void 0:y.docs,source:{originalSource:`{
+  `,parameters:{controls:{disable:!0}}};var h,y,f;n.parameters={...n.parameters,docs:{...(h=n.parameters)==null?void 0:h.docs,source:{originalSource:`{
   args: {
     selectionMode: 'single'
   }
-}`,...(h=(f=o.parameters)==null?void 0:f.docs)==null?void 0:h.source}}};var z,S,M;n.parameters={...n.parameters,docs:{...(z=n.parameters)==null?void 0:z.docs,source:{originalSource:`{
+}`,...(f=(y=n.parameters)==null?void 0:y.docs)==null?void 0:f.source}}};var S,z,M;o.parameters={...o.parameters,docs:{...(S=o.parameters)==null?void 0:S.docs,source:{originalSource:`{
   args: {
     selectionMode: 'multi'
   },
@@ -296,7 +326,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       </md-button>
     </md-button-group>
   \`
-}`,...(M=(S=n.parameters)==null?void 0:S.docs)==null?void 0:M.source}}};var _,k,D;l.parameters={...l.parameters,docs:{...(_=l.parameters)==null?void 0:_.docs,source:{originalSource:`{
+}`,...(M=(z=o.parameters)==null?void 0:z.docs)==null?void 0:M.source}}};var _,k,D;l.parameters={...l.parameters,docs:{...(_=l.parameters)==null?void 0:_.docs,source:{originalSource:`{
   render: () => html\`
     <md-button-group aria-label="Calendar view">
       <md-button toggle value="day" selected>
@@ -318,7 +348,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(D=(k=l.parameters)==null?void 0:k.docs)==null?void 0:D.source}}};var $,B,E;a.parameters={...a.parameters,docs:{...($=a.parameters)==null?void 0:$.docs,source:{originalSource:`{
+}`,...(D=(k=l.parameters)==null?void 0:k.docs)==null?void 0:D.source}}};var B,w,O;a.parameters={...a.parameters,docs:{...(B=a.parameters)==null?void 0:B.docs,source:{originalSource:`{
   render: () => html\`
     <md-button-group selection-mode="multi" aria-label="Text alignment">
       <md-button toggle value="left" selected aria-label="Align left">
@@ -340,7 +370,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(E=(B=a.parameters)==null?void 0:B.docs)==null?void 0:E.source}}};var O,W,w;d.parameters={...d.parameters,docs:{...(O=d.parameters)==null?void 0:O.docs,source:{originalSource:`{
+}`,...(O=(w=a.parameters)==null?void 0:w.docs)==null?void 0:O.source}}};var $,E,L;d.parameters={...d.parameters,docs:{...($=d.parameters)==null?void 0:$.docs,source:{originalSource:`{
   render: () => html\`
     <md-button-group aria-label="Price range">
       <md-button toggle value="cheap" selected>$</md-button>
@@ -354,7 +384,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(w=(W=d.parameters)==null?void 0:W.docs)==null?void 0:w.source}}};var I,L,X;s.parameters={...s.parameters,docs:{...(I=s.parameters)==null?void 0:I.docs,source:{originalSource:`{
+}`,...(L=(E=d.parameters)==null?void 0:E.docs)==null?void 0:L.source}}};var W,I,A;s.parameters={...s.parameters,docs:{...(W=s.parameters)==null?void 0:W.docs,source:{originalSource:`{
   render: () => html\`
     <md-button-group aria-label="Mode">
       <md-button toggle value="light" selected>
@@ -372,7 +402,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(X=(L=s.parameters)==null?void 0:L.docs)==null?void 0:X.source}}};var T,C,A;u.parameters={...u.parameters,docs:{...(T=u.parameters)==null?void 0:T.docs,source:{originalSource:`{
+}`,...(A=(I=s.parameters)==null?void 0:I.docs)==null?void 0:A.source}}};var X,T,C;i.parameters={...i.parameters,docs:{...(X=i.parameters)==null?void 0:X.docs,source:{originalSource:`{
   render: () => html\`
     <md-button-group aria-label="Rating">
       <md-button toggle value="1" selected>1</md-button>
@@ -387,7 +417,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(A=(C=u.parameters)==null?void 0:C.docs)==null?void 0:A.source}}};var U,V,j;r.parameters={...r.parameters,docs:{...(U=r.parameters)==null?void 0:U.docs,source:{originalSource:`{
+}`,...(C=(T=i.parameters)==null?void 0:T.docs)==null?void 0:C.source}}};var U,V,F;r.parameters={...r.parameters,docs:{...(U=r.parameters)==null?void 0:U.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -428,11 +458,11 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(j=(V=r.parameters)==null?void 0:V.docs)==null?void 0:j.source}}};var G,F,H;i.parameters={...i.parameters,docs:{...(G=i.parameters)==null?void 0:G.docs,source:{originalSource:`{
+}`,...(F=(V=r.parameters)==null?void 0:V.docs)==null?void 0:F.source}}};var K,G,j;u.parameters={...u.parameters,docs:{...(K=u.parameters)==null?void 0:K.docs,source:{originalSource:`{
   args: {
     disabled: true
   }
-}`,...(H=(F=i.parameters)==null?void 0:F.docs)==null?void 0:H.source}}};var J,N,P;m.parameters={...m.parameters,docs:{...(J=m.parameters)==null?void 0:J.docs,source:{originalSource:`{
+}`,...(j=(G=u.parameters)==null?void 0:G.docs)==null?void 0:j.source}}};var R,H,P;m.parameters={...m.parameters,docs:{...(R=m.parameters)==null?void 0:R.docs,source:{originalSource:`{
   render: () => html\`
     <md-button-group aria-label="Options">
       <md-button toggle value="a" selected>Option A</md-button>
@@ -445,7 +475,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(P=(N=m.parameters)==null?void 0:N.docs)==null?void 0:P.source}}};var R,q,K;b.parameters={...b.parameters,docs:{...(R=b.parameters)==null?void 0:R.docs,source:{originalSource:`{
+}`,...(P=(H=m.parameters)==null?void 0:H.docs)==null?void 0:P.source}}};var N,J,Z;b.parameters={...b.parameters,docs:{...(N=b.parameters)==null?void 0:N.docs,source:{originalSource:`{
   render: () => html\`
     <md-button-group aria-label="Single option">
       <md-button toggle value="only" selected>Only Option</md-button>
@@ -456,7 +486,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(K=(q=b.parameters)==null?void 0:q.docs)==null?void 0:K.source}}};var Q,Y,Z;g.parameters={...g.parameters,docs:{...(Q=g.parameters)==null?void 0:Q.docs,source:{originalSource:`{
+}`,...(Z=(J=b.parameters)==null?void 0:J.docs)==null?void 0:Z.source}}};var q,Q,Y;g.parameters={...g.parameters,docs:{...(q=g.parameters)==null?void 0:q.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 16px;">
       <md-button-group
@@ -482,7 +512,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(Z=(Y=g.parameters)==null?void 0:Y.docs)==null?void 0:Z.source}}};var tt,et,ot;p.parameters={...p.parameters,docs:{...(tt=p.parameters)==null?void 0:tt.docs,source:{originalSource:`{
+}`,...(Y=(Q=g.parameters)==null?void 0:Q.docs)==null?void 0:Y.source}}};var tt,et,nt;p.parameters={...p.parameters,docs:{...(tt=p.parameters)==null?void 0:tt.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -535,7 +565,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(ot=(et=p.parameters)==null?void 0:et.docs)==null?void 0:ot.source}}};var nt,lt,at;c.parameters={...c.parameters,docs:{...(nt=c.parameters)==null?void 0:nt.docs,source:{originalSource:`{
+}`,...(nt=(et=p.parameters)==null?void 0:et.docs)==null?void 0:nt.source}}};var ot,lt,at;c.parameters={...c.parameters,docs:{...(ot=c.parameters)==null?void 0:ot.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -590,7 +620,7 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(at=(lt=c.parameters)==null?void 0:lt.docs)==null?void 0:at.source}}};var dt,st,ut;v.parameters={...v.parameters,docs:{...(dt=v.parameters)==null?void 0:dt.docs,source:{originalSource:`{
+}`,...(at=(lt=c.parameters)==null?void 0:lt.docs)==null?void 0:at.source}}};var dt,st,it;v.parameters={...v.parameters,docs:{...(dt=v.parameters)==null?void 0:dt.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div style="padding: 16px; background: #fff3cd; border-radius: 8px; border: 1px solid #ffc107;">
@@ -635,4 +665,4 @@ import{b as t}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(ut=(st=v.parameters)==null?void 0:st.docs)==null?void 0:ut.source}}};const gt=["SingleSelect","MultiSelect","WithIcons","IconOnly","TextOnly","TwoButtons","FiveButtons","ConnectedShapes","Disabled","DisabledButton","SingleButton","EventHandling","Sizes","SizesWithIcons","MigrationFromSegmentedButton"];export{r as ConnectedShapes,i as Disabled,m as DisabledButton,g as EventHandling,u as FiveButtons,a as IconOnly,v as MigrationFromSegmentedButton,n as MultiSelect,b as SingleButton,o as SingleSelect,p as Sizes,c as SizesWithIcons,d as TextOnly,s as TwoButtons,l as WithIcons,gt as __namedExportsOrder,bt as default};
+}`,...(it=(st=v.parameters)==null?void 0:st.docs)==null?void 0:it.source}}};const gt=["SingleSelect","MultiSelect","WithIcons","IconOnly","TextOnly","TwoButtons","FiveButtons","ConnectedShapes","Disabled","DisabledButton","SingleButton","EventHandling","Sizes","SizesWithIcons","MigrationFromSegmentedButton"];export{r as ConnectedShapes,u as Disabled,m as DisabledButton,g as EventHandling,i as FiveButtons,a as IconOnly,v as MigrationFromSegmentedButton,o as MultiSelect,b as SingleButton,n as SingleSelect,p as Sizes,c as SizesWithIcons,d as TextOnly,s as TwoButtons,l as WithIcons,gt as __namedExportsOrder,bt as default};

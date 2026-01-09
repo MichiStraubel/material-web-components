@@ -1,17 +1,40 @@
-import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.js";import"./preload-helper-Dp1pzeXC.js";const na={title:"Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],argTypes:{variant:{control:"select",options:["standard","filled","tonal","outlined"],description:"The visual style variant of the icon button",table:{defaultValue:{summary:"standard"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the icon button (MD3 Expressive)",table:{defaultValue:{summary:"small"}}},shape:{control:"select",options:["round","square"],description:"The shape of the icon button",table:{defaultValue:{summary:"round"}}},width:{control:"select",options:["narrow","default","wide"],description:"The width variant of the icon button",table:{defaultValue:{summary:"default"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},selected:{control:"boolean",description:"Whether the button is in a selected state",table:{defaultValue:{summary:"false"}}},toggle:{control:"boolean",description:"Whether the button acts as a toggle",table:{defaultValue:{summary:"false"}}}},args:{variant:"standard",size:"small",shape:"round",width:"default",disabled:!1,selected:!1,toggle:!1},render:t=>a`
+import{b as a}from"./iframe-B1C9tN0v.js";import"./segmented-button-set-C1yuADMH.js";import"./preload-helper-Dp1pzeXC.js";const na={title:"MD3 Components/Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+## Wann verwenden?
+
+Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie eignen sich für:
+- **Toolbars und App Bars** - Navigation, Suche, Menü
+- **Inline-Aktionen** - Löschen, Bearbeiten, Teilen in Listen oder Karten
+- **Toggle-Zustände** - Favoriten, Lesezeichen, Sichtbarkeit
+
+## Varianten-Auswahl
+
+| Variante | Verwendung | Beispiele |
+|----------|------------|-----------|
+| **Standard** | Niedrige Priorität, häufig wiederholte Aktionen | Navigation Icons, Toolbar-Aktionen |
+| **Filled** | Höchste Priorität, wichtige Toggle-Aktionen | Favorit aktiv, Wichtig markiert |
+| **Tonal** | Mittlere Priorität, sanfter als Filled | Sekundäre Toggle-Aktionen |
+| **Outlined** | Wenn visueller Kontrast benötigt wird | Toggle-Aktionen mit klarer Grenze |
+
+## Best Practices
+
+- **Immer aria-label verwenden:** Icon Buttons haben kein sichtbares Label, daher ist ein beschreibendes aria-label für Barrierefreiheit erforderlich
+- **Toggle für Zustände:** Verwende das \`toggle\` Attribut für An/Aus-Zustände wie Favoriten oder Lesezeichen
+- **Konsistente Größen:** Verwende einheitliche Größen innerhalb einer Toolbar oder Liste
+- **Erkennbare Icons:** Nutze etablierte Icons, die Benutzer sofort verstehen (z.B. Herz für Favorit)
+        `}}},argTypes:{variant:{control:"select",options:["standard","filled","tonal","outlined"],description:"The visual style variant of the icon button",table:{defaultValue:{summary:"standard"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the icon button (MD3 Expressive)",table:{defaultValue:{summary:"small"}}},shape:{control:"select",options:["round","square"],description:"The shape of the icon button",table:{defaultValue:{summary:"round"}}},width:{control:"select",options:["narrow","default","wide"],description:"The width variant of the icon button",table:{defaultValue:{summary:"default"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},selected:{control:"boolean",description:"Whether the button is in a selected state",table:{defaultValue:{summary:"false"}}},toggle:{control:"boolean",description:"Whether the button acts as a toggle",table:{defaultValue:{summary:"false"}}}},args:{variant:"standard",size:"small",shape:"round",width:"default",disabled:!1,selected:!1,toggle:!1},render:e=>a`
     <md-icon-button
-      variant=${t.variant}
-      size=${t.size}
-      shape=${t.shape}
-      width=${t.width}
-      ?disabled=${t.disabled}
-      ?selected=${t.selected}
-      ?toggle=${t.toggle}
+      variant=${e.variant}
+      size=${e.size}
+      shape=${e.shape}
+      width=${e.width}
+      ?disabled=${e.disabled}
+      ?selected=${e.selected}
+      ?toggle=${e.toggle}
       aria-label="Favorite"
     >
       <span class="material-symbols-outlined">favorite</span>
     </md-icon-button>
-  `},e={args:{variant:"standard"}},n={args:{variant:"filled",selected:!0}},l={args:{variant:"tonal",selected:!0}},i={args:{variant:"outlined"}},s={render:()=>a`
+  `},t={args:{variant:"standard"}},n={args:{variant:"filled",selected:!0}},i={args:{variant:"tonal",selected:!0}},l={args:{variant:"outlined"}},s={render:()=>a`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" aria-label="Standard">
         <span class="material-symbols-outlined">favorite</span>
@@ -287,25 +310,25 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
         <span class="material-symbols-outlined">more_vert</span>
       </md-icon-button>
     </div>
-  `,parameters:{controls:{disable:!0}}};var v,y,g;e.parameters={...e.parameters,docs:{...(v=e.parameters)==null?void 0:v.docs,source:{originalSource:`{
+  `,parameters:{controls:{disable:!0}}};var v,g,y;t.parameters={...t.parameters,docs:{...(v=t.parameters)==null?void 0:v.docs,source:{originalSource:`{
   args: {
     variant: 'standard'
   }
-}`,...(g=(y=e.parameters)==null?void 0:y.docs)==null?void 0:g.source}}};var f,x,h;n.parameters={...n.parameters,docs:{...(f=n.parameters)==null?void 0:f.docs,source:{originalSource:`{
+}`,...(y=(g=t.parameters)==null?void 0:g.docs)==null?void 0:y.source}}};var f,x,h;n.parameters={...n.parameters,docs:{...(f=n.parameters)==null?void 0:f.docs,source:{originalSource:`{
   args: {
     variant: 'filled',
     selected: true
   }
-}`,...(h=(x=n.parameters)==null?void 0:x.docs)==null?void 0:h.source}}};var z,S,w;l.parameters={...l.parameters,docs:{...(z=l.parameters)==null?void 0:z.docs,source:{originalSource:`{
+}`,...(h=(x=n.parameters)==null?void 0:x.docs)==null?void 0:h.source}}};var z,S,w;i.parameters={...i.parameters,docs:{...(z=i.parameters)==null?void 0:z.docs,source:{originalSource:`{
   args: {
     variant: 'tonal',
     selected: true
   }
-}`,...(w=(S=l.parameters)==null?void 0:S.docs)==null?void 0:w.source}}};var k,T,L;i.parameters={...i.parameters,docs:{...(k=i.parameters)==null?void 0:k.docs,source:{originalSource:`{
+}`,...(w=(S=i.parameters)==null?void 0:S.docs)==null?void 0:w.source}}};var k,T,L;l.parameters={...l.parameters,docs:{...(k=l.parameters)==null?void 0:k.docs,source:{originalSource:`{
   args: {
     variant: 'outlined'
   }
-}`,...(L=(T=i.parameters)==null?void 0:T.docs)==null?void 0:L.source}}};var X,F,D;s.parameters={...s.parameters,docs:{...(X=s.parameters)==null?void 0:X.docs,source:{originalSource:`{
+}`,...(L=(T=l.parameters)==null?void 0:T.docs)==null?void 0:L.source}}};var F,X,M;s.parameters={...s.parameters,docs:{...(F=s.parameters)==null?void 0:F.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" aria-label="Standard">
@@ -327,7 +350,7 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(D=(F=s.parameters)==null?void 0:F.docs)==null?void 0:D.source}}};var M,W,q;o.parameters={...o.parameters,docs:{...(M=o.parameters)==null?void 0:M.docs,source:{originalSource:`{
+}`,...(M=(X=s.parameters)==null?void 0:X.docs)==null?void 0:M.source}}};var W,I,D;o.parameters={...o.parameters,docs:{...(W=o.parameters)==null?void 0:W.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -372,7 +395,7 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(q=(W=o.parameters)==null?void 0:W.docs)==null?void 0:q.source}}};var _,I,O;r.parameters={...r.parameters,docs:{...(_=r.parameters)==null?void 0:_.docs,source:{originalSource:`{
+}`,...(D=(I=o.parameters)==null?void 0:I.docs)==null?void 0:D.source}}};var q,_,A;r.parameters={...r.parameters,docs:{...(q=r.parameters)==null?void 0:q.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -421,7 +444,7 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(O=(I=r.parameters)==null?void 0:I.docs)==null?void 0:O.source}}};var N,R,V;d.parameters={...d.parameters,docs:{...(N=d.parameters)==null?void 0:N.docs,source:{originalSource:`{
+}`,...(A=(_=r.parameters)==null?void 0:_.docs)==null?void 0:A.source}}};var N,V,B;d.parameters={...d.parameters,docs:{...(N=d.parameters)==null?void 0:N.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -495,7 +518,7 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(V=(R=d.parameters)==null?void 0:R.docs)==null?void 0:V.source}}};var A,E,U;m.parameters={...m.parameters,docs:{...(A=m.parameters)==null?void 0:A.docs,source:{originalSource:`{
+}`,...(B=(V=d.parameters)==null?void 0:V.docs)==null?void 0:B.source}}};var O,R,E;m.parameters={...m.parameters,docs:{...(O=m.parameters)==null?void 0:O.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" toggle aria-label="Toggle favorite">
@@ -517,7 +540,7 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(U=(E=m.parameters)==null?void 0:E.docs)==null?void 0:U.source}}};var $,B,C;c.parameters={...c.parameters,docs:{...($=c.parameters)==null?void 0:$.docs,source:{originalSource:`{
+}`,...(E=(R=m.parameters)==null?void 0:R.docs)==null?void 0:E.source}}};var U,$,P;c.parameters={...c.parameters,docs:{...(U=c.parameters)==null?void 0:U.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -574,7 +597,7 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(C=(B=c.parameters)==null?void 0:B.docs)==null?void 0:C.source}}};var j,G,H;p.parameters={...p.parameters,docs:{...(j=p.parameters)==null?void 0:j.docs,source:{originalSource:`{
+}`,...(P=($=c.parameters)==null?void 0:$.docs)==null?void 0:P.source}}};var C,G,K;p.parameters={...p.parameters,docs:{...(C=p.parameters)==null?void 0:C.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -612,11 +635,11 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(H=(G=p.parameters)==null?void 0:G.docs)==null?void 0:H.source}}};var J,K,P;u.parameters={...u.parameters,docs:{...(J=u.parameters)==null?void 0:J.docs,source:{originalSource:`{
+}`,...(K=(G=p.parameters)==null?void 0:G.docs)==null?void 0:K.source}}};var Z,H,j;u.parameters={...u.parameters,docs:{...(Z=u.parameters)==null?void 0:Z.docs,source:{originalSource:`{
   args: {
     disabled: true
   }
-}`,...(P=(K=u.parameters)==null?void 0:K.docs)==null?void 0:P.source}}};var Q,Y,Z;b.parameters={...b.parameters,docs:{...(Q=b.parameters)==null?void 0:Q.docs,source:{originalSource:`{
+}`,...(j=(H=u.parameters)==null?void 0:H.docs)==null?void 0:j.source}}};var J,Q,Y;b.parameters={...b.parameters,docs:{...(J=b.parameters)==null?void 0:J.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button aria-label="Menu">
@@ -641,4 +664,4 @@ import{b as a}from"./iframe-CVRBFitm.js";import"./segmented-button-set-CefuNUAU.
       disable: true
     }
   }
-}`,...(Z=(Y=b.parameters)==null?void 0:Y.docs)==null?void 0:Z.source}}};const la=["Standard","Filled","Tonal","Outlined","AllVariants","AllSizes","AllShapes","AllWidths","Toggle","ToggleWithDifferentIcons","SelectedStates","Disabled","CommonIcons"];export{r as AllShapes,o as AllSizes,s as AllVariants,d as AllWidths,b as CommonIcons,u as Disabled,n as Filled,i as Outlined,p as SelectedStates,e as Standard,m as Toggle,c as ToggleWithDifferentIcons,l as Tonal,la as __namedExportsOrder,na as default};
+}`,...(Y=(Q=b.parameters)==null?void 0:Q.docs)==null?void 0:Y.source}}};const ia=["Standard","Filled","Tonal","Outlined","AllVariants","AllSizes","AllShapes","AllWidths","Toggle","ToggleWithDifferentIcons","SelectedStates","Disabled","CommonIcons"];export{r as AllShapes,o as AllSizes,s as AllVariants,d as AllWidths,b as CommonIcons,u as Disabled,n as Filled,l as Outlined,p as SelectedStates,t as Standard,m as Toggle,c as ToggleWithDifferentIcons,i as Tonal,ia as __namedExportsOrder,na as default};
