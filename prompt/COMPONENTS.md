@@ -191,6 +191,122 @@ Container-Komponente für Connected Button Groups (MD3 Expressive).
 
 ---
 
+## md-split-button
+
+**Package:** `@material-wc/buttons`
+**MD3 Spec:** https://m3.material.io/components/menus/specs (für Dropdown-Menü)
+
+Material Design 3 Split Button kombiniert einen primären Aktions-Button mit einem sekundären Button, der ein Dropdown-Menü öffnet.
+
+### MD3 Split Button Layout (Material 3 Expressive)
+- **Leading Button:** Führt die primäre Aktion aus
+- **Trailing Button:** Öffnet ein Dropdown-Menü mit zusätzlichen Optionen
+- Im expanded-Zustand wird der Trailing Button kreisförmig
+
+| Property | Type | Default | Beschreibung |
+|----------|------|---------|--------------|
+| `variant` | `'filled' \| 'tonal' \| 'outlined' \| 'elevated'` | `'filled'` | Visueller Stil |
+| `size` | `'xsmall' \| 'small' \| 'medium' \| 'large' \| 'xlarge'` | `'medium'` | Button-Größe (MD3 Expressive) |
+| `disabled` | `boolean` | `false` | Deaktiviert |
+| `leading-aria-label` | `string` | - | Accessible Label für Leading Button |
+| `trailing-aria-label` | `string` | `'More options'` | Accessible Label für Trailing Button |
+
+**MD3 Expressive Größen:**
+- XSmall: 32dp
+- Small: 36dp
+- Medium: 40dp (default)
+- Large: 48dp
+- XLarge: 56dp
+
+### MD3 Menu Spezifikationen
+
+Das Dropdown-Menü folgt den MD3 Menu Guidelines:
+
+**Container:**
+- Background: `surface-container` Token
+- Border-radius: 4dp (`--radius-sm`)
+- Elevation: Level 2 Shadow
+- Min-width: 112dp
+- Max-width: 280dp
+- Padding: 8dp vertikal
+
+**Menu Items:**
+- Height: 48dp (Standard)
+- Padding: 12dp vertikal, 16dp horizontal
+- Typography: 14px (`body-large`)
+- Text color: `on-surface`
+- Hover state: 8% `on-surface` Overlay
+- Focus state: 12% `on-surface` Overlay
+
+**Animation:**
+- Open: Scale von 0.8 auf 1.0 mit `standard` Easing
+- Duration: `short-2` (~100ms)
+- Transform-origin: top right
+
+**Slots:**
+- Default: Leading Button Label
+- `leading-icon`: Icon für den Leading Button
+- `trailing-icon`: Icon für den Trailing Button (default: `arrow_drop_down`)
+- `menu`: Menu Items für das Dropdown
+
+**Events:**
+- `md-leading-click`: Fired bei Klick auf Leading Button (detail: `{ originalEvent: MouseEvent }`)
+- `md-trailing-click`: Fired bei Klick auf Trailing Button (detail: `{ expanded: boolean, originalEvent: MouseEvent }`)
+- `md-menu-item-click`: Fired bei Klick auf Menu Item (detail: `{ value: string, element: HTMLElement, originalEvent: MouseEvent }`)
+
+**CSS Parts:**
+- `leading`: Der Leading Button
+- `trailing`: Der Trailing Button
+- `menu`: Der Dropdown-Menü Container
+
+**Font Dependency:**
+Der Standard-Trailing-Icon (`arrow_drop_down`) benötigt den Material Symbols Outlined Font:
+```html
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+```
+
+**Beispiel:**
+```html
+<md-split-button
+  @md-leading-click=${() => console.log('Save clicked')}
+  @md-menu-item-click=${(e) => console.log('Menu item:', e.detail.value)}
+>
+  <span slot="leading-icon" class="material-symbols-outlined">save</span>
+  Save
+  <button slot="menu" role="menuitem" data-value="save-as">Save As...</button>
+  <button slot="menu" role="menuitem" data-value="save-copy">Save a Copy</button>
+  <button slot="menu" role="menuitem" data-value="save-template">Save as Template</button>
+</md-split-button>
+```
+
+**Beispiel mit Varianten:**
+```html
+<md-split-button variant="tonal" size="large">
+  <span slot="leading-icon" class="material-symbols-outlined">send</span>
+  Send
+  <button slot="menu" role="menuitem" data-value="send-now">Send Now</button>
+  <button slot="menu" role="menuitem" data-value="schedule">Schedule Send</button>
+</md-split-button>
+```
+
+**Beispiel mit Menu-Item Icons:**
+```html
+<md-split-button>
+  <span slot="leading-icon" class="material-symbols-outlined">save</span>
+  Save
+  <button slot="menu" role="menuitem" data-value="save-as">
+    <span class="material-symbols-outlined">save_as</span>
+    Save As...
+  </button>
+  <button slot="menu" role="menuitem" data-value="save-copy">
+    <span class="material-symbols-outlined">file_copy</span>
+    Save a Copy
+  </button>
+</md-split-button>
+```
+
+---
+
 ## md-toggle-button (Deprecated)
 
 > **Deprecated:** Verwende stattdessen `md-button` mit `toggle` Attribut.

@@ -2,6 +2,7 @@ export { MdButton, type ButtonVariant, type ButtonSize, type ButtonGroupSize as 
 export { MdIconButton, type IconButtonVariant, type IconButtonSize, type IconButtonShape, type IconButtonWidth } from './icon-button/icon-button.js';
 export { MdFab, type FabVariant, type FabSize } from './fab/fab.js';
 export { MdButtonGroup, type ButtonGroupSelectionMode, type ButtonGroupSize } from './button-group/button-group.js';
+export { MdSplitButton, type SplitButtonVariant, type SplitButtonSize } from './split-button/split-button.js';
 
 // Deprecated - use md-button with toggle attribute inside md-button-group instead
 /** @deprecated Use md-button with toggle attribute instead */
