@@ -8,17 +8,35 @@ import cssnano from 'cssnano';
 import { readFile, writeFile, mkdir } from 'fs/promises';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { parseArgs } from 'util';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, '../..');
 
 async function buildCSS() {
-  const args = process.argv.slice(2);
-  const packageArg = args.find((arg) => arg.startsWith('--package='));
-  const packageFilter = packageArg ? packageArg.split('=')[1] : null;
+  const { values } = parseArgs({
+    options: {
+      package: { type: 'string', short: 'p' },
+      watch: { type: 'boolean', short: 'w', default: false },
+      help: { type: 'boolean', short: 'h', default: false },
+    },
+    allowPositionals: false,
+  });
 
-  const pattern = packageFilter
-    ? `packages/${packageFilter}/src/**/*.src.css`
+  if (values.help) {
+    console.log(`
+Usage: build.js [options]
+
+Options:
+  -p, --package <name>  Build only a specific package (e.g., buttons, core)
+  -w, --watch           Watch mode (not yet implemented)
+  -h, --help            Show this help message
+`);
+    return;
+  }
+
+  const pattern = values.package
+    ? `packages/${values.package}/src/**/*.src.css`
     : 'packages/*/src/**/*.src.css';
 
   const sourceFiles = await glob(pattern, { cwd: rootDir });
