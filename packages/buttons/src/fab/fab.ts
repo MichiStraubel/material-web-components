@@ -14,14 +14,95 @@ export type FabSize = 'small' | 'medium' | 'large';
  * FABs represent the most important action on a screen.
  * They should be used for positive actions like create, share, or explore.
  *
+ * ## Variants
+ * - **surface**: Neutral surface color
+ * - **primary**: Primary brand color (default)
+ * - **secondary**: Secondary brand color
+ * - **tertiary**: Tertiary brand color
+ *
+ * ## Sizes
+ * - **small**: 40dp (compact spaces)
+ * - **medium**: 56dp (default)
+ * - **large**: 96dp (prominent actions)
+ *
  * @element md-fab
  *
  * @slot - Default slot for label text (extended FAB)
  * @slot icon - Slot for icon content
  *
- * @fires md-click - Fired when the FAB is clicked
+ * @fires md-click - Fired when the FAB is clicked. Detail: `{ originalEvent: MouseEvent }`
  *
  * @csspart button - The native button element
+ *
+ * @example
+ * Basic FAB with icon:
+ * ```html
+ * <md-fab aria-label="Add item">
+ *   <span slot="icon" class="material-symbols-outlined">add</span>
+ * </md-fab>
+ * ```
+ *
+ * @example
+ * Different variants:
+ * ```html
+ * <md-fab variant="primary" aria-label="Create">
+ *   <span slot="icon" class="material-symbols-outlined">add</span>
+ * </md-fab>
+ *
+ * <md-fab variant="secondary" aria-label="Edit">
+ *   <span slot="icon" class="material-symbols-outlined">edit</span>
+ * </md-fab>
+ *
+ * <md-fab variant="tertiary" aria-label="Share">
+ *   <span slot="icon" class="material-symbols-outlined">share</span>
+ * </md-fab>
+ *
+ * <md-fab variant="surface" aria-label="Settings">
+ *   <span slot="icon" class="material-symbols-outlined">settings</span>
+ * </md-fab>
+ * ```
+ *
+ * @example
+ * Different sizes:
+ * ```html
+ * <md-fab size="small" aria-label="Add">
+ *   <span slot="icon" class="material-symbols-outlined">add</span>
+ * </md-fab>
+ *
+ * <md-fab size="medium" aria-label="Add">
+ *   <span slot="icon" class="material-symbols-outlined">add</span>
+ * </md-fab>
+ *
+ * <md-fab size="large" aria-label="Add">
+ *   <span slot="icon" class="material-symbols-outlined">add</span>
+ * </md-fab>
+ * ```
+ *
+ * @example
+ * Extended FAB with label:
+ * ```html
+ * <md-fab extended>
+ *   <span slot="icon" class="material-symbols-outlined">add</span>
+ *   Create New
+ * </md-fab>
+ * ```
+ *
+ * @example
+ * Lowered elevation:
+ * ```html
+ * <md-fab lowered aria-label="Navigate">
+ *   <span slot="icon" class="material-symbols-outlined">navigation</span>
+ * </md-fab>
+ * ```
+ *
+ * @example
+ * Event handling:
+ * ```javascript
+ * const fab = document.querySelector('md-fab');
+ * fab.addEventListener('md-click', (event) => {
+ *   console.log('FAB clicked!', event.detail);
+ * });
+ * ```
  */
 @customElement('md-fab')
 export class MdFab extends MdElement {

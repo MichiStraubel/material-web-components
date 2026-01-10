@@ -1,0 +1,63 @@
+{
+  "name": "material-wc",
+  "version": "0.1.0",
+  "description": "Material Design 3 Web Components - A complete library of MD3 components built with Lit",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./buttons": {
+      "types": "./dist/buttons.d.ts",
+      "import": "./dist/buttons.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "dependencies": {
+    "@material-wc/buttons": "workspace:*",
+    "@material-wc/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.0.0"
+  },
+  "keywords": [
+    "material-design",
+    "material-design-3",
+    "md3",
+    "web-components",
+    "lit",
+    "components",
+    "ui"
+  ],
+  "license": "MIT",
+  "author": "",
+  "homepage": "https://github.com/anthropics/ai-web-components#readme",
+  "bugs": {
+    "url": "https://github.com/anthropics/ai-web-components/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthropics/ai-web-components.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "sideEffects": false
+}

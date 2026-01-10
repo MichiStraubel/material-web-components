@@ -16,15 +16,113 @@ export type IconButtonWidth = 'narrow' | 'default' | 'wide';
  * Icon buttons are commonly used in app bars and toolbars for actions
  * like navigation, sharing, favoriting, etc.
  *
+ * ## Variants
+ * - **standard**: No container, icon only (default)
+ * - **filled**: Solid background container
+ * - **tonal**: Tonal color container
+ * - **outlined**: Border container
+ *
+ * ## Sizes (MD3 Expressive)
+ * - **xsmall**: 32dp
+ * - **small**: 40dp (default)
+ * - **medium**: 48dp
+ * - **large**: 56dp
+ * - **xlarge**: 64dp
+ *
  * @element md-icon-button
  *
  * @slot - Default slot for icon content (shown when not selected)
  * @slot selected - Slot for icon when button is in selected state (toggle buttons)
  *
- * @fires md-click - Fired when the button is clicked
- * @fires md-toggle - Fired when a toggle button changes state
+ * @fires md-click - Fired when the button is clicked. Detail: `{ originalEvent: MouseEvent }`
+ * @fires md-toggle - Fired when a toggle button changes state. Detail: `{ selected: boolean, originalEvent: MouseEvent }`
  *
  * @csspart button - The native button element
+ *
+ * @example
+ * Basic icon button:
+ * ```html
+ * <md-icon-button aria-label="Settings">
+ *   <span class="material-symbols-outlined">settings</span>
+ * </md-icon-button>
+ * ```
+ *
+ * @example
+ * Different variants:
+ * ```html
+ * <md-icon-button variant="standard" aria-label="Settings">
+ *   <span class="material-symbols-outlined">settings</span>
+ * </md-icon-button>
+ *
+ * <md-icon-button variant="filled" aria-label="Add">
+ *   <span class="material-symbols-outlined">add</span>
+ * </md-icon-button>
+ *
+ * <md-icon-button variant="tonal" aria-label="Edit">
+ *   <span class="material-symbols-outlined">edit</span>
+ * </md-icon-button>
+ *
+ * <md-icon-button variant="outlined" aria-label="Delete">
+ *   <span class="material-symbols-outlined">delete</span>
+ * </md-icon-button>
+ * ```
+ *
+ * @example
+ * Different sizes:
+ * ```html
+ * <md-icon-button size="xsmall" aria-label="Close">
+ *   <span class="material-symbols-outlined">close</span>
+ * </md-icon-button>
+ *
+ * <md-icon-button size="medium" aria-label="Close">
+ *   <span class="material-symbols-outlined">close</span>
+ * </md-icon-button>
+ *
+ * <md-icon-button size="xlarge" aria-label="Close">
+ *   <span class="material-symbols-outlined">close</span>
+ * </md-icon-button>
+ * ```
+ *
+ * @example
+ * Toggle button with selected state:
+ * ```html
+ * <md-icon-button toggle aria-label="Favorite">
+ *   <span class="material-symbols-outlined">favorite_border</span>
+ *   <span slot="selected" class="material-symbols-outlined">favorite</span>
+ * </md-icon-button>
+ * ```
+ *
+ * @example
+ * Square shape:
+ * ```html
+ * <md-icon-button shape="square" variant="filled" aria-label="Menu">
+ *   <span class="material-symbols-outlined">menu</span>
+ * </md-icon-button>
+ * ```
+ *
+ * @example
+ * As a link:
+ * ```html
+ * <md-icon-button href="https://example.com" target="_blank" aria-label="Open link">
+ *   <span class="material-symbols-outlined">open_in_new</span>
+ * </md-icon-button>
+ * ```
+ *
+ * @example
+ * Event handling:
+ * ```javascript
+ * const iconButton = document.querySelector('md-icon-button');
+ *
+ * // Click event
+ * iconButton.addEventListener('md-click', (event) => {
+ *   console.log('Button clicked!', event.detail);
+ * });
+ *
+ * // Toggle event (when toggle=true)
+ * iconButton.addEventListener('md-toggle', (event) => {
+ *   console.log('Toggled:', event.detail.selected);
+ * });
+ * ```
  */
 @customElement('md-icon-button')
 export class MdIconButton extends MdElement {

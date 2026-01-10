@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { ref, createRef } from 'lit/directives/ref.js';
 import '@material-wc/buttons';
 import type { MdIconButton } from '@material-wc/buttons';
 
@@ -35,6 +36,13 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
 - **Toggle für Zustände:** Verwende das \`toggle\` Attribut für An/Aus-Zustände wie Favoriten oder Lesezeichen
 - **Konsistente Größen:** Verwende einheitliche Größen innerhalb einer Toolbar oder Liste
 - **Erkennbare Icons:** Nutze etablierte Icons, die Benutzer sofort verstehen (z.B. Herz für Favorit)
+
+## Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`click\` | Native MouseEvent | Standard-Klick-Event des Buttons |
+| \`md-toggle\` | \`{ selected: boolean }\` | Wird ausgelöst, wenn ein Toggle-Button seinen Zustand ändert |
         `,
       },
     },
@@ -483,5 +491,77 @@ export const CommonIcons: Story = {
   `,
   parameters: {
     controls: { disable: true },
+  },
+};
+
+export const EventHandling: Story = {
+  render: () => {
+    const buttonRef = createRef<Element>();
+
+    const setupListener = () => {
+      const el = buttonRef.value as HTMLElement | undefined;
+      if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
+        (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
+        el.addEventListener('md-toggle', (event: Event) => {
+          const customEvent = event as CustomEvent;
+          const output = el.closest('.event-demo-container')?.querySelector('.event-output');
+          if (output) {
+            output.textContent = `md-toggle: ${JSON.stringify(customEvent.detail)}`;
+          }
+          console.log('md-toggle:', customEvent.detail);
+        });
+        el.addEventListener('md-click', (event: Event) => {
+          const customEvent = event as CustomEvent;
+          const output = el.closest('.event-demo-container')?.querySelector('.event-output');
+          if (output) {
+            output.textContent = `md-click: ${JSON.stringify(customEvent.detail)}`;
+          }
+          console.log('md-click:', customEvent.detail);
+        });
+      }
+    };
+
+    queueMicrotask(setupListener);
+
+    return html`
+      <div class="event-demo-container" style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
+          <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
+          <p style="margin: 0; font-size: 12px; color: #1976d2;">
+            Klicke den Toggle-Button, um die Events zu testen.
+          </p>
+        </div>
+        <div style="display: flex; gap: 24px; align-items: center;">
+          <div style="text-align: center;">
+            <md-icon-button
+              ${ref(buttonRef)}
+              variant="filled"
+              toggle
+              aria-label="Toggle Button"
+            >
+              <span class="material-symbols-outlined">favorite</span>
+              <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+            </md-icon-button>
+            <div style="font-size: 12px; color: #666; margin-top: 4px;">Toggle</div>
+          </div>
+        </div>
+        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 40px; margin: 0; white-space: pre-wrap;">Klicke den Button...</pre>
+      </div>
+    `;
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: `
+### Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Button geklickt wird |
+| \`md-toggle\` | \`{ selected: boolean, originalEvent: MouseEvent }\` | Wird bei Toggle-Buttons ausgelöst, wenn der Zustand wechselt |
+        `,
+      },
+    },
   },
 };

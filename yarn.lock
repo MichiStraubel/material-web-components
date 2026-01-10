@@ -3258,6 +3258,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"material-wc@workspace:lib":
+  version: 0.0.0-use.local
+  resolution: "material-wc@workspace:lib"
+  dependencies:
+    "@material-wc/buttons": "workspace:*"
+    "@material-wc/core": "workspace:*"
+    vite: "npm:^6.0.0"
+    vite-plugin-dts: "npm:^4.0.0"
+  peerDependencies:
+    lit: ^3.2.0
+  languageName: unknown
+  linkType: soft
+
 "mdn-data@npm:2.0.28":
   version: 2.0.28
   resolution: "mdn-data@npm:2.0.28"

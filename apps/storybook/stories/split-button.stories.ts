@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { ref, createRef } from 'lit/directives/ref.js';
 import '@material-wc/buttons';
 import type { MdSplitButton } from '@material-wc/buttons';
 
@@ -50,6 +51,14 @@ Der Split Button kombiniert eine **primäre Aktion** mit einem **Dropdown-Menü*
 - **Verwandte Optionen:** Menü-Items sollten Varianten der primären Aktion sein
 - **Konsistente Icons:** Verwende Icons in Menü-Items für bessere Erkennbarkeit
 - **Beschreibende Labels:** Menü-Items sollten klar beschreiben, was passiert
+
+## Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-leading-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Leading Button geklickt wird |
+| \`md-trailing-click\` | \`{ expanded: boolean, originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Trailing Button geklickt wird (öffnet/schließt Menü) |
+| \`md-menu-item-click\` | \`{ value: string, element: HTMLElement, originalEvent: MouseEvent }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
         `,
       },
     },
@@ -292,5 +301,71 @@ export const MenuItemsWithIcons: Story = {
   `,
   parameters: {
     controls: { disable: true },
+  },
+};
+
+export const EventHandling: Story = {
+  render: () => {
+    const buttonRef = createRef<Element>();
+
+    const setupListener = () => {
+      const el = buttonRef.value as HTMLElement | undefined;
+      if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
+        (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
+        const updateOutput = (eventName: string, detail: unknown) => {
+          const output = el.closest('.event-demo-container')?.querySelector('.event-output');
+          if (output) {
+            output.textContent = `${eventName}: ${JSON.stringify(detail, null, 2)}`;
+          }
+          console.log(eventName, detail);
+        };
+        el.addEventListener('md-leading-click', (event: Event) => {
+          updateOutput('md-leading-click', (event as CustomEvent).detail);
+        });
+        el.addEventListener('md-trailing-click', (event: Event) => {
+          updateOutput('md-trailing-click', (event as CustomEvent).detail);
+        });
+        el.addEventListener('md-menu-item-click', (event: Event) => {
+          updateOutput('md-menu-item-click', (event as CustomEvent).detail);
+        });
+      }
+    };
+
+    queueMicrotask(setupListener);
+
+    return html`
+      <div class="event-demo-container" style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
+          <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
+          <p style="margin: 0; font-size: 12px; color: #1976d2;">
+            Klicke die Buttons, um die Events zu testen.
+          </p>
+        </div>
+        <md-split-button ${ref(buttonRef)}>
+          <span slot="leading-icon" class="material-symbols-outlined">save</span>
+          Save
+          <button slot="menu" role="menuitem" data-value="save-as">Save As...</button>
+          <button slot="menu" role="menuitem" data-value="save-copy">Save a Copy</button>
+          <button slot="menu" role="menuitem" data-value="save-template">Save as Template</button>
+        </md-split-button>
+        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 60px; margin: 0; white-space: pre-wrap;">Klicke die Buttons...</pre>
+      </div>
+    `;
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: `
+### Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-leading-click\` | \`{ originalEvent }\` | Leading Button wurde geklickt |
+| \`md-trailing-click\` | \`{ expanded, originalEvent }\` | Trailing Button wurde geklickt |
+| \`md-menu-item-click\` | \`{ value, element, originalEvent }\` | Menü-Item wurde geklickt |
+        `,
+      },
+    },
   },
 };

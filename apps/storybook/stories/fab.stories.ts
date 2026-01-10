@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { ref, createRef } from 'lit/directives/ref.js';
 import '@material-wc/buttons';
 import type { MdFab } from '@material-wc/buttons';
 
@@ -52,6 +53,12 @@ right: 16px;
 - **Konsistente Position:** Immer an der gleichen Stelle im Layout
 - **Nicht bei Scroll verstecken:** Der FAB sollte immer sichtbar bleiben
 - **Lowered für weniger Dominanz:** Verwende \`lowered\` wenn der FAB weniger hervorstechen soll
+
+## Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der FAB geklickt wird |
         `,
       },
     },
@@ -210,5 +217,57 @@ export const PositionedExample: Story = {
   `,
   parameters: {
     controls: { disable: true },
+  },
+};
+
+export const EventHandling: Story = {
+  render: () => {
+    const fabRef = createRef<Element>();
+
+    const setupListener = () => {
+      const el = fabRef.value as HTMLElement | undefined;
+      if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
+        (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
+        el.addEventListener('md-click', (event: Event) => {
+          const customEvent = event as CustomEvent;
+          const output = el.closest('.event-demo-container')?.querySelector('.event-output');
+          if (output) {
+            output.textContent = `md-click: ${JSON.stringify(customEvent.detail)}`;
+          }
+          console.log('md-click:', customEvent.detail);
+        });
+      }
+    };
+
+    queueMicrotask(setupListener);
+
+    return html`
+      <div class="event-demo-container" style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
+          <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
+          <p style="margin: 0; font-size: 12px; color: #1976d2;">
+            Klicke den FAB, um das Event zu testen.
+          </p>
+        </div>
+        <md-fab ${ref(fabRef)} aria-label="Add item">
+          <span slot="icon" class="material-symbols-outlined">add</span>
+        </md-fab>
+        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 40px; margin: 0;">Klicke den FAB...</pre>
+      </div>
+    `;
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: `
+### Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der FAB geklickt wird |
+        `,
+      },
+    },
   },
 };

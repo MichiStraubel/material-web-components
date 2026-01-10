@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { ref, createRef } from 'lit/directives/ref.js';
 import '@material-wc/buttons';
 import type { MdButton } from '@material-wc/buttons';
 
@@ -38,6 +39,12 @@ Buttons kommunizieren Aktionen, die Benutzer ausführen können. Sie werden typi
 - **Eine primäre Aktion pro Ansicht:** Verwende nur einen Filled Button pro logischen Bereich
 - **Klare Labels:** Beschreibe die Aktion, nicht das Objekt ("Speichern" statt "Dokument")
 - **Konsistente Hierarchie:** Kombiniere Varianten sinnvoll (Filled + Outlined, nicht zwei Filled)
+
+## Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Button geklickt wird |
         `,
       },
     },
@@ -381,5 +388,64 @@ export const IconPosition: Story = {
   `,
   parameters: {
     controls: { disable: true },
+  },
+};
+
+export const EventHandling: Story = {
+  render: () => {
+    const buttonRef = createRef<Element>();
+
+    const setupListener = () => {
+      const el = buttonRef.value as HTMLElement | undefined;
+      if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
+        (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
+        el.addEventListener('md-click', (event: Event) => {
+          const customEvent = event as CustomEvent;
+          const output = el.closest('.event-demo-container')?.querySelector('.event-output');
+          if (output) {
+            output.textContent = `md-click: ${JSON.stringify(customEvent.detail)}`;
+          }
+          console.log('md-click:', customEvent.detail);
+        });
+      }
+    };
+
+    // Setup listener after a microtask
+    queueMicrotask(setupListener);
+
+    return html`
+      <div class="event-demo-container" style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
+          <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
+          <p style="margin: 0; font-size: 12px; color: #1976d2;">
+            Klicke den Button, um das Event zu testen.
+          </p>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <md-button
+            ${ref(buttonRef)}
+            variant="filled"
+          >
+            <span slot="icon" class="material-symbols-outlined">send</span>
+            Klick mich
+          </md-button>
+        </div>
+        <pre class="event-output" style="font-size: 14px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 40px; margin: 0;">Klicke den Button...</pre>
+      </div>
+    `;
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story: `
+### Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Button geklickt wird |
+        `,
+      },
+    },
   },
 };

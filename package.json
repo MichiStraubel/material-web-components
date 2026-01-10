@@ -5,7 +5,8 @@
   "workspaces": [
     "packages/*",
     "apps/*",
-    "tools/*"
+    "tools/*",
+    "lib"
   ],
   "scripts": {
     "build": "yarn workspaces foreach -A --topological run build",

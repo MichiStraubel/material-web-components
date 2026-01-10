@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
+import { ref, createRef } from 'lit/directives/ref.js';
 import '@material-wc/buttons';
 import type { MdButtonGroup } from '@material-wc/buttons';
 
@@ -42,6 +43,12 @@ Die Button Group verwendet automatisch die korrekten ARIA-Rollen:
 - **Konsistente Länge:** Buttons sollten ähnlich lang sein für ein ausgewogenes Layout
 - **Icons für Klarheit:** Bei Icon-only Buttons immer \`aria-label\` verwenden
 - **Vorauswahl:** Bei Single-Select sollte immer eine Option vorausgewählt sein
+
+## Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-change\` | \`{ selected: string[], previousSelected: string[] }\` | Wird ausgelöst, wenn sich die Auswahl ändert |
         `,
       },
     },
@@ -285,28 +292,58 @@ export const SingleButton: Story = {
 };
 
 export const EventHandling: Story = {
-  render: () => html`
-    <div style="display: flex; flex-direction: column; gap: 16px;">
-      <md-button-group
-        aria-label="Interactive example"
-        @md-change=${(e: CustomEvent) => {
-          const output = document.getElementById('button-group-event-output');
+  render: () => {
+    const groupRef = createRef<Element>();
+
+    const setupListener = () => {
+      const el = groupRef.value as HTMLElement | undefined;
+      if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
+        (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
+        el.addEventListener('md-change', (event: Event) => {
+          const customEvent = event as CustomEvent<{ selected: string[]; previousSelected: string[] }>;
+          const output = el.closest('.event-demo-container')?.querySelector('.event-output');
           if (output) {
-            output.textContent = `Selected: ${e.detail.selected.join(', ') || 'none'}`;
+            output.textContent = `md-change:\nSelected: ${customEvent.detail.selected.join(', ') || 'none'}\nPrevious: ${customEvent.detail.previousSelected.join(', ') || 'none'}`;
           }
-        }}
-      >
-        <md-button toggle value="option1" selected>Option 1</md-button>
-        <md-button toggle value="option2">Option 2</md-button>
-        <md-button toggle value="option3">Option 3</md-button>
-      </md-button-group>
-      <div id="button-group-event-output" style="font-size: 14px; color: #666; font-family: monospace;">
-        Selected: option1
+          console.log('md-change:', customEvent.detail);
+        });
+      }
+    };
+
+    queueMicrotask(setupListener);
+
+    return html`
+      <div class="event-demo-container" style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
+          <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
+          <p style="margin: 0; font-size: 12px; color: #1976d2;">
+            Klicke die Buttons, um das <code>md-change</code> Event zu testen.
+          </p>
+        </div>
+        <md-button-group ${ref(groupRef)} aria-label="Interactive example">
+          <md-button toggle value="option1" selected>Option 1</md-button>
+          <md-button toggle value="option2">Option 2</md-button>
+          <md-button toggle value="option3">Option 3</md-button>
+        </md-button-group>
+        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 60px; margin: 0; white-space: pre-wrap;">Klicke die Buttons...</pre>
       </div>
-    </div>
-  `,
+    `;
+  },
   parameters: {
     controls: { disable: true },
+    docs: {
+      description: {
+        story: `
+### Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`md-change\` | \`{ selected: string[], previousSelected: string[] }\` | Wird ausgelöst, wenn sich die Auswahl ändert |
+
+Das Event enthält sowohl die neue Auswahl als auch die vorherige Auswahl, um Änderungen nachvollziehen zu können.
+        `,
+      },
+    },
   },
 };
 

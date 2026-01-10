@@ -16,14 +16,87 @@ export type ButtonPosition = 'leading' | 'middle' | 'trailing' | 'standalone';
 /**
  * Material Design 3 Button Component
  *
+ * A versatile button component following Material Design 3 specifications.
+ * Supports multiple variants, sizes, icons, and can function as a toggle button within groups.
+ *
+ * ## Variants
+ * - **filled**: High emphasis, solid background (default)
+ * - **outlined**: Medium emphasis, border only
+ * - **text**: Low emphasis, text only
+ * - **elevated**: Medium emphasis with shadow
+ * - **tonal**: Medium emphasis with tonal color
+ *
+ * ## Sizes
+ * - **small**: 32dp height
+ * - **medium**: 40dp height (default)
+ * - **large**: 48dp height
+ *
  * @element md-button
  *
  * @slot - Default slot for button text content
  * @slot icon - Slot for icon (position controlled by iconPosition property)
  *
- * @fires md-click - Fired when the button is clicked
+ * @fires md-click - Fired when the button is clicked. Detail: `{ originalEvent: MouseEvent }`
  *
  * @csspart button - The native button element
+ *
+ * @example
+ * Basic button variants:
+ * ```html
+ * <md-button variant="filled">Filled</md-button>
+ * <md-button variant="outlined">Outlined</md-button>
+ * <md-button variant="text">Text</md-button>
+ * <md-button variant="elevated">Elevated</md-button>
+ * <md-button variant="tonal">Tonal</md-button>
+ * ```
+ *
+ * @example
+ * Button with icon:
+ * ```html
+ * <md-button variant="filled">
+ *   <span slot="icon" class="material-symbols-outlined">add</span>
+ *   Add Item
+ * </md-button>
+ *
+ * <!-- Icon at end -->
+ * <md-button variant="outlined" icon-position="end">
+ *   Next
+ *   <span slot="icon" class="material-symbols-outlined">arrow_forward</span>
+ * </md-button>
+ * ```
+ *
+ * @example
+ * Different sizes:
+ * ```html
+ * <md-button size="small">Small</md-button>
+ * <md-button size="medium">Medium</md-button>
+ * <md-button size="large">Large</md-button>
+ * ```
+ *
+ * @example
+ * Button as link:
+ * ```html
+ * <md-button href="https://example.com" target="_blank">
+ *   Visit Website
+ * </md-button>
+ * ```
+ *
+ * @example
+ * Toggle button (for use in button groups):
+ * ```html
+ * <md-button toggle value="bold">
+ *   <span slot="icon" class="material-symbols-outlined">format_bold</span>
+ * </md-button>
+ * ```
+ *
+ * @example
+ * Event handling:
+ * ```javascript
+ * const button = document.querySelector('md-button');
+ * button.addEventListener('md-click', (event) => {
+ *   console.log('Button clicked!', event.detail);
+ * });
+ * ```
  */
 @customElement('md-button')
 export class MdButton extends MdElement {

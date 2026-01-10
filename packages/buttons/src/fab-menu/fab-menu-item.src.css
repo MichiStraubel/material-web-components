@@ -1,0 +1,94 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   FAB MENU ITEM
+   MD3 Expressive FAB Menu Item component
+   =========================================== */
+
+.md-fab-menu-item {
+  @apply inline-flex items-center gap-3;
+  @apply border-none outline-none cursor-pointer;
+  min-height: 48px;
+  padding: 12px 16px;
+  background-color: var(--color-surface-container-high);
+  color: var(--color-on-surface);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-elevation-2);
+  font-family: var(--font-family-plain);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all var(--duration-short-2) var(--easing-standard);
+  white-space: nowrap;
+}
+
+/* Icon-only item (no label) */
+.md-fab-menu-item:not(.md-fab-menu-item--with-label) {
+  @apply justify-center;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+}
+
+/* With label - extended width */
+.md-fab-menu-item--with-label {
+  padding: 12px 20px 12px 16px;
+}
+
+/* ===========================================
+   STATES
+   =========================================== */
+
+.md-fab-menu-item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.md-fab-menu-item:hover {
+  background-color: var(--color-surface-container-highest);
+  box-shadow: var(--shadow-elevation-3);
+}
+
+.md-fab-menu-item:active {
+  transform: scale(0.98);
+}
+
+.md-fab-menu-item--disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.38;
+  box-shadow: none;
+}
+
+.md-fab-menu-item--disabled:hover {
+  background-color: var(--color-surface-container-high);
+  box-shadow: none;
+}
+
+/* ===========================================
+   ICON
+   =========================================== */
+
+.md-fab-menu-item__icon {
+  @apply flex items-center justify-center flex-shrink-0;
+  width: 24px;
+  height: 24px;
+}
+
+.md-fab-menu-item__icon ::slotted(svg),
+.md-fab-menu-item__icon ::slotted(img) {
+  width: 24px;
+  height: 24px;
+}
+
+.md-fab-menu-item__icon ::slotted(.material-symbols-outlined) {
+  font-size: 24px;
+}
+
+/* ===========================================
+   LABEL
+   =========================================== */
+
+.md-fab-menu-item__label {
+  @apply flex-shrink-0;
+  color: var(--color-on-surface);
+}
