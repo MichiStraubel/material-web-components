@@ -57,9 +57,9 @@ Ideal für:
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-open\` | \`{}\` | Wird ausgelöst, wenn das Menü geöffnet wird |
-| \`md-close\` | \`{}\` | Wird ausgelöst, wenn das Menü geschlossen wird |
-| \`md-item-click\` | \`{ value, label, element, originalEvent }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+| \`open\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geöffnet wird |
+| \`close\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geschlossen wird |
+| \`select\` | \`{ originalEvent, value, label }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
         `,
       },
     },
@@ -508,22 +508,22 @@ export const EventHandling: Story = {
           }
         };
 
-        el.addEventListener('md-open', () => {
-          addEvent('md-open', '#4fc3f7');
-          console.log('md-open');
+        el.addEventListener('open', () => {
+          addEvent('open', '#4fc3f7');
+          console.log('open');
         });
 
-        el.addEventListener('md-close', () => {
-          addEvent('md-close', '#ffb74d');
-          console.log('md-close');
+        el.addEventListener('close', () => {
+          addEvent('close', '#ffb74d');
+          console.log('close');
         });
 
-        el.addEventListener('md-item-click', (event: Event) => {
+        el.addEventListener('select', (event: Event) => {
           const customEvent = event as CustomEvent;
           const { value, label } = customEvent.detail;
           const details = `<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"${value}"</span>, <span style="color: #90caf9;">label</span>: <span style="color: #ef9a9a;">"${label}"</span> }`;
-          addEvent('md-item-click', '#81c784', details);
-          console.log('md-item-click:', customEvent.detail);
+          addEvent('select', '#81c784', details);
+          console.log('select:', customEvent.detail);
         });
       }
     };
@@ -552,6 +552,32 @@ export const EventHandling: Story = {
           </md-fab-menu>
         </div>
         <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 150px; max-height: 250px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke das FAB Menu, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-fab-menu id="action-menu" aria-label="Actions"&gt;
+  &lt;md-fab-menu-item value="photo" label="Take Photo"&gt;
+    &lt;span class="material-symbols-outlined"&gt;photo_camera&lt;/span&gt;
+  &lt;/md-fab-menu-item&gt;
+  &lt;md-fab-menu-item value="video" label="Record Video"&gt;
+    &lt;span class="material-symbols-outlined"&gt;videocam&lt;/span&gt;
+  &lt;/md-fab-menu-item&gt;
+&lt;/md-fab-menu&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const fabMenu = document.querySelector('#action-menu');
+
+fabMenu.addEventListener('open', () =&gt; {
+  console.log('Menu opened');
+});
+
+fabMenu.addEventListener('close', () =&gt; {
+  console.log('Menu closed');
+});
+
+fabMenu.addEventListener('select', (e) =&gt; {
+  console.log('Selected:', e.detail.value, e.detail.label);
+  // Output: "photo", "Take Photo"
+});</code></pre>
+        </div>
       </div>
     `;
   },
@@ -564,9 +590,39 @@ export const EventHandling: Story = {
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-open\` | \`{}\` | Wird ausgelöst, wenn das Menü geöffnet wird |
-| \`md-close\` | \`{}\` | Wird ausgelöst, wenn das Menü geschlossen wird |
-| \`md-item-click\` | \`{ value, label, element, originalEvent }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+| \`open\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geöffnet wird |
+| \`close\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geschlossen wird |
+| \`select\` | \`{ originalEvent, value, label }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+
+### Beispiel-Code
+
+\`\`\`html
+<md-fab-menu id="action-menu" aria-label="Actions">
+  <md-fab-menu-item value="photo" label="Take Photo">
+    <span class="material-symbols-outlined">photo_camera</span>
+  </md-fab-menu-item>
+  <md-fab-menu-item value="video" label="Record Video">
+    <span class="material-symbols-outlined">videocam</span>
+  </md-fab-menu-item>
+</md-fab-menu>
+\`\`\`
+
+\`\`\`javascript
+const fabMenu = document.querySelector('#action-menu');
+
+fabMenu.addEventListener('open', () => {
+  console.log('Menu opened');
+});
+
+fabMenu.addEventListener('close', () => {
+  console.log('Menu closed');
+});
+
+fabMenu.addEventListener('select', (e) => {
+  console.log('Selected:', e.detail.value, e.detail.label);
+  // Output: "photo", "Take Photo"
+});
+\`\`\`
         `,
       },
     },

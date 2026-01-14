@@ -34,9 +34,9 @@ export type FabMenuAlignment = 'start' | 'center' | 'end';
  * @slot - Default slot for md-fab-menu-item elements (2-6 items)
  * @slot icon - Custom icon for the FAB (defaults to 'add')
  *
- * @fires md-open - Fired when the menu opens
- * @fires md-close - Fired when the menu closes
- * @fires md-item-click - Fired when a menu item is clicked. Detail: `{ value: string, label: string, element: HTMLElement, originalEvent: MouseEvent }`
+ * @fires open - Fired when the menu opens. Detail: `{ originalEvent: MouseEvent }`
+ * @fires close - Fired when the menu closes. Detail: `{ originalEvent: MouseEvent }`
+ * @fires select - Fired when a menu item is clicked. Detail: `{ originalEvent: MouseEvent, value: string, label: string }`
  *
  * @csspart fab - The toggle FAB button
  * @csspart menu - The menu container
@@ -73,13 +73,13 @@ export type FabMenuAlignment = 'start' | 'center' | 'end';
  * ```javascript
  * const menu = document.querySelector('md-fab-menu');
  *
- * menu.addEventListener('md-item-click', (event) => {
- *   const { value, label } = event.detail;
- *   console.log(`Selected: ${label} (${value})`);
+ * menu.addEventListener('select', (e) => {
+ *   console.log('Value:', e.detail.value);
+ *   console.log('Label:', e.detail.label);
  * });
  *
- * menu.addEventListener('md-open', () => console.log('Menu opened'));
- * menu.addEventListener('md-close', () => console.log('Menu closed'));
+ * menu.addEventListener('open', () => console.log('Menu opened'));
+ * menu.addEventListener('close', () => console.log('Menu closed'));
  * ```
  *
  * @example
@@ -169,13 +169,13 @@ export class MdFabMenu extends MdElement {
 
   private handleOutsideClick(event: MouseEvent): void {
     if (this.expanded && !this.contains(event.target as Node)) {
-      this.close();
+      this.close(event);
     }
   }
 
   private handleKeyDown(event: KeyboardEvent): void {
     if (this.expanded && event.key === 'Escape') {
-      this.close();
+      this.close(event);
       // Return focus to the FAB
       const fab = this.shadowRoot?.querySelector('button');
       fab?.focus();
@@ -183,25 +183,25 @@ export class MdFabMenu extends MdElement {
   }
 
   /** Open the menu */
-  public open(): void {
+  public open(originalEvent?: Event): void {
     if (this.disabled || this.expanded) return;
     this.expanded = true;
-    this.emit('md-open', {});
+    this.emit('open', { originalEvent });
   }
 
   /** Close the menu */
-  public close(): void {
+  public close(originalEvent?: Event): void {
     if (!this.expanded) return;
     this.expanded = false;
-    this.emit('md-close', {});
+    this.emit('close', { originalEvent });
   }
 
   /** Toggle the menu open/closed state */
-  public toggle(): void {
+  public toggle(originalEvent?: Event): void {
     if (this.expanded) {
-      this.close();
+      this.close(originalEvent);
     } else {
-      this.open();
+      this.open(originalEvent);
     }
   }
 
@@ -263,7 +263,7 @@ export class MdFabMenu extends MdElement {
       return;
     }
 
-    this.toggle();
+    this.toggle(event);
   }
 
   private handleIconSlotChange(event: Event): void {
@@ -293,15 +293,14 @@ export class MdFabMenu extends MdElement {
       const value = menuItem.getAttribute('value') || '';
       const label = menuItem.getAttribute('label') || menuItem.textContent?.trim() || '';
 
-      this.emit('md-item-click', {
+      this.emit('select', {
+        originalEvent: event,
         value,
         label,
-        element: menuItem,
-        originalEvent: event,
       });
 
       // MD3 spec: Menu closes after action is tapped
-      this.close();
+      this.close(event);
     }
   }
 }

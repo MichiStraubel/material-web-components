@@ -195,7 +195,7 @@
 
 .md-segmented-button:disabled {
   @apply cursor-not-allowed;
-  opacity: 0.38;
+  opacity: var(--state-disabled-opacity);
   background-color: transparent;
   color: var(--color-on-surface);
 }

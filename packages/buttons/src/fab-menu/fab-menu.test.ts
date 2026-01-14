@@ -205,7 +205,7 @@ describe('MdFabMenu', () => {
       `);
 
       const openHandler = vi.fn();
-      fabMenu.addEventListener('md-open', openHandler);
+      fabMenu.addEventListener('open', openHandler);
 
       const fab = fabMenu.shadowRoot!.querySelector('button')!;
       fireEvent.click(fab);
@@ -324,11 +324,11 @@ describe('MdFabMenu', () => {
   });
 
   describe('events', () => {
-    it('emits md-open event when opening', async () => {
+    it('emits open event when opening', async () => {
       const fabMenu = await createFabMenu();
 
       const openHandler = vi.fn();
-      fabMenu.addEventListener('md-open', openHandler);
+      fabMenu.addEventListener('open', openHandler);
 
       const fab = fabMenu.shadowRoot!.querySelector('button')!;
       fireEvent.click(fab);
@@ -336,11 +336,11 @@ describe('MdFabMenu', () => {
       expect(openHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('emits md-close event when closing', async () => {
+    it('emits close event when closing', async () => {
       const fabMenu = await createFabMenu();
 
       const closeHandler = vi.fn();
-      fabMenu.addEventListener('md-close', closeHandler);
+      fabMenu.addEventListener('close', closeHandler);
 
       fabMenu.open();
       await fabMenu.updateComplete;
@@ -349,11 +349,11 @@ describe('MdFabMenu', () => {
       expect(closeHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('emits md-item-click event when menu item is clicked', async () => {
+    it('emits select event when menu item is clicked', async () => {
       const fabMenu = await createFabMenu();
 
-      const itemClickHandler = vi.fn();
-      fabMenu.addEventListener('md-item-click', itemClickHandler);
+      const selectHandler = vi.fn();
+      fabMenu.addEventListener('select', selectHandler);
 
       fabMenu.open();
       await fabMenu.updateComplete;
@@ -361,14 +361,14 @@ describe('MdFabMenu', () => {
       const menuItem = container.querySelector('md-fab-menu-item')!;
       fireEvent.click(menuItem);
 
-      expect(itemClickHandler).toHaveBeenCalledTimes(1);
+      expect(selectHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('includes value and label in md-item-click event detail', async () => {
+    it('includes originalEvent, value and label in select event detail', async () => {
       const fabMenu = await createFabMenu();
 
-      let eventDetail: { value: string; label: string } | undefined;
-      fabMenu.addEventListener('md-item-click', ((e: CustomEvent) => {
+      let eventDetail: { originalEvent: Event; value: string; label: string } | undefined;
+      fabMenu.addEventListener('select', ((e: CustomEvent) => {
         eventDetail = e.detail;
       }) as EventListener);
 
@@ -378,6 +378,7 @@ describe('MdFabMenu', () => {
       const menuItem = container.querySelector('md-fab-menu-item')!;
       fireEvent.click(menuItem);
 
+      expect(eventDetail?.originalEvent).toBeTruthy();
       expect(eventDetail?.value).toBe('photo');
       expect(eventDetail?.label).toBe('Photo');
     });
@@ -404,8 +405,8 @@ describe('MdFabMenu', () => {
         </md-fab-menu>
       `);
 
-      const itemClickHandler = vi.fn();
-      fabMenu.addEventListener('md-item-click', itemClickHandler);
+      const selectHandler = vi.fn();
+      fabMenu.addEventListener('select', selectHandler);
 
       fabMenu.open();
       await fabMenu.updateComplete;
@@ -418,15 +419,15 @@ describe('MdFabMenu', () => {
       const menu = fabMenu.shadowRoot!.querySelector('[role="menu"]');
       expect(menu).toHaveClass('md-fab-menu__menu--open');
       // Event should not be emitted
-      expect(itemClickHandler).not.toHaveBeenCalled();
+      expect(selectHandler).not.toHaveBeenCalled();
     });
 
-    it('emits md-close after md-item-click', async () => {
+    it('emits close after select', async () => {
       const fabMenu = await createFabMenu();
 
       const events: string[] = [];
-      fabMenu.addEventListener('md-item-click', () => events.push('item-click'));
-      fabMenu.addEventListener('md-close', () => events.push('close'));
+      fabMenu.addEventListener('select', () => events.push('select'));
+      fabMenu.addEventListener('close', () => events.push('close'));
 
       fabMenu.open();
       await fabMenu.updateComplete;
@@ -434,7 +435,7 @@ describe('MdFabMenu', () => {
       const menuItem = container.querySelector('md-fab-menu-item')!;
       fireEvent.click(menuItem);
 
-      expect(events).toEqual(['item-click', 'close']);
+      expect(events).toEqual(['select', 'close']);
     });
   });
 

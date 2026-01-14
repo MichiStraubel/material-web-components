@@ -19,7 +19,7 @@ export type ToggleButtonSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge
  * @slot - Default slot for label text
  * @slot icon - Slot for icon (positioned before label)
  *
- * @fires md-click - Fired when the button is clicked
+ * @fires toggle - Fired when the button is clicked. Detail: `{ originalEvent: MouseEvent, value: string, selected: boolean }`
  *
  * @csspart button - The native button element
  */
@@ -145,17 +145,11 @@ export class MdToggleButton extends MdElement {
       return;
     }
 
-    // Internal event for parent group to handle selection
-    this.emit('md-toggle-click', {
-      value: this.value,
+    // Emit toggle event (used by both parent group and public API)
+    this.emit('toggle', {
       originalEvent: event,
-    });
-
-    // Public event
-    this.emit('md-click', {
       value: this.value,
       selected: this.selected,
-      originalEvent: event,
     });
   }
 

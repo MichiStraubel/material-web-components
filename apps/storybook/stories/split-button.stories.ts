@@ -56,9 +56,10 @@ Der Split Button kombiniert eine **primäre Aktion** mit einem **Dropdown-Menü*
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-leading-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Leading Button geklickt wird |
-| \`md-trailing-click\` | \`{ expanded: boolean, originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Trailing Button geklickt wird (öffnet/schließt Menü) |
-| \`md-menu-item-click\` | \`{ value: string, element: HTMLElement, originalEvent: MouseEvent }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+| \`click\` | Native Event | Wird ausgelöst, wenn der Leading Button geklickt wird (value über \`element.value\` abrufbar) |
+| \`open\` | - | Wird ausgelöst, wenn das Menü geöffnet wird |
+| \`close\` | - | Wird ausgelöst, wenn das Menü geschlossen wird |
+| \`change\` | \`{ value: string }\` | Wird ausgelöst, wenn ein Menü-Item ausgewählt wird |
         `,
       },
     },
@@ -116,9 +117,9 @@ Der Split Button kombiniert eine **primäre Aktion** mit einem **Dropdown-Menü*
         ? html`<span slot="leading-icon" class="material-symbols-outlined">save</span>`
         : ''}
       ${args.label}
-      <button slot="menu" role="menuitem" data-value="option1">Option 1</button>
-      <button slot="menu" role="menuitem" data-value="option2">Option 2</button>
-      <button slot="menu" role="menuitem" data-value="option3">Option 3</button>
+      <button slot="menu" role="menuitem" value="option1">Option 1</button>
+      <button slot="menu" role="menuitem" value="option2">Option 2</button>
+      <button slot="menu" role="menuitem" value="option3">Option 3</button>
     </md-split-button>
   `,
 };
@@ -207,9 +208,9 @@ export const WithMenu: Story = {
         >
           <span slot="leading-icon" class="material-symbols-outlined">save</span>
           Save
-          <button slot="menu" role="menuitem" data-value="save-as">Save As...</button>
-          <button slot="menu" role="menuitem" data-value="save-copy">Save a Copy</button>
-          <button slot="menu" role="menuitem" data-value="save-template">Save as Template</button>
+          <button slot="menu" role="menuitem" value="save-as">Save As...</button>
+          <button slot="menu" role="menuitem" value="save-copy">Save a Copy</button>
+          <button slot="menu" role="menuitem" value="save-template">Save as Template</button>
         </md-split-button>
       </div>
       <div>
@@ -219,9 +220,9 @@ export const WithMenu: Story = {
         >
           <span slot="leading-icon" class="material-symbols-outlined">send</span>
           Send
-          <button slot="menu" role="menuitem" data-value="send-now">Send Now</button>
-          <button slot="menu" role="menuitem" data-value="schedule">Schedule Send</button>
-          <button slot="menu" role="menuitem" data-value="send-test">Send Test Email</button>
+          <button slot="menu" role="menuitem" value="send-now">Send Now</button>
+          <button slot="menu" role="menuitem" value="schedule">Schedule Send</button>
+          <button slot="menu" role="menuitem" value="send-test">Send Test Email</button>
         </md-split-button>
       </div>
       <div>
@@ -231,9 +232,9 @@ export const WithMenu: Story = {
         >
           <span slot="leading-icon" class="material-symbols-outlined">download</span>
           Download
-          <button slot="menu" role="menuitem" data-value="pdf">Download as PDF</button>
-          <button slot="menu" role="menuitem" data-value="docx">Download as DOCX</button>
-          <button slot="menu" role="menuitem" data-value="txt">Download as TXT</button>
+          <button slot="menu" role="menuitem" value="pdf">Download as PDF</button>
+          <button slot="menu" role="menuitem" value="docx">Download as DOCX</button>
+          <button slot="menu" role="menuitem" value="txt">Download as TXT</button>
         </md-split-button>
       </div>
     </div>
@@ -264,15 +265,15 @@ export const MenuItemsWithIcons: Story = {
         <md-split-button>
           <span slot="leading-icon" class="material-symbols-outlined">save</span>
           Save
-          <button slot="menu" role="menuitem" data-value="save-as">
+          <button slot="menu" role="menuitem" value="save-as">
             <span class="material-symbols-outlined">save_as</span>
             Save As...
           </button>
-          <button slot="menu" role="menuitem" data-value="save-copy">
+          <button slot="menu" role="menuitem" value="save-copy">
             <span class="material-symbols-outlined">file_copy</span>
             Save a Copy
           </button>
-          <button slot="menu" role="menuitem" data-value="export">
+          <button slot="menu" role="menuitem" value="export">
             <span class="material-symbols-outlined">upload</span>
             Export
           </button>
@@ -283,15 +284,15 @@ export const MenuItemsWithIcons: Story = {
         <md-split-button variant="tonal">
           <span slot="leading-icon" class="material-symbols-outlined">share</span>
           Share
-          <button slot="menu" role="menuitem" data-value="email">
+          <button slot="menu" role="menuitem" value="email">
             <span class="material-symbols-outlined">mail</span>
             Email
           </button>
-          <button slot="menu" role="menuitem" data-value="link">
+          <button slot="menu" role="menuitem" value="link">
             <span class="material-symbols-outlined">link</span>
             Copy Link
           </button>
-          <button slot="menu" role="menuitem" data-value="qr">
+          <button slot="menu" role="menuitem" value="qr">
             <span class="material-symbols-outlined">qr_code</span>
             QR Code
           </button>
@@ -312,21 +313,43 @@ export const EventHandling: Story = {
       const el = buttonRef.value as HTMLElement | undefined;
       if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
         (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
-        const updateOutput = (eventName: string, detail: unknown) => {
+
+        const addEvent = (eventName: string, color: string, details?: string) => {
           const output = el.closest('.event-demo-container')?.querySelector('.event-output');
           if (output) {
-            output.textContent = `${eventName}: ${JSON.stringify(detail, null, 2)}`;
+            const timestamp = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 });
+            const eventLine = `<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #333;"><span style="color: #666; font-size: 11px;">${timestamp}</span> <span style="color: ${color}; font-weight: 600;">${eventName}</span>${details ? `\n${details}` : ''}</div>`;
+
+            const placeholder = output.querySelector('.placeholder');
+            if (placeholder) {
+              placeholder.remove();
+            }
+            output.insertAdjacentHTML('afterbegin', eventLine);
           }
-          console.log(eventName, detail);
         };
-        el.addEventListener('md-leading-click', (event: Event) => {
-          updateOutput('md-leading-click', (event as CustomEvent).detail);
+
+        el.addEventListener('click', () => {
+          const splitButton = el as MdSplitButton;
+          const details = `<span style="color: #81c784;">element.value:</span> <span style="color: #ef9a9a;">"${splitButton.value}"</span>`;
+          addEvent('click', '#4fc3f7', details);
+          console.log('click - value:', splitButton.value);
         });
-        el.addEventListener('md-trailing-click', (event: Event) => {
-          updateOutput('md-trailing-click', (event as CustomEvent).detail);
+
+        el.addEventListener('open', () => {
+          addEvent('open', '#ffb74d', '<span style="color: #666;">(menu opened)</span>');
+          console.log('open');
         });
-        el.addEventListener('md-menu-item-click', (event: Event) => {
-          updateOutput('md-menu-item-click', (event as CustomEvent).detail);
+
+        el.addEventListener('close', () => {
+          addEvent('close', '#ff8a65', '<span style="color: #666;">(menu closed)</span>');
+          console.log('close');
+        });
+
+        el.addEventListener('change', (e: Event) => {
+          const customEvent = e as CustomEvent<{ value: string }>;
+          const details = `<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"${customEvent.detail.value}"</span> }`;
+          addEvent('change', '#81c784', details);
+          console.log('change:', customEvent.detail);
         });
       }
     };
@@ -338,17 +361,42 @@ export const EventHandling: Story = {
         <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
           <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
           <p style="margin: 0; font-size: 12px; color: #1976d2;">
-            Klicke die Buttons, um die Events zu testen.
+            Klicke die Buttons, um die Events zu testen. Alle Events werden im Log angezeigt.
           </p>
         </div>
-        <md-split-button ${ref(buttonRef)}>
+        <md-split-button ${ref(buttonRef)} id="demo-split-button" value="save">
           <span slot="leading-icon" class="material-symbols-outlined">save</span>
           Save
-          <button slot="menu" role="menuitem" data-value="save-as">Save As...</button>
-          <button slot="menu" role="menuitem" data-value="save-copy">Save a Copy</button>
-          <button slot="menu" role="menuitem" data-value="save-template">Save as Template</button>
+          <button slot="menu" role="menuitem" value="save-as">Save As...</button>
+          <button slot="menu" role="menuitem" value="save-copy">Save a Copy</button>
+          <button slot="menu" role="menuitem" value="save-template">Save as Template</button>
         </md-split-button>
-        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 60px; margin: 0; white-space: pre-wrap;">Klicke die Buttons...</pre>
+        <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 100px; max-height: 200px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke die Buttons, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-split-button id="save-split-button" value="save"&gt;
+  &lt;span slot="leading-icon" class="material-symbols-outlined"&gt;save&lt;/span&gt;
+  Save
+  &lt;button slot="menu" role="menuitem" value="save-as"&gt;Save As...&lt;/button&gt;
+  &lt;button slot="menu" role="menuitem" value="save-copy"&gt;Save a Copy&lt;/button&gt;
+&lt;/md-split-button&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const splitButton = document.querySelector('#save-split-button');
+
+// Leading button click (primary action)
+splitButton.addEventListener('click', () =&gt; {
+  console.log('Primary action, value:', splitButton.value);
+});
+
+// Menu lifecycle
+splitButton.addEventListener('open', () =&gt; console.log('Menu opened'));
+splitButton.addEventListener('close', () =&gt; console.log('Menu closed'));
+
+// Menu item selection
+splitButton.addEventListener('change', (e) =&gt; {
+  console.log('Selected:', e.detail.value);
+});</code></pre>
+        </div>
       </div>
     `;
   },
@@ -361,9 +409,39 @@ export const EventHandling: Story = {
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-leading-click\` | \`{ originalEvent }\` | Leading Button wurde geklickt |
-| \`md-trailing-click\` | \`{ expanded, originalEvent }\` | Trailing Button wurde geklickt |
-| \`md-menu-item-click\` | \`{ value, element, originalEvent }\` | Menü-Item wurde geklickt |
+| \`click\` | Native Event | Leading Button wurde geklickt (value über \`element.value\`) |
+| \`open\` | - | Menü wurde geöffnet |
+| \`close\` | - | Menü wurde geschlossen |
+| \`change\` | \`{ value }\` | Menü-Item wurde ausgewählt |
+
+### Beispiel-Code
+
+\`\`\`html
+<md-split-button id="save-split-button" value="save">
+  <span slot="leading-icon" class="material-symbols-outlined">save</span>
+  Save
+  <button slot="menu" role="menuitem" value="save-as">Save As...</button>
+  <button slot="menu" role="menuitem" value="save-copy">Save a Copy</button>
+</md-split-button>
+\`\`\`
+
+\`\`\`javascript
+const splitButton = document.querySelector('#save-split-button');
+
+// Leading button click (primary action)
+splitButton.addEventListener('click', () => {
+  console.log('Primary action, value:', splitButton.value);
+});
+
+// Menu lifecycle
+splitButton.addEventListener('open', () => console.log('Menu opened'));
+splitButton.addEventListener('close', () => console.log('Menu closed'));
+
+// Menu item selection
+splitButton.addEventListener('change', (e) => {
+  console.log('Selected:', e.detail.value);
+});
+\`\`\`
         `,
       },
     },

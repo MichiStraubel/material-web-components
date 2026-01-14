@@ -48,7 +48,7 @@ Die Button Group verwendet automatisch die korrekten ARIA-Rollen:
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-change\` | \`{ selected: string[], previousSelected: string[] }\` | Wird ausgelöst, wenn sich die Auswahl ändert |
+| \`change\` | \`{ originalEvent: Event, value: string[] }\` | Wird ausgelöst, wenn sich die Auswahl ändert |
         `,
       },
     },
@@ -299,13 +299,27 @@ export const EventHandling: Story = {
       const el = groupRef.value as HTMLElement | undefined;
       if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
         (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
-        el.addEventListener('md-change', (event: Event) => {
-          const customEvent = event as CustomEvent<{ selected: string[]; previousSelected: string[] }>;
+
+        const addEvent = (eventName: string, color: string, details?: string) => {
           const output = el.closest('.event-demo-container')?.querySelector('.event-output');
           if (output) {
-            output.textContent = `md-change:\nSelected: ${customEvent.detail.selected.join(', ') || 'none'}\nPrevious: ${customEvent.detail.previousSelected.join(', ') || 'none'}`;
+            const timestamp = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 });
+            const eventLine = `<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #333;"><span style="color: #666; font-size: 11px;">${timestamp}</span> <span style="color: ${color}; font-weight: 600;">${eventName}</span>${details ? `\n${details}` : ''}</div>`;
+
+            const placeholder = output.querySelector('.placeholder');
+            if (placeholder) {
+              placeholder.remove();
+            }
+            output.insertAdjacentHTML('afterbegin', eventLine);
           }
-          console.log('md-change:', customEvent.detail);
+        };
+
+        el.addEventListener('change', (event: Event) => {
+          const customEvent = event as CustomEvent<{ originalEvent: Event; value: string[] }>;
+          const valueStr = customEvent.detail.value.map(v => `"${v}"`).join(', ');
+          const details = `<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">[${valueStr}]</span> }`;
+          addEvent('change', '#4fc3f7', details);
+          console.log('change:', customEvent.detail);
         });
       }
     };
@@ -317,7 +331,7 @@ export const EventHandling: Story = {
         <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
           <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
           <p style="margin: 0; font-size: 12px; color: #1976d2;">
-            Klicke die Buttons, um das <code>md-change</code> Event zu testen.
+            Klicke die Buttons, um das <code>change</code> Event zu testen. Alle Events werden im Log angezeigt.
           </p>
         </div>
         <md-button-group ${ref(groupRef)} aria-label="Interactive example">
@@ -325,7 +339,21 @@ export const EventHandling: Story = {
           <md-button toggle value="option2">Option 2</md-button>
           <md-button toggle value="option3">Option 3</md-button>
         </md-button-group>
-        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 60px; margin: 0; white-space: pre-wrap;">Klicke die Buttons...</pre>
+        <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 100px; max-height: 200px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke die Buttons, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-button-group id="view-group" aria-label="View options"&gt;
+  &lt;md-button toggle value="day" selected&gt;Day&lt;/md-button&gt;
+  &lt;md-button toggle value="week"&gt;Week&lt;/md-button&gt;
+  &lt;md-button toggle value="month"&gt;Month&lt;/md-button&gt;
+&lt;/md-button-group&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const buttonGroup = document.querySelector('#view-group');
+buttonGroup.addEventListener('change', (e) =&gt; {
+  console.log('Selected:', e.detail.value);
+  // Output: ["day"] or ["week"] etc.
+});</code></pre>
+        </div>
       </div>
     `;
   },
@@ -338,9 +366,25 @@ export const EventHandling: Story = {
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-change\` | \`{ selected: string[], previousSelected: string[] }\` | Wird ausgelöst, wenn sich die Auswahl ändert |
+| \`change\` | \`{ originalEvent: Event, value: string[] }\` | Wird ausgelöst, wenn sich die Auswahl ändert |
 
-Das Event enthält sowohl die neue Auswahl als auch die vorherige Auswahl, um Änderungen nachvollziehen zu können.
+### Beispiel-Code
+
+\`\`\`html
+<md-button-group id="view-group" aria-label="View options">
+  <md-button toggle value="day" selected>Day</md-button>
+  <md-button toggle value="week">Week</md-button>
+  <md-button toggle value="month">Month</md-button>
+</md-button-group>
+\`\`\`
+
+\`\`\`javascript
+const buttonGroup = document.querySelector('#view-group');
+buttonGroup.addEventListener('change', (e) => {
+  console.log('Selected:', e.detail.value);
+  // Output: ["day"] or ["week"] etc.
+});
+\`\`\`
         `,
       },
     },

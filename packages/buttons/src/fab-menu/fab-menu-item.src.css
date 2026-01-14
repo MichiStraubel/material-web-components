@@ -55,7 +55,7 @@
 
 .md-fab-menu-item--disabled {
   @apply cursor-not-allowed;
-  opacity: 0.38;
+  opacity: var(--state-disabled-opacity);
   box-shadow: none;
 }
 

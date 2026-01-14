@@ -131,60 +131,49 @@ describe('MdSegmentedButton', () => {
       expect(innerButton).toBeDisabled();
     });
 
-    it('does not emit md-click when disabled', async () => {
+    it('does not emit toggle when disabled', async () => {
       const button = await createSegmentedButton(
         '<md-segmented-button value="test" disabled>Disabled</md-segmented-button>'
       );
 
-      const clickHandler = vi.fn();
-      button.addEventListener('md-click', clickHandler);
+      const toggleHandler = vi.fn();
+      button.addEventListener('toggle', toggleHandler);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
-      expect(clickHandler).not.toHaveBeenCalled();
+      expect(toggleHandler).not.toHaveBeenCalled();
     });
   });
 
   describe('events', () => {
-    it('emits md-click event on click', async () => {
+    it('emits toggle event on click', async () => {
       const button = await createSegmentedButton();
 
-      const clickHandler = vi.fn();
-      button.addEventListener('md-click', clickHandler);
+      const toggleHandler = vi.fn();
+      button.addEventListener('toggle', toggleHandler);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
-      expect(clickHandler).toHaveBeenCalledTimes(1);
+      expect(toggleHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('includes value in event detail', async () => {
+    it('includes originalEvent and value in event detail', async () => {
       const button = await createSegmentedButton(
         '<md-segmented-button value="myvalue">Test</md-segmented-button>'
       );
 
-      let eventDetail: { value: string } | undefined;
-      button.addEventListener('md-click', ((e: CustomEvent) => {
+      let eventDetail: { originalEvent: Event; value: string; selected: boolean } | undefined;
+      button.addEventListener('toggle', ((e: CustomEvent) => {
         eventDetail = e.detail;
       }) as EventListener);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
+      expect(eventDetail?.originalEvent).toBeTruthy();
       expect(eventDetail?.value).toBe('myvalue');
-    });
-
-    it('emits md-segment-click for parent set', async () => {
-      const button = await createSegmentedButton();
-
-      const segmentClickHandler = vi.fn();
-      button.addEventListener('md-segment-click', segmentClickHandler);
-
-      const innerButton = button.shadowRoot!.querySelector('button')!;
-      fireEvent.click(innerButton);
-
-      expect(segmentClickHandler).toHaveBeenCalledTimes(1);
     });
   });
 

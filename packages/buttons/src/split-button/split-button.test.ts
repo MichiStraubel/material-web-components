@@ -135,10 +135,10 @@ describe('MdSplitButton', () => {
         '<md-split-button disabled>Save</md-split-button>'
       );
 
-      const leadingHandler = vi.fn();
-      const trailingHandler = vi.fn();
-      splitButton.addEventListener('md-leading-click', leadingHandler);
-      splitButton.addEventListener('md-trailing-click', trailingHandler);
+      const clickHandler = vi.fn();
+      const openHandler = vi.fn();
+      splitButton.addEventListener('click', clickHandler);
+      splitButton.addEventListener('open', openHandler);
 
       const leadingButton = splitButton.shadowRoot!.querySelector('.md-split-button__leading')!;
       const trailingButton = splitButton.shadowRoot!.querySelector('.md-split-button__trailing')!;
@@ -146,17 +146,17 @@ describe('MdSplitButton', () => {
       fireEvent.click(leadingButton);
       fireEvent.click(trailingButton);
 
-      expect(leadingHandler).not.toHaveBeenCalled();
-      expect(trailingHandler).not.toHaveBeenCalled();
+      expect(clickHandler).not.toHaveBeenCalled();
+      expect(openHandler).not.toHaveBeenCalled();
     });
   });
 
   describe('events', () => {
-    it('emits md-leading-click when leading button is clicked', async () => {
+    it('emits native click when leading button is clicked', async () => {
       const splitButton = await createSplitButton();
 
       const clickHandler = vi.fn();
-      splitButton.addEventListener('md-leading-click', clickHandler);
+      splitButton.addEventListener('click', clickHandler);
 
       const leadingButton = splitButton.shadowRoot!.querySelector('.md-split-button__leading')!;
       fireEvent.click(leadingButton);
@@ -164,44 +164,95 @@ describe('MdSplitButton', () => {
       expect(clickHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('emits md-trailing-click when trailing button is clicked', async () => {
-      const splitButton = await createSplitButton();
+    it('value is accessible via element.value on click', async () => {
+      const splitButton = await createSplitButton(
+        '<md-split-button value="save-action">Save</md-split-button>'
+      );
 
-      const clickHandler = vi.fn();
-      splitButton.addEventListener('md-trailing-click', clickHandler);
-
-      const trailingButton = splitButton.shadowRoot!.querySelector('.md-split-button__trailing')!;
-      fireEvent.click(trailingButton);
-
-      expect(clickHandler).toHaveBeenCalledTimes(1);
-    });
-
-    it('includes original event in leading click detail', async () => {
-      const splitButton = await createSplitButton();
-
-      let eventDetail: unknown;
-      splitButton.addEventListener('md-leading-click', ((e: CustomEvent) => {
-        eventDetail = e.detail;
-      }) as EventListener);
+      let capturedValue: string | undefined;
+      splitButton.addEventListener('click', () => {
+        capturedValue = splitButton.value;
+      });
 
       const leadingButton = splitButton.shadowRoot!.querySelector('.md-split-button__leading')!;
       fireEvent.click(leadingButton);
 
-      expect(eventDetail).toHaveProperty('originalEvent');
+      expect(capturedValue).toBe('save-action');
     });
 
-    it('includes expanded state in trailing click detail', async () => {
+    it('emits open when trailing button is clicked to open menu', async () => {
       const splitButton = await createSplitButton();
 
-      let eventDetail: { expanded: boolean } | undefined;
-      splitButton.addEventListener('md-trailing-click', ((e: CustomEvent) => {
-        eventDetail = e.detail;
-      }) as EventListener);
+      const openHandler = vi.fn();
+      splitButton.addEventListener('open', openHandler);
 
       const trailingButton = splitButton.shadowRoot!.querySelector('.md-split-button__trailing')!;
       fireEvent.click(trailingButton);
 
-      expect(eventDetail).toHaveProperty('expanded', true);
+      expect(openHandler).toHaveBeenCalledTimes(1);
+    });
+
+    it('emits close when trailing button is clicked to close menu', async () => {
+      const splitButton = await createSplitButton();
+
+      const closeHandler = vi.fn();
+      splitButton.addEventListener('close', closeHandler);
+
+      const trailingButton = splitButton.shadowRoot!.querySelector('.md-split-button__trailing')!;
+      // First click opens
+      fireEvent.click(trailingButton);
+      // Second click closes
+      fireEvent.click(trailingButton);
+
+      expect(closeHandler).toHaveBeenCalledTimes(1);
+    });
+
+    it('emits change with value when menu item is selected', async () => {
+      const splitButton = await createSplitButton(`
+        <md-split-button>
+          Save
+          <button slot="menu" role="menuitem" value="save-as">Save As</button>
+        </md-split-button>
+      `);
+
+      let eventDetail: { value: string } | undefined;
+      splitButton.addEventListener('change', ((e: CustomEvent) => {
+        eventDetail = e.detail;
+      }) as EventListener);
+
+      // Open the menu first
+      const trailingButton = splitButton.shadowRoot!.querySelector('.md-split-button__trailing')!;
+      fireEvent.click(trailingButton);
+      await splitButton.updateComplete;
+
+      // Click the menu item
+      const menuItem = splitButton.querySelector('[value="save-as"]')!;
+      fireEvent.click(menuItem);
+
+      expect(eventDetail?.value).toBe('save-as');
+    });
+
+    it('emits close when menu item is selected', async () => {
+      const splitButton = await createSplitButton(`
+        <md-split-button>
+          Save
+          <button slot="menu" role="menuitem" value="save-as">Save As</button>
+        </md-split-button>
+      `);
+
+      const closeHandler = vi.fn();
+      splitButton.addEventListener('close', closeHandler);
+
+      // Open the menu first
+      const trailingButton = splitButton.shadowRoot!.querySelector('.md-split-button__trailing')!;
+      fireEvent.click(trailingButton);
+      await splitButton.updateComplete;
+
+      // Click the menu item
+      const menuItem = splitButton.querySelector('[value="save-as"]')!;
+      fireEvent.click(menuItem);
+
+      expect(closeHandler).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -300,6 +351,29 @@ describe('MdSplitButton', () => {
       await splitButton.updateComplete;
       const leadingButton = splitButton.shadowRoot!.querySelector('.md-split-button__leading');
       expect(leadingButton).toHaveClass('md-split-button__leading--has-icon');
+    });
+  });
+
+  describe('value property', () => {
+    it('has empty value by default', async () => {
+      const splitButton = await createSplitButton();
+      expect(splitButton.value).toBe('');
+    });
+
+    it('reflects value attribute', async () => {
+      const splitButton = await createSplitButton(
+        '<md-split-button value="my-action">Save</md-split-button>'
+      );
+      expect(splitButton.value).toBe('my-action');
+      expect(splitButton.getAttribute('value')).toBe('my-action');
+    });
+
+    it('can update value programmatically', async () => {
+      const splitButton = await createSplitButton();
+      splitButton.value = 'new-value';
+      await splitButton.updateComplete;
+      expect(splitButton.value).toBe('new-value');
+      expect(splitButton.getAttribute('value')).toBe('new-value');
     });
   });
 });

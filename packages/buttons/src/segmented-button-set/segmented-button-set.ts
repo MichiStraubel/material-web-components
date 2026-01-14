@@ -18,7 +18,7 @@ export type SegmentedButtonDensity = 'default' | 'compact';
  *
  * @slot - Default slot for md-segmented-button children
  *
- * @fires md-change - Fired when selection changes
+ * @fires change - Fired when selection changes. Detail: `{ originalEvent: Event, value: string[] }`
  *
  * @csspart container - The container div element
  */
@@ -48,7 +48,7 @@ export class MdSegmentedButtonSet extends MdElement {
   override connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener(
-      'md-segment-click',
+      'toggle',
       this.handleSegmentClick as EventListener
     );
     this.addEventListener('keydown', this.handleKeydown);
@@ -57,7 +57,7 @@ export class MdSegmentedButtonSet extends MdElement {
   override disconnectedCallback(): void {
     super.disconnectedCallback();
     this.removeEventListener(
-      'md-segment-click',
+      'toggle',
       this.handleSegmentClick as EventListener
     );
     this.removeEventListener('keydown', this.handleKeydown);
@@ -170,9 +170,9 @@ export class MdSegmentedButtonSet extends MdElement {
 
     // Emit change event if selection changed
     if (JSON.stringify(previousSelected) !== JSON.stringify(newSelected)) {
-      this.emit('md-change', {
-        selected: newSelected,
-        previousSelected,
+      this.emit('change', {
+        originalEvent: event,
+        value: newSelected,
       });
     }
 
@@ -244,9 +244,9 @@ export class MdSegmentedButtonSet extends MdElement {
 
       const newSelected = this.getSelectedValues();
       if (JSON.stringify(previousSelected) !== JSON.stringify(newSelected)) {
-        this.emit('md-change', {
-          selected: newSelected,
-          previousSelected,
+        this.emit('change', {
+          originalEvent: event,
+          value: newSelected,
         });
       }
     }

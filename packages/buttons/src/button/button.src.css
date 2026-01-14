@@ -16,7 +16,7 @@
 
 .md-button:disabled {
   @apply cursor-not-allowed;
-  opacity: 0.38;
+  opacity: var(--state-disabled-opacity);
 }
 
 /* ===========================================
@@ -55,8 +55,8 @@
 
 .md-button--medium .md-button__icon ::slotted(svg),
 .md-button--medium .md-button__icon ::slotted(img) {
-  width: 18px;
-  height: 18px;
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
 }
 
 /* Large Size */
@@ -267,7 +267,7 @@
 /* XSmall: 32dp height */
 .md-button--in-group.md-button--xsmall {
   @apply h-8 px-3 text-xs;
-  --button-radius-full: 16px;
+  --button-radius-full: var(--radius-lg);
 }
 
 .md-button--in-group.md-button--xsmall .md-button__icon {
@@ -280,9 +280,9 @@
 
 /* Small: 36dp height */
 .md-button--in-group.md-button--small {
-  height: 36px;
+  height: var(--size-button-height-sm);
   @apply px-3.5 text-xs;
-  --button-radius-full: 18px;
+  --button-radius-full: var(--radius-18);
 }
 
 .md-button--in-group.md-button--small .md-button__icon {
@@ -296,12 +296,12 @@
 /* Medium: 40dp height (default) */
 .md-button--in-group.md-button--medium {
   @apply h-10 px-4 text-sm;
-  --button-radius-full: 20px;
+  --button-radius-full: var(--radius-20);
 }
 
 .md-button--in-group.md-button--medium .md-button__icon {
-  width: 18px;
-  height: 18px;
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
 }
 
 .md-button--in-group.md-button--medium.md-button--icon-only {
@@ -311,7 +311,7 @@
 /* Large: 48dp height */
 .md-button--in-group.md-button--large {
   @apply h-12 px-5 text-base;
-  --button-radius-full: 24px;
+  --button-radius-full: var(--radius-24);
 }
 
 .md-button--in-group.md-button--large .md-button__icon {
@@ -324,9 +324,9 @@
 
 /* XLarge: 56dp height */
 .md-button--in-group.md-button--xlarge {
-  height: 56px;
+  height: var(--size-button-height-xl);
   @apply px-6 text-lg;
-  --button-radius-full: 28px;
+  --button-radius-full: var(--radius-xl);
 }
 
 .md-button--in-group.md-button--xlarge .md-button__icon {
@@ -345,22 +345,22 @@
 
 /* Leading button - rounded on left */
 .md-button--in-group.md-button--leading {
-  border-radius: var(--button-radius-full, 20px) 4px 4px var(--button-radius-full, 20px);
+  border-radius: var(--button-radius-full, var(--radius-20)) var(--radius-xs) var(--radius-xs) var(--button-radius-full, var(--radius-20));
 }
 
 /* Middle button - slight rounding */
 .md-button--in-group.md-button--middle {
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Trailing button - rounded on right */
 .md-button--in-group.md-button--trailing {
-  border-radius: 4px var(--button-radius-full, 20px) var(--button-radius-full, 20px) 4px;
+  border-radius: var(--radius-xs) var(--button-radius-full, var(--radius-20)) var(--button-radius-full, var(--radius-20)) var(--radius-xs);
 }
 
 /* Standalone button - fully rounded */
 .md-button--in-group.md-button--standalone {
-  border-radius: var(--button-radius-full, 20px);
+  border-radius: var(--button-radius-full, var(--radius-20));
 }
 
 /* ===========================================
@@ -372,7 +372,7 @@
 .md-button--in-group.md-button--selected {
   background-color: var(--color-secondary-container);
   color: var(--color-on-secondary-container);
-  border-radius: var(--button-radius-full, 20px);
+  border-radius: var(--button-radius-full, var(--radius-20));
 }
 
 .md-button--in-group.md-button--selected::before {
@@ -385,7 +385,7 @@
 
 .md-button--in-group:disabled {
   @apply cursor-not-allowed;
-  opacity: 0.38;
+  opacity: var(--state-disabled-opacity);
   background-color: var(--color-surface-container-low);
   color: var(--color-on-surface);
 }

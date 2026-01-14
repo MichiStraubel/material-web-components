@@ -163,13 +163,13 @@ describe('MdFab', () => {
       expect(innerButton).toBeDisabled();
     });
 
-    it('does not emit md-click when disabled', async () => {
+    it('does not emit click when disabled', async () => {
       const fab = await createFab(
         '<md-fab disabled aria-label="Add"><svg slot="icon"></svg></md-fab>'
       );
 
       const clickHandler = vi.fn();
-      fab.addEventListener('md-click', clickHandler);
+      fab.addEventListener('click', clickHandler);
 
       const innerButton = fab.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
@@ -179,30 +179,42 @@ describe('MdFab', () => {
   });
 
   describe('events', () => {
-    it('emits md-click event on click', async () => {
+    it('emits click event with value on click', async () => {
+      const fab = await createFab(
+        '<md-fab value="create" aria-label="Create"><svg slot="icon"></svg></md-fab>'
+      );
+
+      const clickHandler = vi.fn();
+      fab.addEventListener('click', clickHandler);
+
+      const innerButton = fab.shadowRoot!.querySelector('button')!;
+      fireEvent.click(innerButton);
+
+      // Native click + custom click event
+      expect(clickHandler).toHaveBeenCalledTimes(2);
+      // Custom event should have detail with value
+      const customEvent = clickHandler.mock.calls.find(
+        (call) => (call[0] as CustomEvent).detail?.value !== undefined
+      );
+      expect(customEvent).toBeTruthy();
+      expect((customEvent![0] as CustomEvent).detail.value).toBe('create');
+    });
+
+    it('emits click event with empty value when no value set', async () => {
       const fab = await createFab();
 
       const clickHandler = vi.fn();
-      fab.addEventListener('md-click', clickHandler);
+      fab.addEventListener('click', clickHandler);
 
       const innerButton = fab.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
-      expect(clickHandler).toHaveBeenCalledTimes(1);
-    });
-
-    it('includes original event in detail', async () => {
-      const fab = await createFab();
-
-      let eventDetail: unknown;
-      fab.addEventListener('md-click', ((e: CustomEvent) => {
-        eventDetail = e.detail;
-      }) as EventListener);
-
-      const innerButton = fab.shadowRoot!.querySelector('button')!;
-      fireEvent.click(innerButton);
-
-      expect(eventDetail).toHaveProperty('originalEvent');
+      // Custom event should have detail with empty value
+      const customEvent = clickHandler.mock.calls.find(
+        (call) => (call[0] as CustomEvent).detail?.value !== undefined
+      );
+      expect(customEvent).toBeTruthy();
+      expect((customEvent![0] as CustomEvent).detail.value).toBe('');
     });
   });
 

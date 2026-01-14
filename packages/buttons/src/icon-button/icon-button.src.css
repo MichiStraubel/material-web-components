@@ -26,7 +26,7 @@
 
 .md-icon-button:disabled {
   @apply cursor-not-allowed;
-  opacity: 0.38;
+  opacity: var(--state-disabled-opacity);
 }
 
 /* ===========================================
@@ -74,41 +74,41 @@
 
 /* XSmall Size - 32dp container */
 .md-icon-button--xsmall {
-  width: 32px;
-  height: 32px;
-  min-width: 48px;
-  min-height: 48px;
-  padding: 8px;
+  width: var(--size-button-height-xs);
+  height: var(--size-button-height-xs);
+  min-width: var(--size-tap-target);
+  min-height: var(--size-tap-target);
+  padding: var(--spacing-sm);
 }
 
 /* Small Size (Default) - 36dp container */
 .md-icon-button--small {
-  width: 36px;
-  height: 36px;
-  min-width: 48px;
-  min-height: 48px;
+  width: var(--size-button-height-sm);
+  height: var(--size-button-height-sm);
+  min-width: var(--size-tap-target);
+  min-height: var(--size-tap-target);
   padding: 6px;
 }
 
 /* Medium Size - 40dp container */
 .md-icon-button--medium {
-  width: 40px;
-  height: 40px;
-  min-width: 48px;
-  min-height: 48px;
-  padding: 4px;
+  width: var(--size-button-height-md);
+  height: var(--size-button-height-md);
+  min-width: var(--size-tap-target);
+  min-height: var(--size-tap-target);
+  padding: var(--spacing-xs);
 }
 
 /* Large Size - 48dp container */
 .md-icon-button--large {
-  width: 48px;
-  height: 48px;
+  width: var(--size-button-height-lg);
+  height: var(--size-button-height-lg);
 }
 
 /* XLarge Size - 56dp container */
 .md-icon-button--xlarge {
-  width: 56px;
-  height: 56px;
+  width: var(--size-button-height-xl);
+  height: var(--size-button-height-xl);
 }
 
 /* ===========================================
@@ -169,16 +169,16 @@
 .md-icon-button__icon {
   @apply flex items-center justify-center;
   @apply relative z-10;
-  width: 24px;
-  height: 24px;
-  font-size: 24px;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  font-size: var(--size-icon-md);
   line-height: 1;
 }
 
 .md-icon-button__icon ::slotted(svg),
 .md-icon-button__icon ::slotted(img) {
-  width: 24px;
-  height: 24px;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
 }
 
 .md-icon-button__icon ::slotted(svg) {

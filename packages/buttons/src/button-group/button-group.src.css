@@ -8,9 +8,9 @@
 
 .md-button-group {
   @apply inline-flex items-stretch;
-  gap: 4px; /* ConnectedSpaceBetween */
-  height: 48px; /* Tap target */
-  padding: 4px 0; /* Centers 40dp button in 48dp container */
+  gap: var(--spacing-xs); /* ConnectedSpaceBetween */
+  height: var(--size-tap-target); /* Tap target */
+  padding: var(--spacing-xs) 0; /* Centers 40dp button in 48dp container */
 }
 
 /* Disabled state */

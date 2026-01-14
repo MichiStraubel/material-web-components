@@ -34,8 +34,8 @@ export type IconButtonWidth = 'narrow' | 'default' | 'wide';
  * @slot - Default slot for icon content (shown when not selected)
  * @slot selected - Slot for icon when button is in selected state (toggle buttons)
  *
- * @fires md-click - Fired when the button is clicked. Detail: `{ originalEvent: MouseEvent }`
- * @fires md-toggle - Fired when a toggle button changes state. Detail: `{ selected: boolean, originalEvent: MouseEvent }`
+ * @fires click - Custom click event. Detail: `{ originalEvent: MouseEvent, value: string }`
+ * @fires toggle - Fired when a toggle button changes state. Detail: `{ originalEvent: MouseEvent, value: string, selected: boolean }`
  *
  * @csspart button - The native button element
  *
@@ -111,16 +111,14 @@ export type IconButtonWidth = 'narrow' | 'default' | 'wide';
  * @example
  * Event handling:
  * ```javascript
- * const iconButton = document.querySelector('md-icon-button');
- *
- * // Click event
- * iconButton.addEventListener('md-click', (event) => {
- *   console.log('Button clicked!', event.detail);
+ * // Simple icon button - use native click
+ * iconButton.addEventListener('click', (e) => {
+ *   console.log('Button clicked');
  * });
  *
- * // Toggle event (when toggle=true)
- * iconButton.addEventListener('md-toggle', (event) => {
- *   console.log('Toggled:', event.detail.selected);
+ * // Toggle button
+ * toggleButton.addEventListener('toggle', (e) => {
+ *   console.log('Selected:', e.detail.selected);
  * });
  * ```
  */
@@ -167,6 +165,10 @@ export class MdIconButton extends MdElement {
   /** Accessible label for the button (required for accessibility) */
   @property({ type: String, attribute: 'aria-label' })
   override ariaLabel: string | null = null;
+
+  /** Value identifier for the button */
+  @property({ type: String, reflect: true })
+  value = '';
 
   /** Whether a selected icon slot has content */
   private hasSelectedIcon = false;
@@ -237,12 +239,16 @@ export class MdIconButton extends MdElement {
       return;
     }
 
+    // Always emit click event with value
+    this.emit('click', {
+      originalEvent: event,
+      value: this.value,
+    });
+
     if (this.toggle) {
       this.selected = !this.selected;
-      this.emit('md-toggle', { selected: this.selected, originalEvent: event });
+      this.emit('toggle', { originalEvent: event, value: this.value, selected: this.selected });
     }
-
-    this.emit('md-click', { originalEvent: event });
   }
 }
 

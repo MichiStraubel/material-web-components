@@ -36,7 +36,8 @@ export type ButtonPosition = 'leading' | 'middle' | 'trailing' | 'standalone';
  * @slot - Default slot for button text content
  * @slot icon - Slot for icon (position controlled by iconPosition property)
  *
- * @fires md-click - Fired when the button is clicked. Detail: `{ originalEvent: MouseEvent }`
+ * @fires click - Custom click event. Detail: `{ originalEvent: MouseEvent, value: string }`
+ * @fires toggle - Fired when a toggle button changes state. Detail: `{ originalEvent: MouseEvent, value: string, selected: boolean }`
  *
  * @csspart button - The native button element
  *
@@ -92,9 +93,15 @@ export type ButtonPosition = 'leading' | 'middle' | 'trailing' | 'standalone';
  * @example
  * Event handling:
  * ```javascript
- * const button = document.querySelector('md-button');
- * button.addEventListener('md-click', (event) => {
- *   console.log('Button clicked!', event.detail);
+ * // Simple button - use native click
+ * button.addEventListener('click', (e) => {
+ *   console.log('Button clicked');
+ * });
+ *
+ * // Toggle button
+ * toggleButton.addEventListener('toggle', (e) => {
+ *   console.log('Selected:', e.detail.selected);
+ *   console.log('Value:', e.detail.value);
  * });
  * ```
  */
@@ -294,15 +301,18 @@ export class MdButton extends MdElement {
       return;
     }
 
-    // Standard click event
-    this.emit('md-click', { originalEvent: event });
+    // Always emit click event with value
+    this.emit('click', {
+      originalEvent: event,
+      value: this.value,
+    });
 
-    // For toggle buttons in groups, emit the toggle-click event for parent group
+    // For toggle buttons, also emit the toggle event
     if (this.isInsideGroup || this.toggle) {
-      this.emit('md-toggle-click', {
+      this.emit('toggle', {
+        originalEvent: event,
         value: this.value,
         selected: this.selected,
-        originalEvent: event,
       });
     }
   }

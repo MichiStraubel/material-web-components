@@ -30,7 +30,7 @@ export type FabSize = 'small' | 'medium' | 'large';
  * @slot - Default slot for label text (extended FAB)
  * @slot icon - Slot for icon content
  *
- * @fires md-click - Fired when the FAB is clicked. Detail: `{ originalEvent: MouseEvent }`
+ * @fires click - Custom click event. Detail: `{ originalEvent: MouseEvent, value: string }`
  *
  * @csspart button - The native button element
  *
@@ -98,9 +98,8 @@ export type FabSize = 'small' | 'medium' | 'large';
  * @example
  * Event handling:
  * ```javascript
- * const fab = document.querySelector('md-fab');
- * fab.addEventListener('md-click', (event) => {
- *   console.log('FAB clicked!', event.detail);
+ * fab.addEventListener('click', (e) => {
+ *   console.log('FAB clicked, value:', e.detail.value);
  * });
  * ```
  */
@@ -134,6 +133,10 @@ export class MdFab extends MdElement {
   /** Accessible label for the FAB */
   @property({ type: String, attribute: 'aria-label' })
   override ariaLabel: string | null = null;
+
+  /** Value identifier for the FAB */
+  @property({ type: String, reflect: true })
+  value = '';
 
   /** Whether the icon slot has content */
   private hasIcon = false;
@@ -177,7 +180,11 @@ export class MdFab extends MdElement {
       return;
     }
 
-    this.emit('md-click', { originalEvent: event });
+    // Always emit click event with value
+    this.emit('click', {
+      originalEvent: event,
+      value: this.value,
+    });
   }
 
   private handleIconSlotChange(event: Event): void {

@@ -15,7 +15,7 @@ export type SegmentPosition = 'first' | 'middle' | 'last' | 'only';
  * @slot - Default slot for label text
  * @slot icon - Slot for icon (positioned before label)
  *
- * @fires md-click - Fired when the segment is clicked
+ * @fires toggle - Fired when the segment is clicked. Detail: `{ originalEvent: MouseEvent, value: string, selected: boolean }`
  *
  * @csspart button - The native button element
  */
@@ -146,17 +146,11 @@ export class MdSegmentedButton extends MdElement {
       return;
     }
 
-    // Internal event for parent set to handle selection
-    this.emit('md-segment-click', {
-      value: this.value,
+    // Emit toggle event (used by both parent set and public API)
+    this.emit('toggle', {
       originalEvent: event,
-    });
-
-    // Public event
-    this.emit('md-click', {
       value: this.value,
       selected: this.selected,
-      originalEvent: event,
     });
   }
 

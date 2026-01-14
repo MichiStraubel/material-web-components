@@ -211,12 +211,12 @@ describe('MdButtonGroup', () => {
   });
 
   describe('events', () => {
-    it('emits md-change when selection changes', async () => {
+    it('emits change when selection changes', async () => {
       const group = await createButtonGroup();
       await new Promise((r) => setTimeout(r, 10));
 
       const changeHandler = vi.fn();
-      group.addEventListener('md-change', changeHandler);
+      group.addEventListener('change', changeHandler);
 
       const buttons = group.querySelectorAll('md-toggle-button');
       const secondButton = buttons[1] as MdToggleButton;
@@ -227,12 +227,12 @@ describe('MdButtonGroup', () => {
       expect(changeHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('includes selected and previousSelected in event detail', async () => {
+    it('includes originalEvent and value in event detail', async () => {
       const group = await createButtonGroup();
       await new Promise((r) => setTimeout(r, 10));
 
-      let eventDetail: { selected: string[]; previousSelected: string[] } | undefined;
-      group.addEventListener('md-change', ((e: CustomEvent) => {
+      let eventDetail: { originalEvent: Event; value: string[] } | undefined;
+      group.addEventListener('change', ((e: CustomEvent) => {
         eventDetail = e.detail;
       }) as EventListener);
 
@@ -242,8 +242,8 @@ describe('MdButtonGroup', () => {
 
       fireEvent.click(innerButton);
 
-      expect(eventDetail?.previousSelected).toEqual(['a']);
-      expect(eventDetail?.selected).toEqual(['b']);
+      expect(eventDetail?.originalEvent).toBeTruthy();
+      expect(eventDetail?.value).toEqual(['b']);
     });
   });
 
@@ -271,7 +271,7 @@ describe('MdButtonGroup', () => {
       await new Promise((r) => setTimeout(r, 10));
 
       const changeHandler = vi.fn();
-      group.addEventListener('md-change', changeHandler);
+      group.addEventListener('change', changeHandler);
 
       const button = group.querySelector('md-toggle-button') as MdToggleButton;
       const innerButton = button.shadowRoot!.querySelector('button')!;

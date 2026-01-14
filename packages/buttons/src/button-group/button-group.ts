@@ -23,7 +23,7 @@ type GroupButton = MdButton | MdToggleButton;
  *
  * @slot - Default slot for md-button (with toggle attribute) or md-toggle-button children
  *
- * @fires md-change - Fired when selection changes
+ * @fires change - Fired when selection changes. Detail: `{ originalEvent: Event, value: string[] }`
  *
  * @csspart container - The container div element
  */
@@ -53,7 +53,7 @@ export class MdButtonGroup extends MdElement {
   override connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener(
-      'md-toggle-click',
+      'toggle',
       this.handleToggleClick as EventListener
     );
     this.addEventListener('keydown', this.handleKeydown);
@@ -62,7 +62,7 @@ export class MdButtonGroup extends MdElement {
   override disconnectedCallback(): void {
     super.disconnectedCallback();
     this.removeEventListener(
-      'md-toggle-click',
+      'toggle',
       this.handleToggleClick as EventListener
     );
     this.removeEventListener('keydown', this.handleKeydown);
@@ -208,9 +208,9 @@ export class MdButtonGroup extends MdElement {
 
     // Emit change event if selection changed
     if (JSON.stringify(previousSelected) !== JSON.stringify(newSelected)) {
-      this.emit('md-change', {
-        selected: newSelected,
-        previousSelected,
+      this.emit('change', {
+        originalEvent: event,
+        value: newSelected,
       });
     }
 
@@ -282,9 +282,9 @@ export class MdButtonGroup extends MdElement {
 
       const newSelected = this.getSelectedValues();
       if (JSON.stringify(previousSelected) !== JSON.stringify(newSelected)) {
-        this.emit('md-change', {
-          selected: newSelected,
-          previousSelected,
+        this.emit('change', {
+          originalEvent: event,
+          value: newSelected,
         });
       }
     }

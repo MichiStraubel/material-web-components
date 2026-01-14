@@ -267,13 +267,13 @@ describe('MdIconButton', () => {
       expect(innerButton).toBeDisabled();
     });
 
-    it('does not emit md-click when disabled', async () => {
+    it('does not emit click when disabled', async () => {
       const button = await createIconButton(
         '<md-icon-button disabled aria-label="Test"><svg></svg></md-icon-button>'
       );
 
       const clickHandler = vi.fn();
-      button.addEventListener('md-click', clickHandler);
+      button.addEventListener('click', clickHandler);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
@@ -294,31 +294,41 @@ describe('MdIconButton', () => {
   });
 
   describe('events', () => {
-    it('emits md-click event on click', async () => {
-      const button = await createIconButton();
+    it('emits click event with value on click', async () => {
+      const button = await createIconButton(
+        '<md-icon-button value="test-value" aria-label="Test"><svg></svg></md-icon-button>'
+      );
 
       const clickHandler = vi.fn();
-      button.addEventListener('md-click', clickHandler);
+      button.addEventListener('click', clickHandler);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
-      expect(clickHandler).toHaveBeenCalledTimes(1);
+      // Native click + custom click event
+      expect(clickHandler).toHaveBeenCalledTimes(2);
+      // Custom event should have detail with value
+      const customEvent = clickHandler.mock.calls.find(
+        (call) => (call[0] as CustomEvent).detail?.value !== undefined
+      );
+      expect(customEvent).toBeTruthy();
+      expect((customEvent![0] as CustomEvent).detail.value).toBe('test-value');
     });
 
-    it('emits md-toggle event when toggled', async () => {
+    it('emits toggle event when toggled', async () => {
       const button = await createIconButton(
-        '<md-icon-button toggle aria-label="Test"><svg></svg></md-icon-button>'
+        '<md-icon-button toggle value="fav" aria-label="Test"><svg></svg></md-icon-button>'
       );
 
       const toggleHandler = vi.fn();
-      button.addEventListener('md-toggle', toggleHandler);
+      button.addEventListener('toggle', toggleHandler);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
       expect(toggleHandler).toHaveBeenCalledTimes(1);
       expect(toggleHandler.mock.calls[0][0].detail.selected).toBe(true);
+      expect(toggleHandler.mock.calls[0][0].detail.value).toBe('fav');
     });
   });
 

@@ -155,7 +155,7 @@
 
 .md-split-button__leading:disabled {
   @apply cursor-not-allowed;
-  opacity: 0.38;
+  opacity: var(--state-disabled-opacity);
 }
 
 /* State Layer for Leading */
@@ -201,7 +201,7 @@
 
 .md-split-button__trailing:disabled {
   @apply cursor-not-allowed;
-  opacity: 0.38;
+  opacity: var(--state-disabled-opacity);
 }
 
 /* State Layer for Trailing */

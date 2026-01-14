@@ -50,7 +50,7 @@ Der Extended FAB erweitert den Standard-FAB um ein **Text-Label**. Er ist ideal 
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Extended FAB geklickt wird |
+| \`click\` | \`{ originalEvent: MouseEvent, value: string }\` | Wird ausgelöst, wenn der Extended FAB geklickt wird |
         `,
       },
     },
@@ -223,13 +223,28 @@ export const EventHandling: Story = {
       const el = fabRef.value as HTMLElement | undefined;
       if (el && !(el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached) {
         (el as HTMLElement & { _listenerAttached?: boolean })._listenerAttached = true;
-        el.addEventListener('md-click', (event: Event) => {
-          const customEvent = event as CustomEvent;
+
+        const addEvent = (eventName: string, color: string, details?: string) => {
           const output = el.closest('.event-demo-container')?.querySelector('.event-output');
           if (output) {
-            output.textContent = `md-click: ${JSON.stringify(customEvent.detail)}`;
+            const timestamp = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 });
+            const eventLine = `<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #333;"><span style="color: #666; font-size: 11px;">${timestamp}</span> <span style="color: ${color}; font-weight: 600;">${eventName}</span>${details ? `\n${details}` : ''}</div>`;
+
+            const placeholder = output.querySelector('.placeholder');
+            if (placeholder) {
+              placeholder.remove();
+            }
+            output.insertAdjacentHTML('afterbegin', eventLine);
           }
-          console.log('md-click:', customEvent.detail);
+        };
+
+        el.addEventListener('click', (e: Event) => {
+          const customEvent = e as CustomEvent<{ originalEvent: MouseEvent; value: string }>;
+          if (customEvent.detail?.value !== undefined) {
+            const details = `<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"${customEvent.detail.value}"</span> }`;
+            addEvent('click', '#4fc3f7', details);
+            console.log('click:', customEvent.detail);
+          }
         });
       }
     };
@@ -241,14 +256,27 @@ export const EventHandling: Story = {
         <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
           <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
           <p style="margin: 0; font-size: 12px; color: #1976d2;">
-            Klicke den Extended FAB, um das Event zu testen.
+            Klicke den Extended FAB, um das Event zu testen. Alle Events werden im Log angezeigt.
           </p>
         </div>
-        <md-fab ${ref(fabRef)} extended aria-label="Compose">
+        <md-fab ${ref(fabRef)} extended value="compose" aria-label="Compose">
           <span slot="icon" class="material-symbols-outlined">edit</span>
           Compose
         </md-fab>
-        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 40px; margin: 0;">Klicke den Extended FAB...</pre>
+        <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 100px; max-height: 200px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke den Extended FAB, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-fab id="compose-fab" extended value="compose" aria-label="Compose"&gt;
+  &lt;span slot="icon" class="material-symbols-outlined"&gt;edit&lt;/span&gt;
+  Compose
+&lt;/md-fab&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const fab = document.querySelector('#compose-fab');
+fab.addEventListener('click', (e) =&gt; {
+  console.log('Value:', e.detail.value);
+  // Output: "compose"
+});</code></pre>
+        </div>
       </div>
     `;
   },
@@ -261,7 +289,24 @@ export const EventHandling: Story = {
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-click\` | \`{ originalEvent: MouseEvent }\` | Wird ausgelöst, wenn der Extended FAB geklickt wird |
+| \`click\` | \`{ originalEvent: MouseEvent, value: string }\` | Wird ausgelöst, wenn der Extended FAB geklickt wird |
+
+### Beispiel-Code
+
+\`\`\`html
+<md-fab id="compose-fab" extended value="compose" aria-label="Compose">
+  <span slot="icon" class="material-symbols-outlined">edit</span>
+  Compose
+</md-fab>
+\`\`\`
+
+\`\`\`javascript
+const fab = document.querySelector('#compose-fab');
+fab.addEventListener('click', (e) => {
+  console.log('Value:', e.detail.value);
+  // Output: "compose"
+});
+\`\`\`
         `,
       },
     },

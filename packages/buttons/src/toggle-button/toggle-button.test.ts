@@ -116,60 +116,49 @@ describe('MdToggleButton', () => {
       expect(innerButton).toBeDisabled();
     });
 
-    it('does not emit md-click when disabled', async () => {
+    it('does not emit toggle when disabled', async () => {
       const button = await createToggleButton(
         '<md-toggle-button value="test" disabled>Disabled</md-toggle-button>'
       );
 
-      const clickHandler = vi.fn();
-      button.addEventListener('md-click', clickHandler);
+      const toggleHandler = vi.fn();
+      button.addEventListener('toggle', toggleHandler);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
-      expect(clickHandler).not.toHaveBeenCalled();
+      expect(toggleHandler).not.toHaveBeenCalled();
     });
   });
 
   describe('events', () => {
-    it('emits md-click event on click', async () => {
+    it('emits toggle event on click', async () => {
       const button = await createToggleButton();
 
-      const clickHandler = vi.fn();
-      button.addEventListener('md-click', clickHandler);
+      const toggleHandler = vi.fn();
+      button.addEventListener('toggle', toggleHandler);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
-      expect(clickHandler).toHaveBeenCalledTimes(1);
+      expect(toggleHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('includes value in event detail', async () => {
+    it('includes originalEvent and value in event detail', async () => {
       const button = await createToggleButton(
         '<md-toggle-button value="myvalue">Test</md-toggle-button>'
       );
 
-      let eventDetail: { value: string } | undefined;
-      button.addEventListener('md-click', ((e: CustomEvent) => {
+      let eventDetail: { originalEvent: Event; value: string; selected: boolean } | undefined;
+      button.addEventListener('toggle', ((e: CustomEvent) => {
         eventDetail = e.detail;
       }) as EventListener);
 
       const innerButton = button.shadowRoot!.querySelector('button')!;
       fireEvent.click(innerButton);
 
+      expect(eventDetail?.originalEvent).toBeTruthy();
       expect(eventDetail?.value).toBe('myvalue');
-    });
-
-    it('emits md-toggle-click for parent group', async () => {
-      const button = await createToggleButton();
-
-      const toggleClickHandler = vi.fn();
-      button.addEventListener('md-toggle-click', toggleClickHandler);
-
-      const innerButton = button.shadowRoot!.querySelector('button')!;
-      fireEvent.click(innerButton);
-
-      expect(toggleClickHandler).toHaveBeenCalledTimes(1);
     });
   });
 

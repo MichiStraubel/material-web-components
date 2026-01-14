@@ -217,12 +217,12 @@ describe('MdSegmentedButtonSet', () => {
   });
 
   describe('events', () => {
-    it('emits md-change when selection changes', async () => {
+    it('emits change when selection changes', async () => {
       const set = await createSegmentedButtonSet();
       await new Promise((r) => setTimeout(r, 10));
 
       const changeHandler = vi.fn();
-      set.addEventListener('md-change', changeHandler);
+      set.addEventListener('change', changeHandler);
 
       const buttons = set.querySelectorAll('md-segmented-button');
       const secondButton = buttons[1] as MdSegmentedButton;
@@ -233,12 +233,12 @@ describe('MdSegmentedButtonSet', () => {
       expect(changeHandler).toHaveBeenCalledTimes(1);
     });
 
-    it('includes selected and previousSelected in event detail', async () => {
+    it('includes originalEvent and value in event detail', async () => {
       const set = await createSegmentedButtonSet();
       await new Promise((r) => setTimeout(r, 10));
 
-      let eventDetail: { selected: string[]; previousSelected: string[] } | undefined;
-      set.addEventListener('md-change', ((e: CustomEvent) => {
+      let eventDetail: { originalEvent: Event; value: string[] } | undefined;
+      set.addEventListener('change', ((e: CustomEvent) => {
         eventDetail = e.detail;
       }) as EventListener);
 
@@ -248,8 +248,8 @@ describe('MdSegmentedButtonSet', () => {
 
       fireEvent.click(innerButton);
 
-      expect(eventDetail?.previousSelected).toEqual(['a']);
-      expect(eventDetail?.selected).toEqual(['b']);
+      expect(eventDetail?.originalEvent).toBeTruthy();
+      expect(eventDetail?.value).toEqual(['b']);
     });
   });
 
@@ -279,7 +279,7 @@ describe('MdSegmentedButtonSet', () => {
       await new Promise((r) => setTimeout(r, 10));
 
       const changeHandler = vi.fn();
-      set.addEventListener('md-change', changeHandler);
+      set.addEventListener('change', changeHandler);
 
       const button = set.querySelector(
         'md-segmented-button'

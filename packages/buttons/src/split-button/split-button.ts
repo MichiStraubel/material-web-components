@@ -51,9 +51,10 @@ export type SplitButtonSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge'
  * @slot trailing-icon - Icon for the trailing button (defaults to arrow_drop_down)
  * @slot menu - Slot for menu items (displayed in dropdown)
  *
- * @fires md-leading-click - Fired when the leading button is clicked
- * @fires md-trailing-click - Fired when the trailing button is clicked
- * @fires md-menu-item-click - Fired when a menu item is clicked
+ * @fires click - Native click event when the leading button is clicked (use `element.value` to get the value)
+ * @fires open - Fired when the menu opens
+ * @fires close - Fired when the menu closes
+ * @fires change - Fired when a menu item is selected. Detail: `{ value: string }`
  *
  * @csspart leading - The leading button element
  * @csspart trailing - The trailing button element
@@ -89,6 +90,10 @@ export class MdSplitButton extends MdElement {
   @property({ type: String, attribute: 'trailing-aria-label' })
   trailingAriaLabel: string | null = null;
 
+  /** Value identifier for the split button (accessible via element.value) */
+  @property({ type: String, reflect: true })
+  value = '';
+
   /** Whether the leading icon slot has content */
   @state()
   private hasLeadingIcon = false;
@@ -116,6 +121,7 @@ export class MdSplitButton extends MdElement {
   private handleOutsideClick(event: MouseEvent): void {
     if (this.expanded && !this.contains(event.target as Node)) {
       this.expanded = false;
+      this.emit('close');
     }
   }
 
@@ -190,8 +196,7 @@ export class MdSplitButton extends MdElement {
       event.stopPropagation();
       return;
     }
-
-    this.emit('md-leading-click', { originalEvent: event });
+    // Native click event bubbles up - value is accessible via element.value
   }
 
   private handleTrailingClick(event: MouseEvent): void {
@@ -201,11 +206,10 @@ export class MdSplitButton extends MdElement {
       return;
     }
 
+    event.stopPropagation(); // Prevent document click handler from immediately closing
+
     this.expanded = !this.expanded;
-    this.emit('md-trailing-click', {
-      expanded: this.expanded,
-      originalEvent: event,
-    });
+    this.emit(this.expanded ? 'open' : 'close');
   }
 
   private handleLeadingIconSlotChange(event: Event): void {
@@ -222,18 +226,14 @@ export class MdSplitButton extends MdElement {
 
   private handleMenuClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
-    const menuItem = target.closest('[role="menuitem"], [data-value]') as HTMLElement | null;
+    const menuItem = target.closest('[role="menuitem"], [data-value], [value]') as HTMLElement | null;
 
     if (menuItem) {
-      const value = menuItem.getAttribute('data-value') || menuItem.textContent?.trim() || '';
-
-      this.emit('md-menu-item-click', {
-        value,
-        element: menuItem,
-        originalEvent: event,
-      });
+      const value = menuItem.getAttribute('value') || menuItem.getAttribute('data-value') || menuItem.textContent?.trim() || '';
 
       this.expanded = false;
+      this.emit('close');
+      this.emit('change', { value });
     }
   }
 }
