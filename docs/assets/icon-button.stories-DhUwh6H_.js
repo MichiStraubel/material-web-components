@@ -1,4 +1,4 @@
-import{b as a}from"./iframe-D8vMWjEe.js";import{n as de,e as ce}from"./ref-8gr5vN3U.js";import"./segmented-button-set-GdGoS1Sl.js";import"./preload-helper-BmHEkTjc.js";const ge={title:"MD3 Components/Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+import{b as t}from"./iframe-B-rN3J9a.js";import{n as ue,e as be}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const Se={title:"MD3 Components/Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie eignen sich für:
@@ -26,9 +26,9 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`click\` | Native MouseEvent | Standard-Klick-Event des Buttons |
-| \`md-toggle\` | \`{ selected: boolean }\` | Wird ausgelöst, wenn ein Toggle-Button seinen Zustand ändert |
-        `}}},argTypes:{variant:{control:"select",options:["standard","filled","tonal","outlined"],description:"The visual style variant of the icon button",table:{defaultValue:{summary:"standard"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the icon button (MD3 Expressive)",table:{defaultValue:{summary:"small"}}},shape:{control:"select",options:["round","square"],description:"The shape of the icon button",table:{defaultValue:{summary:"round"}}},width:{control:"select",options:["narrow","default","wide"],description:"The width variant of the icon button",table:{defaultValue:{summary:"default"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},selected:{control:"boolean",description:"Whether the button is in a selected state",table:{defaultValue:{summary:"false"}}},toggle:{control:"boolean",description:"Whether the button acts as a toggle",table:{defaultValue:{summary:"false"}}}},args:{variant:"standard",size:"small",shape:"round",width:"default",disabled:!1,selected:!1,toggle:!1},render:e=>a`
+| \`click\` | \`{ originalEvent: MouseEvent, value: string }\` | Wird ausgelöst, wenn der Button geklickt wird |
+| \`toggle\` | \`{ originalEvent: MouseEvent, value: string, selected: boolean }\` | Wird ausgelöst, wenn ein Toggle-Button seinen Zustand ändert |
+        `}}},argTypes:{variant:{control:"select",options:["standard","filled","tonal","outlined"],description:"The visual style variant of the icon button",table:{defaultValue:{summary:"standard"}}},size:{control:"select",options:["xsmall","small","medium","large","xlarge"],description:"The size of the icon button (MD3 Expressive)",table:{defaultValue:{summary:"small"}}},shape:{control:"select",options:["round","square"],description:"The shape of the icon button",table:{defaultValue:{summary:"round"}}},width:{control:"select",options:["narrow","default","wide"],description:"The width variant of the icon button",table:{defaultValue:{summary:"default"}}},disabled:{control:"boolean",description:"Whether the button is disabled",table:{defaultValue:{summary:"false"}}},selected:{control:"boolean",description:"Whether the button is in a selected state",table:{defaultValue:{summary:"false"}}},toggle:{control:"boolean",description:"Whether the button acts as a toggle",table:{defaultValue:{summary:"false"}}}},args:{variant:"standard",size:"small",shape:"round",width:"default",disabled:!1,selected:!1,toggle:!1},render:e=>t`
     <md-icon-button
       variant=${e.variant}
       size=${e.size}
@@ -41,7 +41,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
     >
       <span class="material-symbols-outlined">favorite</span>
     </md-icon-button>
-  `},s={args:{variant:"standard"}},o={args:{variant:"filled",selected:!0}},r={args:{variant:"tonal",selected:!0}},d={args:{variant:"outlined"}},c={render:()=>a`
+  `},o={args:{variant:"standard"}},r={args:{variant:"filled",selected:!0}},d={args:{variant:"tonal",selected:!0}},c={args:{variant:"outlined"}},m={render:()=>t`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" aria-label="Standard">
         <span class="material-symbols-outlined">favorite</span>
@@ -56,7 +56,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         <span class="material-symbols-outlined">favorite</span>
       </md-icon-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},m={render:()=>a`
+  `,parameters:{controls:{disable:!0}}},p={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">MD3 Expressive: 5 Sizes (XSmall to XLarge)</h4>
@@ -94,7 +94,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         </div>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}},p={render:()=>a`
+  `,parameters:{controls:{disable:!0}}},u={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">MD3 Expressive: 2 Shapes (Round & Square)</h4>
@@ -136,7 +136,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         </div>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}},u={render:()=>a`
+  `,parameters:{controls:{disable:!0}}},b={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">MD3 Expressive: 3 Widths (Narrow, Default, Wide)</h4>
@@ -203,7 +203,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         </div>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}},b={render:()=>a`
+  `,parameters:{controls:{disable:!0}}},v={render:()=>t`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" toggle aria-label="Toggle favorite">
         <span class="material-symbols-outlined">favorite</span>
@@ -218,7 +218,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
       </md-icon-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},v={render:()=>a`
+  `,parameters:{controls:{disable:!0}}},g={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Favorite (outline -> filled)</h4>
@@ -268,7 +268,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         </div>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}},g={render:()=>a`
+  `,parameters:{controls:{disable:!0}}},f={render:()=>t`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
         <h4 style="margin: 0 0 8px; font-size: 14px; color: #666;">Unselected</h4>
@@ -299,7 +299,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         </div>
       </div>
     </div>
-  `,parameters:{controls:{disable:!0}}},y={args:{disabled:!0}},f={render:()=>a`
+  `,parameters:{controls:{disable:!0}}},y={args:{disabled:!0}},x={render:()=>t`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button aria-label="Menu">
         <span class="material-symbols-outlined">menu</span>
@@ -317,20 +317,22 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         <span class="material-symbols-outlined">more_vert</span>
       </md-icon-button>
     </div>
-  `,parameters:{controls:{disable:!0}}},x={render:()=>{const e=ce();return queueMicrotask(()=>{const t=e.value;t&&!t._listenerAttached&&(t._listenerAttached=!0,t.addEventListener("md-toggle",h=>{var l;const n=h,i=(l=t.closest(".event-demo-container"))==null?void 0:l.querySelector(".event-output");i&&(i.textContent=`md-toggle: ${JSON.stringify(n.detail)}`),console.log("md-toggle:",n.detail)}),t.addEventListener("md-click",h=>{var l;const n=h,i=(l=t.closest(".event-demo-container"))==null?void 0:l.querySelector(".event-output");i&&(i.textContent=`md-click: ${JSON.stringify(n.detail)}`),console.log("md-click:",n.detail)}))}),a`
+  `,parameters:{controls:{disable:!0}}},h={render:()=>{const e=be();return queueMicrotask(()=>{const l=e.value;if(l&&!l._listenerAttached){l._listenerAttached=!0;const z=(i,a,n)=>{var S;const s=(S=l.closest(".event-demo-container"))==null?void 0:S.querySelector(".event-output");if(s){const pe=`<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #333;"><span style="color: #666; font-size: 11px;">${new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit",second:"2-digit",fractionalSecondDigits:3})}</span> <span style="color: ${a}; font-weight: 600;">${i}</span>${n?`
+${n}`:""}</div>`,k=s.querySelector(".placeholder");k&&k.remove(),s.insertAdjacentHTML("afterbegin",pe)}};l.addEventListener("click",i=>{var n;const a=i;if(((n=a.detail)==null?void 0:n.value)!==void 0){const s=`<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"${a.detail.value}"</span> }`;z("click","#4fc3f7",s),console.log("click:",a.detail)}}),l.addEventListener("toggle",i=>{const a=i,n=`<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"${a.detail.value}"</span>, <span style="color: #90caf9;">selected</span>: <span style="color: #ce9178;">${a.detail.selected}</span> }`;z("toggle","#ffb74d",n),console.log("toggle:",a.detail)})}}),t`
       <div class="event-demo-container" style="display: flex; flex-direction: column; gap: 24px;">
         <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
           <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
           <p style="margin: 0; font-size: 12px; color: #1976d2;">
-            Klicke den Toggle-Button, um die Events zu testen.
+            Klicke den Toggle-Button, um die Events zu testen. Alle Events werden im Log angezeigt.
           </p>
         </div>
         <div style="display: flex; gap: 24px; align-items: center;">
           <div style="text-align: center;">
             <md-icon-button
-              ${de(e)}
+              ${ue(e)}
               variant="filled"
               toggle
+              value="favorite"
               aria-label="Toggle Button"
             >
               <span class="material-symbols-outlined">favorite</span>
@@ -339,27 +341,71 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
             <div style="font-size: 12px; color: #666; margin-top: 4px;">Toggle</div>
           </div>
         </div>
-        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 40px; margin: 0; white-space: pre-wrap;">Klicke den Button...</pre>
+        <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 100px; max-height: 200px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke den Button, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-icon-button id="fav-btn" toggle value="favorite" aria-label="Favorite"&gt;
+  &lt;span class="material-symbols-outlined"&gt;favorite&lt;/span&gt;
+  &lt;span slot="selected"&gt;...&lt;/span&gt;
+&lt;/md-icon-button&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const iconButton = document.querySelector('#fav-btn');
+iconButton.addEventListener('toggle', (e) =&gt; {
+  console.log('Value:', e.detail.value);
+  console.log('Selected:', e.detail.selected);
+});</code></pre>
+        </div>
       </div>
-    `},parameters:{controls:{disable:!0},docs:{description:{story:"\n### Events\n\n| Event | Detail | Beschreibung |\n|-------|--------|--------------|\n| `md-click` | `{ originalEvent: MouseEvent }` | Wird ausgelöst, wenn der Button geklickt wird |\n| `md-toggle` | `{ selected: boolean, originalEvent: MouseEvent }` | Wird bei Toggle-Buttons ausgelöst, wenn der Zustand wechselt |\n        "}}}};var z,S,k;s.parameters={...s.parameters,docs:{...(z=s.parameters)==null?void 0:z.docs,source:{originalSource:`{
+    `},parameters:{controls:{disable:!0},docs:{description:{story:`
+### Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`click\` | \`{ originalEvent: MouseEvent, value: string }\` | Wird ausgelöst, wenn der Button geklickt wird |
+| \`toggle\` | \`{ originalEvent: MouseEvent, value: string, selected: boolean }\` | Wird bei Toggle-Buttons ausgelöst, wenn der Zustand wechselt |
+
+### Beispiel-Code
+
+\`\`\`html
+<md-icon-button id="fav-btn" toggle value="favorite" aria-label="Favorite">
+  <span class="material-symbols-outlined">favorite</span>
+  <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</md-icon-button>
+\`\`\`
+
+\`\`\`javascript
+const iconButton = document.querySelector('#fav-btn');
+
+// Click Event
+iconButton.addEventListener('click', (e) => {
+  console.log('Value:', e.detail.value);
+});
+
+// Toggle Event (für Toggle-Buttons)
+iconButton.addEventListener('toggle', (e) => {
+  console.log('Value:', e.detail.value);
+  console.log('Selected:', e.detail.selected);
+});
+\`\`\`
+        `}}}};var w,L,E;o.parameters={...o.parameters,docs:{...(w=o.parameters)==null?void 0:w.docs,source:{originalSource:`{
   args: {
     variant: 'standard'
   }
-}`,...(k=(S=s.parameters)==null?void 0:S.docs)==null?void 0:k.source}}};var w,T,L;o.parameters={...o.parameters,docs:{...(w=o.parameters)==null?void 0:w.docs,source:{originalSource:`{
+}`,...(E=(L=o.parameters)==null?void 0:L.docs)==null?void 0:E.source}}};var T,B,M;r.parameters={...r.parameters,docs:{...(T=r.parameters)==null?void 0:T.docs,source:{originalSource:`{
   args: {
     variant: 'filled',
     selected: true
   }
-}`,...(L=(T=o.parameters)==null?void 0:T.docs)==null?void 0:L.source}}};var E,M,F;r.parameters={...r.parameters,docs:{...(E=r.parameters)==null?void 0:E.docs,source:{originalSource:`{
+}`,...(M=(B=r.parameters)==null?void 0:B.docs)==null?void 0:M.source}}};var F,D,W;d.parameters={...d.parameters,docs:{...(F=d.parameters)==null?void 0:F.docs,source:{originalSource:`{
   args: {
     variant: 'tonal',
     selected: true
   }
-}`,...(F=(M=r.parameters)==null?void 0:M.docs)==null?void 0:F.source}}};var W,B,D;d.parameters={...d.parameters,docs:{...(W=d.parameters)==null?void 0:W.docs,source:{originalSource:`{
+}`,...(W=(D=d.parameters)==null?void 0:D.docs)==null?void 0:W.source}}};var q,A,I;c.parameters={...c.parameters,docs:{...(q=c.parameters)==null?void 0:q.docs,source:{originalSource:`{
   args: {
     variant: 'outlined'
   }
-}`,...(D=(B=d.parameters)==null?void 0:B.docs)==null?void 0:D.source}}};var X,q,I;c.parameters={...c.parameters,docs:{...(X=c.parameters)==null?void 0:X.docs,source:{originalSource:`{
+}`,...(I=(A=c.parameters)==null?void 0:A.docs)==null?void 0:I.source}}};var X,_,$;m.parameters={...m.parameters,docs:{...(X=m.parameters)==null?void 0:X.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" aria-label="Standard">
@@ -381,7 +427,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(I=(q=c.parameters)==null?void 0:q.docs)==null?void 0:I.source}}};var _,A,N;m.parameters={...m.parameters,docs:{...(_=m.parameters)==null?void 0:_.docs,source:{originalSource:`{
+}`,...($=(_=m.parameters)==null?void 0:_.docs)==null?void 0:$.source}}};var V,N,R;p.parameters={...p.parameters,docs:{...(V=p.parameters)==null?void 0:V.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -426,7 +472,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(N=(A=m.parameters)==null?void 0:A.docs)==null?void 0:N.source}}};var O,R,V;p.parameters={...p.parameters,docs:{...(O=p.parameters)==null?void 0:O.docs,source:{originalSource:`{
+}`,...(R=(N=p.parameters)==null?void 0:N.docs)==null?void 0:R.source}}};var O,C,H;u.parameters={...u.parameters,docs:{...(O=u.parameters)==null?void 0:O.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -475,7 +521,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(V=(R=p.parameters)==null?void 0:R.docs)==null?void 0:V.source}}};var $,C,K;u.parameters={...u.parameters,docs:{...($=u.parameters)==null?void 0:$.docs,source:{originalSource:`{
+}`,...(H=(C=u.parameters)==null?void 0:C.docs)==null?void 0:H.source}}};var P,U,K;b.parameters={...b.parameters,docs:{...(P=b.parameters)==null?void 0:P.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -549,7 +595,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(K=(C=u.parameters)==null?void 0:C.docs)==null?void 0:K.source}}};var U,H,Z;b.parameters={...b.parameters,docs:{...(U=b.parameters)==null?void 0:U.docs,source:{originalSource:`{
+}`,...(K=(U=b.parameters)==null?void 0:U.docs)==null?void 0:K.source}}};var Z,j,G;v.parameters={...v.parameters,docs:{...(Z=v.parameters)==null?void 0:Z.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button variant="standard" toggle aria-label="Toggle favorite">
@@ -571,7 +617,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(Z=(H=b.parameters)==null?void 0:H.docs)==null?void 0:Z.source}}};var J,P,G;v.parameters={...v.parameters,docs:{...(J=v.parameters)==null?void 0:J.docs,source:{originalSource:`{
+}`,...(G=(j=v.parameters)==null?void 0:j.docs)==null?void 0:G.source}}};var J,Q,Y;g.parameters={...g.parameters,docs:{...(J=g.parameters)==null?void 0:J.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -628,7 +674,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(G=(P=v.parameters)==null?void 0:P.docs)==null?void 0:G.source}}};var j,Q,Y;g.parameters={...g.parameters,docs:{...(j=g.parameters)==null?void 0:j.docs,source:{originalSource:`{
+}`,...(Y=(Q=g.parameters)==null?void 0:Q.docs)==null?void 0:Y.source}}};var ee,te,ae;f.parameters={...f.parameters,docs:{...(ee=f.parameters)==null?void 0:ee.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; flex-direction: column; gap: 24px;">
       <div>
@@ -666,11 +712,11 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(Y=(Q=g.parameters)==null?void 0:Q.docs)==null?void 0:Y.source}}};var ee,ae,te;y.parameters={...y.parameters,docs:{...(ee=y.parameters)==null?void 0:ee.docs,source:{originalSource:`{
+}`,...(ae=(te=f.parameters)==null?void 0:te.docs)==null?void 0:ae.source}}};var ne,le,ie;y.parameters={...y.parameters,docs:{...(ne=y.parameters)==null?void 0:ne.docs,source:{originalSource:`{
   args: {
     disabled: true
   }
-}`,...(te=(ae=y.parameters)==null?void 0:ae.docs)==null?void 0:te.source}}};var ne,ie,le;f.parameters={...f.parameters,docs:{...(ne=f.parameters)==null?void 0:ne.docs,source:{originalSource:`{
+}`,...(ie=(le=y.parameters)==null?void 0:le.docs)==null?void 0:ie.source}}};var se,oe,re;x.parameters={...x.parameters,docs:{...(se=x.parameters)==null?void 0:se.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 16px; align-items: center;">
       <md-icon-button aria-label="Menu">
@@ -695,7 +741,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
       disable: true
     }
   }
-}`,...(le=(ie=f.parameters)==null?void 0:ie.docs)==null?void 0:le.source}}};var se,oe,re;x.parameters={...x.parameters,docs:{...(se=x.parameters)==null?void 0:se.docs,source:{originalSource:`{
+}`,...(re=(oe=x.parameters)==null?void 0:oe.docs)==null?void 0:re.source}}};var de,ce,me;h.parameters={...h.parameters,docs:{...(de=h.parameters)==null?void 0:de.docs,source:{originalSource:`{
   render: () => {
     const buttonRef = createRef<Element>();
     const setupListener = () => {
@@ -706,21 +752,42 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         (el as HTMLElement & {
           _listenerAttached?: boolean;
         })._listenerAttached = true;
-        el.addEventListener('md-toggle', (event: Event) => {
-          const customEvent = event as CustomEvent;
+        const addEvent = (eventName: string, color: string, details?: string) => {
           const output = el.closest('.event-demo-container')?.querySelector('.event-output');
           if (output) {
-            output.textContent = \`md-toggle: \${JSON.stringify(customEvent.detail)}\`;
+            const timestamp = new Date().toLocaleTimeString('de-DE', {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+              fractionalSecondDigits: 3
+            });
+            const eventLine = \`<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #333;"><span style="color: #666; font-size: 11px;">\${timestamp}</span> <span style="color: \${color}; font-weight: 600;">\${eventName}</span>\${details ? \`\\n\${details}\` : ''}</div>\`;
+            const placeholder = output.querySelector('.placeholder');
+            if (placeholder) {
+              placeholder.remove();
+            }
+            output.insertAdjacentHTML('afterbegin', eventLine);
           }
-          console.log('md-toggle:', customEvent.detail);
+        };
+        el.addEventListener('click', (e: Event) => {
+          const customEvent = e as CustomEvent<{
+            originalEvent: MouseEvent;
+            value: string;
+          }>;
+          if (customEvent.detail?.value !== undefined) {
+            const details = \`<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"\${customEvent.detail.value}"</span> }\`;
+            addEvent('click', '#4fc3f7', details);
+            console.log('click:', customEvent.detail);
+          }
         });
-        el.addEventListener('md-click', (event: Event) => {
-          const customEvent = event as CustomEvent;
-          const output = el.closest('.event-demo-container')?.querySelector('.event-output');
-          if (output) {
-            output.textContent = \`md-click: \${JSON.stringify(customEvent.detail)}\`;
-          }
-          console.log('md-click:', customEvent.detail);
+        el.addEventListener('toggle', (event: Event) => {
+          const customEvent = event as CustomEvent<{
+            selected: boolean;
+            value: string;
+          }>;
+          const details = \`<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"\${customEvent.detail.value}"</span>, <span style="color: #90caf9;">selected</span>: <span style="color: #ce9178;">\${customEvent.detail.selected}</span> }\`;
+          addEvent('toggle', '#ffb74d', details);
+          console.log('toggle:', customEvent.detail);
         });
       }
     };
@@ -730,7 +797,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
         <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
           <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
           <p style="margin: 0; font-size: 12px; color: #1976d2;">
-            Klicke den Toggle-Button, um die Events zu testen.
+            Klicke den Toggle-Button, um die Events zu testen. Alle Events werden im Log angezeigt.
           </p>
         </div>
         <div style="display: flex; gap: 24px; align-items: center;">
@@ -739,6 +806,7 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
               \${ref(buttonRef)}
               variant="filled"
               toggle
+              value="favorite"
               aria-label="Toggle Button"
             >
               <span class="material-symbols-outlined">favorite</span>
@@ -747,7 +815,20 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
             <div style="font-size: 12px; color: #666; margin-top: 4px;">Toggle</div>
           </div>
         </div>
-        <pre class="event-output" style="font-size: 12px; color: #666; font-family: monospace; padding: 12px; background: #f5f5f5; border-radius: 4px; min-height: 40px; margin: 0; white-space: pre-wrap;">Klicke den Button...</pre>
+        <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 100px; max-height: 200px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke den Button, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-icon-button id="fav-btn" toggle value="favorite" aria-label="Favorite"&gt;
+  &lt;span class="material-symbols-outlined"&gt;favorite&lt;/span&gt;
+  &lt;span slot="selected"&gt;...&lt;/span&gt;
+&lt;/md-icon-button&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const iconButton = document.querySelector('#fav-btn');
+iconButton.addEventListener('toggle', (e) =&gt; {
+  console.log('Value:', e.detail.value);
+  console.log('Selected:', e.detail.selected);
+});</code></pre>
+        </div>
       </div>
     \`;
   },
@@ -762,10 +843,34 @@ Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie ei
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \\\`md-click\\\` | \\\`{ originalEvent: MouseEvent }\\\` | Wird ausgelöst, wenn der Button geklickt wird |
-| \\\`md-toggle\\\` | \\\`{ selected: boolean, originalEvent: MouseEvent }\\\` | Wird bei Toggle-Buttons ausgelöst, wenn der Zustand wechselt |
+| \\\`click\\\` | \\\`{ originalEvent: MouseEvent, value: string }\\\` | Wird ausgelöst, wenn der Button geklickt wird |
+| \\\`toggle\\\` | \\\`{ originalEvent: MouseEvent, value: string, selected: boolean }\\\` | Wird bei Toggle-Buttons ausgelöst, wenn der Zustand wechselt |
+
+### Beispiel-Code
+
+\\\`\\\`\\\`html
+<md-icon-button id="fav-btn" toggle value="favorite" aria-label="Favorite">
+  <span class="material-symbols-outlined">favorite</span>
+  <span slot="selected" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</md-icon-button>
+\\\`\\\`\\\`
+
+\\\`\\\`\\\`javascript
+const iconButton = document.querySelector('#fav-btn');
+
+// Click Event
+iconButton.addEventListener('click', (e) => {
+  console.log('Value:', e.detail.value);
+});
+
+// Toggle Event (für Toggle-Buttons)
+iconButton.addEventListener('toggle', (e) => {
+  console.log('Value:', e.detail.value);
+  console.log('Selected:', e.detail.selected);
+});
+\\\`\\\`\\\`
         \`
       }
     }
   }
-}`,...(re=(oe=x.parameters)==null?void 0:oe.docs)==null?void 0:re.source}}};const ye=["Standard","Filled","Tonal","Outlined","AllVariants","AllSizes","AllShapes","AllWidths","Toggle","ToggleWithDifferentIcons","SelectedStates","Disabled","CommonIcons","EventHandling"];export{p as AllShapes,m as AllSizes,c as AllVariants,u as AllWidths,f as CommonIcons,y as Disabled,x as EventHandling,o as Filled,d as Outlined,g as SelectedStates,s as Standard,b as Toggle,v as ToggleWithDifferentIcons,r as Tonal,ye as __namedExportsOrder,ge as default};
+}`,...(me=(ce=h.parameters)==null?void 0:ce.docs)==null?void 0:me.source}}};const ke=["Standard","Filled","Tonal","Outlined","AllVariants","AllSizes","AllShapes","AllWidths","Toggle","ToggleWithDifferentIcons","SelectedStates","Disabled","CommonIcons","EventHandling"];export{u as AllShapes,p as AllSizes,m as AllVariants,b as AllWidths,x as CommonIcons,y as Disabled,h as EventHandling,r as Filled,c as Outlined,f as SelectedStates,o as Standard,v as Toggle,g as ToggleWithDifferentIcons,d as Tonal,ke as __namedExportsOrder,Se as default};

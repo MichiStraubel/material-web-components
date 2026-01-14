@@ -1,4 +1,4 @@
-import{b as e}from"./iframe-D8vMWjEe.js";import{n as se,e as le}from"./ref-8gr5vN3U.js";import"./segmented-button-set-GdGoS1Sl.js";import"./preload-helper-BmHEkTjc.js";const ce={title:"MD3 Components/Buttons/FAB Menu",component:"md-fab-menu",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+import{b as e}from"./iframe-B-rN3J9a.js";import{n as le,e as se}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const be={title:"MD3 Components/Buttons/FAB Menu",component:"md-fab-menu",tags:["autodocs","new"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Das FAB Menu erweitert den Standard-FAB um ein **Menü mit verwandten Aktionen**. Es ersetzt das "Speed Dial"-Pattern und gestapelte kleine FABs durch eine einheitliche, expressive Komponente.
@@ -42,9 +42,9 @@ Ideal für:
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \`md-open\` | \`{}\` | Wird ausgelöst, wenn das Menü geöffnet wird |
-| \`md-close\` | \`{}\` | Wird ausgelöst, wenn das Menü geschlossen wird |
-| \`md-item-click\` | \`{ value, label, element, originalEvent }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+| \`open\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geöffnet wird |
+| \`close\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geschlossen wird |
+| \`select\` | \`{ originalEvent, value, label }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
         `}}},argTypes:{variant:{control:"select",options:["surface","primary","secondary","tertiary"],description:"The color variant of the FAB",table:{defaultValue:{summary:"primary"}}},size:{control:"select",options:["small","medium","large"],description:"The size of the FAB",table:{defaultValue:{summary:"medium"}}},disabled:{control:"boolean",description:"Whether the FAB menu is disabled",table:{defaultValue:{summary:"false"}}},lowered:{control:"boolean",description:"Whether the FAB has lowered elevation",table:{defaultValue:{summary:"false"}}},alignment:{control:"select",options:["start","center","end"],description:"Menu alignment relative to the FAB",table:{defaultValue:{summary:"end"}}}},args:{variant:"primary",size:"medium",disabled:!1,lowered:!1,alignment:"end"},render:a=>e`
     <div style="height: 300px; display: flex; align-items: flex-end; justify-content: center; padding: 24px;">
       <md-fab-menu
@@ -281,7 +281,7 @@ Ideal für:
         </md-fab-menu-item>
       </md-fab-menu>
     </div>
-  `,parameters:{controls:{disable:!0},docs:{description:{story:"Das FAB Menu wird typischerweise mit `position: fixed` unten rechts positioniert."}}}},y={render:()=>e`
+  `,parameters:{controls:{disable:!0},docs:{description:{story:"Das FAB Menu wird typischerweise mit `position: fixed` unten rechts positioniert."}}}},g={render:()=>e`
     <div style="position: relative; width: 100%; height: 500px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; overflow: hidden;">
       <div style="padding: 24px; color: white;">
         <h2 style="margin: 0 0 8px; font-size: 24px; font-weight: 500;">My Notes</h2>
@@ -316,8 +316,8 @@ Ideal für:
         </md-fab-menu-item>
       </md-fab-menu>
     </div>
-  `,parameters:{controls:{disable:!0},docs:{description:{story:"Ein realistisches Beispiel einer Notes-App mit FAB Menu für verschiedene Notiz-Typen."}}}},g={render:()=>{const a=le();return queueMicrotask(()=>{const n=a.value;if(n&&!n._listenerAttached){n._listenerAttached=!0;const h=(x,i,s)=>{var l;const t=(l=n.closest(".event-demo-container"))==null?void 0:l.querySelector(".event-output");if(t){const ie=`<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #333;"><span style="color: #666; font-size: 11px;">${new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit",second:"2-digit",fractionalSecondDigits:3})}</span> <span style="color: ${i}; font-weight: 600;">${x}</span>${s?`
-${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacentHTML("afterbegin",ie)}};n.addEventListener("md-open",()=>{h("md-open","#4fc3f7"),console.log("md-open")}),n.addEventListener("md-close",()=>{h("md-close","#ffb74d"),console.log("md-close")}),n.addEventListener("md-item-click",x=>{const i=x,{value:s,label:t}=i.detail,l=`<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"${s}"</span>, <span style="color: #90caf9;">label</span>: <span style="color: #ef9a9a;">"${t}"</span> }`;h("md-item-click","#81c784",l),console.log("md-item-click:",i.detail)})}}),e`
+  `,parameters:{controls:{disable:!0},docs:{description:{story:"Ein realistisches Beispiel einer Notes-App mit FAB Menu für verschiedene Notiz-Typen."}}}},y={render:()=>{const a=se();return queueMicrotask(()=>{const n=a.value;if(n&&!n._listenerAttached){n._listenerAttached=!0;const h=(x,i,l)=>{var s;const t=(s=n.closest(".event-demo-container"))==null?void 0:s.querySelector(".event-output");if(t){const ie=`<div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #333;"><span style="color: #666; font-size: 11px;">${new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit",second:"2-digit",fractionalSecondDigits:3})}</span> <span style="color: ${i}; font-weight: 600;">${x}</span>${l?`
+${l}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacentHTML("afterbegin",ie)}};n.addEventListener("open",()=>{h("open","#4fc3f7"),console.log("open")}),n.addEventListener("close",()=>{h("close","#ffb74d"),console.log("close")}),n.addEventListener("select",x=>{const i=x,{value:l,label:t}=i.detail,s=`<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"${l}"</span>, <span style="color: #90caf9;">label</span>: <span style="color: #ef9a9a;">"${t}"</span> }`;h("select","#81c784",s),console.log("select:",i.detail)})}}),e`
       <div class="event-demo-container" style="display: flex; flex-direction: column; gap: 24px;">
         <div style="padding: 16px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9;">
           <h4 style="margin: 0 0 8px; font-size: 14px; color: #1565c0;">Event-Dokumentation</h4>
@@ -326,7 +326,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
           </p>
         </div>
         <div style="height: 300px; display: flex; align-items: flex-end; justify-content: center;">
-          <md-fab-menu ${se(a)} aria-label="Test menu">
+          <md-fab-menu ${le(a)} aria-label="Test menu">
             <md-fab-menu-item value="photo" label="Take Photo">
               <span class="material-symbols-outlined">photo_camera</span>
             </md-fab-menu-item>
@@ -339,8 +339,72 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
           </md-fab-menu>
         </div>
         <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 150px; max-height: 250px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke das FAB Menu, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-fab-menu id="action-menu" aria-label="Actions"&gt;
+  &lt;md-fab-menu-item value="photo" label="Take Photo"&gt;
+    &lt;span class="material-symbols-outlined"&gt;photo_camera&lt;/span&gt;
+  &lt;/md-fab-menu-item&gt;
+  &lt;md-fab-menu-item value="video" label="Record Video"&gt;
+    &lt;span class="material-symbols-outlined"&gt;videocam&lt;/span&gt;
+  &lt;/md-fab-menu-item&gt;
+&lt;/md-fab-menu&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const fabMenu = document.querySelector('#action-menu');
+
+fabMenu.addEventListener('open', () =&gt; {
+  console.log('Menu opened');
+});
+
+fabMenu.addEventListener('close', () =&gt; {
+  console.log('Menu closed');
+});
+
+fabMenu.addEventListener('select', (e) =&gt; {
+  console.log('Selected:', e.detail.value, e.detail.label);
+  // Output: "photo", "Take Photo"
+});</code></pre>
+        </div>
       </div>
-    `},parameters:{controls:{disable:!0},docs:{description:{story:"\n### Events\n\n| Event | Detail | Beschreibung |\n|-------|--------|--------------|\n| `md-open` | `{}` | Wird ausgelöst, wenn das Menü geöffnet wird |\n| `md-close` | `{}` | Wird ausgelöst, wenn das Menü geschlossen wird |\n| `md-item-click` | `{ value, label, element, originalEvent }` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |\n        "}}}};var k,A,z;m.parameters={...m.parameters,docs:{...(k=m.parameters)==null?void 0:k.docs,source:{originalSource:"{}",...(z=(A=m.parameters)==null?void 0:A.docs)==null?void 0:z.source}}};var E,M,S;o.parameters={...o.parameters,docs:{...(E=o.parameters)==null?void 0:E.docs,source:{originalSource:`{
+    `},parameters:{controls:{disable:!0},docs:{description:{story:`
+### Events
+
+| Event | Detail | Beschreibung |
+|-------|--------|--------------|
+| \`open\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geöffnet wird |
+| \`close\` | \`{ originalEvent }\` | Wird ausgelöst, wenn das Menü geschlossen wird |
+| \`select\` | \`{ originalEvent, value, label }\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+
+### Beispiel-Code
+
+\`\`\`html
+<md-fab-menu id="action-menu" aria-label="Actions">
+  <md-fab-menu-item value="photo" label="Take Photo">
+    <span class="material-symbols-outlined">photo_camera</span>
+  </md-fab-menu-item>
+  <md-fab-menu-item value="video" label="Record Video">
+    <span class="material-symbols-outlined">videocam</span>
+  </md-fab-menu-item>
+</md-fab-menu>
+\`\`\`
+
+\`\`\`javascript
+const fabMenu = document.querySelector('#action-menu');
+
+fabMenu.addEventListener('open', () => {
+  console.log('Menu opened');
+});
+
+fabMenu.addEventListener('close', () => {
+  console.log('Menu closed');
+});
+
+fabMenu.addEventListener('select', (e) => {
+  console.log('Selected:', e.detail.value, e.detail.label);
+  // Output: "photo", "Take Photo"
+});
+\`\`\`
+        `}}}};var M,k,A;m.parameters={...m.parameters,docs:{...(M=m.parameters)==null?void 0:M.docs,source:{originalSource:"{}",...(A=(k=m.parameters)==null?void 0:k.docs)==null?void 0:A.source}}};var E,z,S;o.parameters={...o.parameters,docs:{...(E=o.parameters)==null?void 0:E.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 48px; align-items: flex-end; height: 280px; padding: 24px;">
       <div style="text-align: center;">
@@ -394,7 +458,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       disable: true
     }
   }
-}`,...(S=(M=o.parameters)==null?void 0:M.docs)==null?void 0:S.source}}};var B,L,F;d.parameters={...d.parameters,docs:{...(B=d.parameters)==null?void 0:B.docs,source:{originalSource:`{
+}`,...(S=(z=o.parameters)==null?void 0:z.docs)==null?void 0:S.source}}};var B,L,P;d.parameters={...d.parameters,docs:{...(B=d.parameters)==null?void 0:B.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 48px; align-items: flex-end; height: 300px; padding: 24px;">
       <div style="text-align: center;">
@@ -437,7 +501,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       disable: true
     }
   }
-}`,...(F=(L=d.parameters)==null?void 0:L.docs)==null?void 0:F.source}}};var _,P,D;r.parameters={...r.parameters,docs:{...(_=r.parameters)==null?void 0:_.docs,source:{originalSource:`{
+}`,...(P=(L=d.parameters)==null?void 0:L.docs)==null?void 0:P.source}}};var _,F,T;r.parameters={...r.parameters,docs:{...(_=r.parameters)==null?void 0:_.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 300px; padding: 24px 48px;">
       <div style="text-align: center;">
@@ -480,7 +544,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       disable: true
     }
   }
-}`,...(D=(P=r.parameters)==null?void 0:P.docs)==null?void 0:D.source}}};var I,N,T;u.parameters={...u.parameters,docs:{...(I=u.parameters)==null?void 0:I.docs,source:{originalSource:`{
+}`,...(T=(F=r.parameters)==null?void 0:F.docs)==null?void 0:T.source}}};var D,I,N;u.parameters={...u.parameters,docs:{...(D=u.parameters)==null?void 0:D.docs,source:{originalSource:`{
   render: () => html\`
     <div style="height: 280px; display: flex; align-items: flex-end; justify-content: center; padding: 24px;">
       <md-fab-menu aria-label="Quick actions">
@@ -506,7 +570,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       }
     }
   }
-}`,...(T=(N=u.parameters)==null?void 0:N.docs)==null?void 0:T.source}}};var V,O,$;p.parameters={...p.parameters,docs:{...(V=p.parameters)==null?void 0:V.docs,source:{originalSource:`{
+}`,...(N=(I=u.parameters)==null?void 0:I.docs)==null?void 0:N.source}}};var V,O,C;p.parameters={...p.parameters,docs:{...(V=p.parameters)==null?void 0:V.docs,source:{originalSource:`{
   render: () => html\`
     <div style="height: 350px; display: flex; align-items: flex-end; justify-content: center; padding: 24px;">
       <md-fab-menu aria-label="Create content">
@@ -535,7 +599,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       }
     }
   }
-}`,...($=(O=p.parameters)==null?void 0:O.docs)==null?void 0:$.source}}};var C,W,j;c.parameters={...c.parameters,docs:{...(C=c.parameters)==null?void 0:C.docs,source:{originalSource:`{
+}`,...(C=(O=p.parameters)==null?void 0:O.docs)==null?void 0:C.source}}};var $,j,R;c.parameters={...c.parameters,docs:{...($=c.parameters)==null?void 0:$.docs,source:{originalSource:`{
   render: () => html\`
     <div style="height: 450px; display: flex; align-items: flex-end; justify-content: center; padding: 24px;">
       <md-fab-menu aria-label="All actions">
@@ -570,7 +634,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       }
     }
   }
-}`,...(j=(W=c.parameters)==null?void 0:W.docs)==null?void 0:j.source}}};var R,K,H;b.parameters={...b.parameters,docs:{...(R=b.parameters)==null?void 0:R.docs,source:{originalSource:`{
+}`,...(R=(j=c.parameters)==null?void 0:j.docs)==null?void 0:R.source}}};var W,K,q;b.parameters={...b.parameters,docs:{...(W=b.parameters)==null?void 0:W.docs,source:{originalSource:`{
   render: () => html\`
     <div style="display: flex; gap: 48px; align-items: flex-end; height: 280px; padding: 24px;">
       <div style="text-align: center;">
@@ -602,7 +666,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       disable: true
     }
   }
-}`,...(H=(K=b.parameters)==null?void 0:K.docs)==null?void 0:H.source}}};var q,G,Q;f.parameters={...f.parameters,docs:{...(q=f.parameters)==null?void 0:q.docs,source:{originalSource:`{
+}`,...(q=(K=b.parameters)==null?void 0:K.docs)==null?void 0:q.source}}};var H,G,Q;f.parameters={...f.parameters,docs:{...(H=f.parameters)==null?void 0:H.docs,source:{originalSource:`{
   args: {
     disabled: true
   }
@@ -635,7 +699,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       }
     }
   }
-}`,...(U=(J=v.parameters)==null?void 0:J.docs)==null?void 0:U.source}}};var X,Y,ee;y.parameters={...y.parameters,docs:{...(X=y.parameters)==null?void 0:X.docs,source:{originalSource:`{
+}`,...(U=(J=v.parameters)==null?void 0:J.docs)==null?void 0:U.source}}};var X,Y,ee;g.parameters={...g.parameters,docs:{...(X=g.parameters)==null?void 0:X.docs,source:{originalSource:`{
   render: () => html\`
     <div style="position: relative; width: 100%; height: 500px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; overflow: hidden;">
       <div style="padding: 24px; color: white;">
@@ -682,7 +746,7 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
       }
     }
   }
-}`,...(ee=(Y=y.parameters)==null?void 0:Y.docs)==null?void 0:ee.source}}};var ae,ne,te;g.parameters={...g.parameters,docs:{...(ae=g.parameters)==null?void 0:ae.docs,source:{originalSource:`{
+}`,...(ee=(Y=g.parameters)==null?void 0:Y.docs)==null?void 0:ee.source}}};var ae,ne,te;y.parameters={...y.parameters,docs:{...(ae=y.parameters)==null?void 0:ae.docs,source:{originalSource:`{
   render: () => {
     const menuRef = createRef<Element>();
     const setupListener = () => {
@@ -712,23 +776,23 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
             output.insertAdjacentHTML('afterbegin', eventLine);
           }
         };
-        el.addEventListener('md-open', () => {
-          addEvent('md-open', '#4fc3f7');
-          console.log('md-open');
+        el.addEventListener('open', () => {
+          addEvent('open', '#4fc3f7');
+          console.log('open');
         });
-        el.addEventListener('md-close', () => {
-          addEvent('md-close', '#ffb74d');
-          console.log('md-close');
+        el.addEventListener('close', () => {
+          addEvent('close', '#ffb74d');
+          console.log('close');
         });
-        el.addEventListener('md-item-click', (event: Event) => {
+        el.addEventListener('select', (event: Event) => {
           const customEvent = event as CustomEvent;
           const {
             value,
             label
           } = customEvent.detail;
           const details = \`<span style="color: #81c784;">Payload:</span> { <span style="color: #90caf9;">value</span>: <span style="color: #ef9a9a;">"\${value}"</span>, <span style="color: #90caf9;">label</span>: <span style="color: #ef9a9a;">"\${label}"</span> }\`;
-          addEvent('md-item-click', '#81c784', details);
-          console.log('md-item-click:', customEvent.detail);
+          addEvent('select', '#81c784', details);
+          console.log('select:', customEvent.detail);
         });
       }
     };
@@ -755,6 +819,32 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
           </md-fab-menu>
         </div>
         <div class="event-output" style="font-size: 13px; font-family: 'SF Mono', Monaco, 'Courier New', monospace; padding: 16px; background: #1e1e1e; color: #d4d4d4; border-radius: 8px; min-height: 150px; max-height: 250px; overflow-y: auto; line-height: 1.5;"><span class="placeholder" style="color: #666;">Klicke das FAB Menu, um Events zu sehen...</span></div>
+
+        <div style="margin-top: 16px;">
+          <h4 style="margin: 0 0 12px; font-size: 14px; color: #333;">Beispiel-Code</h4>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0 0 12px 0; font-size: 13px; line-height: 1.5;"><code>&lt;md-fab-menu id="action-menu" aria-label="Actions"&gt;
+  &lt;md-fab-menu-item value="photo" label="Take Photo"&gt;
+    &lt;span class="material-symbols-outlined"&gt;photo_camera&lt;/span&gt;
+  &lt;/md-fab-menu-item&gt;
+  &lt;md-fab-menu-item value="video" label="Record Video"&gt;
+    &lt;span class="material-symbols-outlined"&gt;videocam&lt;/span&gt;
+  &lt;/md-fab-menu-item&gt;
+&lt;/md-fab-menu&gt;</code></pre>
+          <pre style="background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 0; font-size: 13px; line-height: 1.5;"><code>const fabMenu = document.querySelector('#action-menu');
+
+fabMenu.addEventListener('open', () =&gt; {
+  console.log('Menu opened');
+});
+
+fabMenu.addEventListener('close', () =&gt; {
+  console.log('Menu closed');
+});
+
+fabMenu.addEventListener('select', (e) =&gt; {
+  console.log('Selected:', e.detail.value, e.detail.label);
+  // Output: "photo", "Take Photo"
+});</code></pre>
+        </div>
       </div>
     \`;
   },
@@ -769,11 +859,41 @@ ${s}`:""}</div>`,w=t.querySelector(".placeholder");w&&w.remove(),t.insertAdjacen
 
 | Event | Detail | Beschreibung |
 |-------|--------|--------------|
-| \\\`md-open\\\` | \\\`{}\\\` | Wird ausgelöst, wenn das Menü geöffnet wird |
-| \\\`md-close\\\` | \\\`{}\\\` | Wird ausgelöst, wenn das Menü geschlossen wird |
-| \\\`md-item-click\\\` | \\\`{ value, label, element, originalEvent }\\\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+| \\\`open\\\` | \\\`{ originalEvent }\\\` | Wird ausgelöst, wenn das Menü geöffnet wird |
+| \\\`close\\\` | \\\`{ originalEvent }\\\` | Wird ausgelöst, wenn das Menü geschlossen wird |
+| \\\`select\\\` | \\\`{ originalEvent, value, label }\\\` | Wird ausgelöst, wenn ein Menü-Item geklickt wird |
+
+### Beispiel-Code
+
+\\\`\\\`\\\`html
+<md-fab-menu id="action-menu" aria-label="Actions">
+  <md-fab-menu-item value="photo" label="Take Photo">
+    <span class="material-symbols-outlined">photo_camera</span>
+  </md-fab-menu-item>
+  <md-fab-menu-item value="video" label="Record Video">
+    <span class="material-symbols-outlined">videocam</span>
+  </md-fab-menu-item>
+</md-fab-menu>
+\\\`\\\`\\\`
+
+\\\`\\\`\\\`javascript
+const fabMenu = document.querySelector('#action-menu');
+
+fabMenu.addEventListener('open', () => {
+  console.log('Menu opened');
+});
+
+fabMenu.addEventListener('close', () => {
+  console.log('Menu closed');
+});
+
+fabMenu.addEventListener('select', (e) => {
+  console.log('Selected:', e.detail.value, e.detail.label);
+  // Output: "photo", "Take Photo"
+});
+\\\`\\\`\\\`
         \`
       }
     }
   }
-}`,...(te=(ne=g.parameters)==null?void 0:ne.docs)==null?void 0:te.source}}};const be=["Default","AllVariants","AllSizes","MenuAlignments","IconOnlyItems","WithLabels","MaxItems","Lowered","Disabled","PositionedExample","RealWorldExample","EventHandling"];export{d as AllSizes,o as AllVariants,m as Default,f as Disabled,g as EventHandling,u as IconOnlyItems,b as Lowered,c as MaxItems,r as MenuAlignments,v as PositionedExample,y as RealWorldExample,p as WithLabels,be as __namedExportsOrder,ce as default};
+}`,...(te=(ne=y.parameters)==null?void 0:ne.docs)==null?void 0:te.source}}};const fe=["Default","AllVariants","AllSizes","MenuAlignments","IconOnlyItems","WithLabels","MaxItems","Lowered","Disabled","PositionedExample","RealWorldExample","EventHandling"];export{d as AllSizes,o as AllVariants,m as Default,f as Disabled,y as EventHandling,u as IconOnlyItems,b as Lowered,c as MaxItems,r as MenuAlignments,v as PositionedExample,g as RealWorldExample,p as WithLabels,fe as __namedExportsOrder,be as default};
