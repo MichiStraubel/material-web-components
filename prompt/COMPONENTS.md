@@ -1,36 +1,28 @@
 # Komponenten-Spezifikationen
 
-## md-button
+> **Hinweis:** Dies ist eine Kurzreferenz. Detaillierte MD3-Spezifikationen (Tokens, Dimensionen, Animationen) befinden sich in den jeweiligen Package-SPEC.md Dateien.
 
-**Package:** `@material-wc/buttons`
-**MD3 Spec:** https://m3.material.io/components/buttons/specs
+---
 
-Material Design 3 Button mit zwei Modi:
-- **Default Mode:** Standard-Button mit verschiedenen Varianten
-- **Toggle Mode:** Für Verwendung in Button Groups (mit `toggle` Attribut)
+## Buttons (`@material-wc/buttons`)
+
+> **Detaillierte Specs:** [packages/buttons/SPEC.md](../packages/buttons/SPEC.md)
+
+### md-button
 
 | Property | Type | Default | Beschreibung |
 |----------|------|---------|--------------|
-| `variant` | `'filled' \| 'outlined' \| 'text' \| 'elevated' \| 'tonal'` | `'filled'` | Visueller Stil (nur im Default-Modus) |
-| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Button-Größe (Default-Modus) |
+| `variant` | `'filled' \| 'outlined' \| 'text' \| 'elevated' \| 'tonal'` | `'filled'` | Visueller Stil |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Button-Größe |
 | `disabled` | `boolean` | `false` | Deaktiviert |
-| `fullWidth` | `boolean` | `false` | Volle Breite |
-| `iconPosition` | `'start' \| 'end'` | `'start'` | Icon-Position |
-| `href` | `string` | - | Link-Modus (rendert als `<a>`) |
-| `target` | `'_blank' \| '_self' \| '_parent' \| '_top'` | - | Link-Target |
 | `toggle` | `boolean` | `false` | Toggle-Modus für Button Groups |
 | `selected` | `boolean` | `false` | Ausgewählt (bei toggle) |
-| `value` | `string` | `''` | Wert für Toggle-Buttons in Groups |
+| `value` | `string` | `''` | Wert für Events |
+| `href` | `string` | - | Link-Modus |
 
-**Slots:**
-- Default: Button-Label
-- `icon`: Icon-Slot
+**Slots:** Default (Label), `icon`
+**Events:** `click`
 
-**Events:**
-- `md-click`: Fired on click (detail: `{ originalEvent: MouseEvent }`)
-- `md-toggle-click`: Fired bei Toggle-Buttons (detail: `{ value: string, selected: boolean, originalEvent: MouseEvent }`)
-
-**Beispiel Default-Modus:**
 ```html
 <md-button variant="filled">Click me</md-button>
 <md-button variant="outlined">
@@ -39,300 +31,191 @@ Material Design 3 Button mit zwei Modi:
 </md-button>
 ```
 
-**Beispiel Toggle-Modus (in Button Group):**
-```html
-<md-button-group>
-  <md-button toggle value="day" selected>Day</md-button>
-  <md-button toggle value="week">Week</md-button>
-  <md-button toggle value="month">Month</md-button>
-</md-button-group>
-```
-
 ---
 
-## md-icon-button
-
-**Package:** `@material-wc/buttons`
-**MD3 Spec:** https://m3.material.io/components/icon-buttons/specs
+### md-icon-button
 
 | Property | Type | Default | Beschreibung |
 |----------|------|---------|--------------|
 | `variant` | `'standard' \| 'filled' \| 'tonal' \| 'outlined'` | `'standard'` | Visueller Stil |
-| `size` | `'xsmall' \| 'small' \| 'medium' \| 'large' \| 'xlarge'` | `'small'` | Container-Größe (MD3 Expressive) |
-| `shape` | `'round' \| 'square'` | `'round'` | Form (MD3 Expressive) |
-| `width` | `'narrow' \| 'default' \| 'wide'` | `'default'` | Breiten-Variante (MD3 Expressive) |
-| `disabled` | `boolean` | `false` | Deaktiviert |
-| `toggle` | `boolean` | `false` | Toggle-Modus aktivieren |
-| `selected` | `boolean` | `false` | Ausgewählt (bei toggle) |
-| `href` | `string` | - | Link-Modus |
-| `target` | `string` | - | Link-Target |
+| `size` | `'xsmall' \| 'small' \| 'medium' \| 'large' \| 'xlarge'` | `'small'` | Container-Größe |
+| `shape` | `'round' \| 'square'` | `'round'` | Form |
+| `toggle` | `boolean` | `false` | Toggle-Modus |
+| `selected` | `boolean` | `false` | Ausgewählt |
+| `value` | `string` | `''` | Wert für Events |
 | `aria-label` | `string` | - | Accessible Label (required) |
 
-**MD3 Expressive Größen:**
-- XSmall: 32dp Container
-- Small: 36dp Container (default)
-- Medium: 40dp Container
-- Large: 48dp Container
-- XLarge: 56dp Container
-- Icon: immer 24dp
+**Slots:** Default (Icon), `selected` (Icon bei selected)
+**Events:** `click`, `toggle`
 
-**Slots:**
-- Default: Icon (unselected state)
-- `selected`: Icon für selected state (bei toggle)
-
-**Events:**
-- `md-click`: Fired on click
-- `md-toggle`: Fired when toggle state changes (detail: `{ selected: boolean }`)
+```html
+<md-icon-button aria-label="Settings">
+  <md-icon>settings</md-icon>
+</md-icon-button>
+```
 
 ---
 
-## md-fab
-
-**Package:** `@material-wc/buttons`
-**MD3 Spec:** https://m3.material.io/components/floating-action-button/specs
+### md-fab
 
 | Property | Type | Default | Beschreibung |
 |----------|------|---------|--------------|
 | `variant` | `'surface' \| 'primary' \| 'secondary' \| 'tertiary'` | `'primary'` | Farb-Variante |
-| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | FAB-Größe |
-| `disabled` | `boolean` | `false` | Deaktiviert |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Größe (40/56/96dp) |
 | `label` | `string` | - | Extended FAB Label |
 | `lowered` | `boolean` | `false` | Reduzierte Elevation |
+| `value` | `string` | `''` | Wert für Events |
 
-**Größen:**
-- Small: 40dp
-- Medium: 56dp (default)
-- Large: 96dp
+**Slots:** Default (Icon)
+**Events:** `click`
 
-**Slots:**
-- Default: Icon
-
-**Events:**
-- `md-click`: Fired on click
-
----
-
-## md-icon
-
-**Package:** `@material-wc/core`
-
-| Property | Type | Default | Beschreibung |
-|----------|------|---------|--------------|
-| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Icon-Größe |
-
-**Größen:**
-- Small: 20dp
-- Medium: 24dp (default)
-- Large: 40dp
-
-**Slots:**
-- Default: Icon-Content (Font-Icon oder SVG)
-
----
-
-## md-button-group
-
-**Package:** `@material-wc/buttons`
-**MD3 Spec:** https://m3.material.io/components/button-groups/specs
-
-Container-Komponente für Connected Button Groups (MD3 Expressive).
-
-| Property | Type | Default | Beschreibung |
-|----------|------|---------|--------------|
-| `selection-mode` | `'single' \| 'multi'` | `'single'` | Auswahlmodus (Radio oder Checkbox) |
-| `size` | `'xsmall' \| 'small' \| 'medium' \| 'large' \| 'xlarge'` | `'medium'` | Größe aller Buttons (MD3 Expressive) |
-| `disabled` | `boolean` | `false` | Alle Buttons deaktiviert |
-| `aria-label` | `string` | - | Accessible Label für die Gruppe |
-
-**MD3 Expressive Größen:**
-- XSmall: 32dp Höhe
-- Small: 36dp Höhe
-- Medium: 40dp Höhe (default)
-- Large: 48dp Höhe
-- XLarge: 56dp Höhe
-
-**MD3 Expressive Features:**
-- Connected Button Shapes: Leading/Middle/Trailing Positionen
-- Selected Buttons werden immer fully rounded
-- 4dp Spacing zwischen Buttons
-- Border-Radius skaliert mit Größe (halbe Höhe für fully rounded)
-
-**Slots:**
-- Default: `md-button` Kinder mit `toggle` Attribut
-
-**Events:**
-- `md-change`: Fired bei Auswahländerung (detail: `{ selected: string[], previousSelected: string[] }`)
-
-**Accessibility:**
-- Single-select: `role="radiogroup"` mit `role="radio"` Kindern
-- Multi-select: `role="group"` mit `role="checkbox"` Kindern
-- Keyboard: Arrow Keys, Home/End, Space/Enter
-
-**Beispiel Single-Select:**
 ```html
-<md-button-group selection-mode="single" aria-label="View options">
+<md-fab aria-label="Add">
+  <md-icon>add</md-icon>
+</md-fab>
+<md-fab label="Create" variant="tertiary">
+  <md-icon>edit</md-icon>
+</md-fab>
+```
+
+---
+
+### md-button-group
+
+| Property | Type | Default | Beschreibung |
+|----------|------|---------|--------------|
+| `selection-mode` | `'single' \| 'multi'` | `'single'` | Auswahlmodus |
+| `size` | `'xsmall' \| 'small' \| 'medium' \| 'large' \| 'xlarge'` | `'medium'` | Größe aller Buttons |
+| `disabled` | `boolean` | `false` | Alle deaktiviert |
+
+**Slots:** `md-button` Kinder mit `toggle`
+**Events:** `change` (detail: `{ value: string[] }`)
+
+```html
+<md-button-group selection-mode="single" aria-label="View">
   <md-button toggle value="day" selected>Day</md-button>
   <md-button toggle value="week">Week</md-button>
   <md-button toggle value="month">Month</md-button>
 </md-button-group>
 ```
 
-**Beispiel Multi-Select mit Icons:**
-```html
-<md-button-group selection-mode="multi" aria-label="Text formatting">
-  <md-button toggle value="bold" aria-label="Bold">
-    <md-icon slot="icon">format_bold</md-icon>
-  </md-button>
-  <md-button toggle value="italic" aria-label="Italic">
-    <md-icon slot="icon">format_italic</md-icon>
-  </md-button>
-</md-button-group>
-```
-
 ---
 
-## md-split-button
-
-**Package:** `@material-wc/buttons`
-**MD3 Spec:** https://m3.material.io/components/menus/specs (für Dropdown-Menü)
-
-Material Design 3 Split Button kombiniert einen primären Aktions-Button mit einem sekundären Button, der ein Dropdown-Menü öffnet.
-
-### MD3 Split Button Layout (Material 3 Expressive)
-- **Leading Button:** Führt die primäre Aktion aus
-- **Trailing Button:** Öffnet ein Dropdown-Menü mit zusätzlichen Optionen
-- Im expanded-Zustand wird der Trailing Button kreisförmig
+### md-split-button
 
 | Property | Type | Default | Beschreibung |
 |----------|------|---------|--------------|
 | `variant` | `'filled' \| 'tonal' \| 'outlined' \| 'elevated'` | `'filled'` | Visueller Stil |
-| `size` | `'xsmall' \| 'small' \| 'medium' \| 'large' \| 'xlarge'` | `'medium'` | Button-Größe (MD3 Expressive) |
+| `size` | `'xsmall' \| 'small' \| 'medium' \| 'large' \| 'xlarge'` | `'medium'` | Größe |
 | `disabled` | `boolean` | `false` | Deaktiviert |
-| `leading-aria-label` | `string` | - | Accessible Label für Leading Button |
-| `trailing-aria-label` | `string` | `'More options'` | Accessible Label für Trailing Button |
+| `value` | `string` | `''` | Wert für primäre Aktion |
+| `leading-aria-label` | `string` | - | Label für Leading Button |
+| `trailing-aria-label` | `string` | `'More options'` | Label für Trailing Button |
 
-**MD3 Expressive Größen:**
-- XSmall: 32dp
-- Small: 36dp
-- Medium: 40dp (default)
-- Large: 48dp
-- XLarge: 56dp
+**Slots:** Default (Label), `leading-icon`, `trailing-icon`, `menu`
+**Events:** `click` (native), `open`, `close`, `change` (detail: `{ value }`)
 
-### MD3 Menu Spezifikationen
-
-Das Dropdown-Menü folgt den MD3 Menu Guidelines:
-
-**Container:**
-- Background: `surface-container` Token
-- Border-radius: 4dp (`--radius-sm`)
-- Elevation: Level 2 Shadow
-- Min-width: 112dp
-- Max-width: 280dp
-- Padding: 8dp vertikal
-
-**Menu Items:**
-- Height: 48dp (Standard)
-- Padding: 12dp vertikal, 16dp horizontal
-- Typography: 14px (`body-large`)
-- Text color: `on-surface`
-- Hover state: 8% `on-surface` Overlay
-- Focus state: 12% `on-surface` Overlay
-
-**Animation:**
-- Open: Scale von 0.8 auf 1.0 mit `standard` Easing
-- Duration: `short-2` (~100ms)
-- Transform-origin: top right
-
-**Slots:**
-- Default: Leading Button Label
-- `leading-icon`: Icon für den Leading Button
-- `trailing-icon`: Icon für den Trailing Button (default: `arrow_drop_down`)
-- `menu`: Menu Items für das Dropdown
-
-**Events:**
-- `md-leading-click`: Fired bei Klick auf Leading Button (detail: `{ originalEvent: MouseEvent }`)
-- `md-trailing-click`: Fired bei Klick auf Trailing Button (detail: `{ expanded: boolean, originalEvent: MouseEvent }`)
-- `md-menu-item-click`: Fired bei Klick auf Menu Item (detail: `{ value: string, element: HTMLElement, originalEvent: MouseEvent }`)
-
-**CSS Parts:**
-- `leading`: Der Leading Button
-- `trailing`: Der Trailing Button
-- `menu`: Der Dropdown-Menü Container
-
-**Font Dependency:**
-Der Standard-Trailing-Icon (`arrow_drop_down`) benötigt den Material Symbols Outlined Font:
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-```
-
-**Beispiel:**
-```html
-<md-split-button
-  @md-leading-click=${() => console.log('Save clicked')}
-  @md-menu-item-click=${(e) => console.log('Menu item:', e.detail.value)}
->
+<md-split-button value="save">
   <span slot="leading-icon" class="material-symbols-outlined">save</span>
   Save
-  <button slot="menu" role="menuitem" data-value="save-as">Save As...</button>
-  <button slot="menu" role="menuitem" data-value="save-copy">Save a Copy</button>
-  <button slot="menu" role="menuitem" data-value="save-template">Save as Template</button>
+  <button slot="menu" role="menuitem" value="save-as">Save As...</button>
+  <button slot="menu" role="menuitem" value="save-copy">Save a Copy</button>
 </md-split-button>
 ```
 
-**Beispiel mit Varianten:**
+---
+
+## Text Fields (`@material-wc/textfields`)
+
+> **Detaillierte Specs:** [packages/textfields/SPEC.md](../packages/textfields/SPEC.md)
+
+### md-filled-text-field
+
+| Property | Type | Default | Beschreibung |
+|----------|------|---------|--------------|
+| `value` | `string` | `''` | Aktueller Wert |
+| `label` | `string` | `''` | Floating Label |
+| `placeholder` | `string` | `''` | Placeholder-Text |
+| `type` | `string` | `'text'` | Input-Typ (text, email, password, etc.) |
+| `disabled` | `boolean` | `false` | Deaktiviert |
+| `required` | `boolean` | `false` | Pflichtfeld |
+| `error` | `boolean` | `false` | Error-Zustand |
+| `error-text` | `string` | `''` | Fehlermeldung |
+| `supporting-text` | `string` | `''` | Hilfetext |
+| `prefix-text` | `string` | `''` | Text vor dem Input |
+| `suffix-text` | `string` | `''` | Text nach dem Input |
+| `maxlength` | `number` | - | Max. Zeichenanzahl |
+
+**Slots:** `leading-icon`, `trailing-icon`
+**Events:** `input`, `change`, `focus`, `blur` (alle native)
+
 ```html
-<md-split-button variant="tonal" size="large">
-  <span slot="leading-icon" class="material-symbols-outlined">send</span>
-  Send
-  <button slot="menu" role="menuitem" data-value="send-now">Send Now</button>
-  <button slot="menu" role="menuitem" data-value="schedule">Schedule Send</button>
-</md-split-button>
+<md-filled-text-field label="Name" required></md-filled-text-field>
+<md-filled-text-field
+  label="Email"
+  type="email"
+  supporting-text="We'll never share your email"
+>
+  <md-icon slot="leading-icon">email</md-icon>
+</md-filled-text-field>
 ```
 
-**Beispiel mit Menu-Item Icons:**
+---
+
+### md-outlined-text-field
+
+Identische API wie `md-filled-text-field`, aber mit Outline-Styling statt gefülltem Hintergrund.
+
 ```html
-<md-split-button>
-  <span slot="leading-icon" class="material-symbols-outlined">save</span>
-  Save
-  <button slot="menu" role="menuitem" data-value="save-as">
-    <span class="material-symbols-outlined">save_as</span>
-    Save As...
-  </button>
-  <button slot="menu" role="menuitem" data-value="save-copy">
-    <span class="material-symbols-outlined">file_copy</span>
-    Save a Copy
-  </button>
-</md-split-button>
+<md-outlined-text-field label="Username"></md-outlined-text-field>
+<md-outlined-text-field
+  label="Password"
+  type="password"
+  error
+  error-text="Password must be at least 8 characters"
+></md-outlined-text-field>
 ```
 
 ---
 
-## md-toggle-button (Deprecated)
+## Core (`@material-wc/core`)
 
-> **Deprecated:** Verwende stattdessen `md-button` mit `toggle` Attribut.
->
-> ```html
-> <!-- Alt (deprecated) -->
-> <md-toggle-button value="day">Day</md-toggle-button>
->
-> <!-- Neu -->
-> <md-button toggle value="day">Day</md-button>
-> ```
+### md-icon
 
-**Package:** `@material-wc/buttons`
+| Property | Type | Default | Beschreibung |
+|----------|------|---------|--------------|
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | Größe (20/24/40dp) |
 
----
+**Slots:** Default (Icon-Content)
 
-## md-segmented-button-set (Deprecated)
-
-> **Deprecated:** Verwende stattdessen `md-button-group`.
-> Segmented Buttons wurden in MD3 Expressive durch Connected Button Groups ersetzt.
-
-**Package:** `@material-wc/buttons`
+```html
+<md-icon>settings</md-icon>
+<md-icon size="large">home</md-icon>
+```
 
 ---
 
-## md-segmented-button (Deprecated)
+## Deprecated Components
 
-> **Deprecated:** Verwende stattdessen `md-button` mit `toggle` Attribut.
-> Segmented Buttons wurden in MD3 Expressive durch Connected Button Groups ersetzt.
+### md-toggle-button
+
+> **Deprecated:** Verwende `md-button` mit `toggle` Attribut.
+
+### md-segmented-button-set / md-segmented-button
+
+> **Deprecated:** Verwende `md-button-group` mit `md-button toggle`.
+
+---
+
+## Event-Konventionen (MD3)
+
+Per MD3-Konvention verwenden wir:
+
+| Event-Typ | Beispiele | Payload |
+|-----------|-----------|---------|
+| **Native** | `click`, `input`, `change` | Standard (value via `element.value`) |
+| **Lifecycle** | `open`, `close` | Kein Payload |
+| **Selection** | `change` (bei Menüs) | `{ value: string }` |
+
+Keine erweiterten Payloads für Standard-Aktionen. Werte sind über `element.value` abrufbar.
