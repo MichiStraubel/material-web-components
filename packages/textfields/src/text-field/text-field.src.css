@@ -1,0 +1,487 @@
+@import "tailwindcss";
+@import "../../../../packages/core/src/tokens/tokens.css";
+
+/* ===========================================
+   MD3 TEXT FIELD
+   Material Design 3 Specification
+   https://m3.material.io/components/text-fields/specs
+
+   Unified component supporting both filled and outlined variants
+   via the `variant` attribute.
+   =========================================== */
+
+/* ===========================================
+   HOST STYLES
+   =========================================== */
+
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  width: 280px;
+  min-width: 112px;
+}
+
+:host([disabled]) {
+  pointer-events: none;
+}
+
+/* ===========================================
+   CONTAINER BASE
+   MD3: 56dp height, with label animation
+   =========================================== */
+
+.md-text-field {
+  @apply relative flex items-center;
+  min-height: 56px;
+  cursor: text;
+}
+
+.md-text-field--textarea {
+  min-height: auto;
+  align-items: flex-start;
+}
+
+/* ===========================================
+   INPUT STYLES
+   =========================================== */
+
+.md-text-field__input {
+  @apply flex-1 w-full h-full;
+  @apply bg-transparent border-none outline-none;
+  font: var(--text-body-lg);
+  color: var(--color-on-surface);
+  caret-color: var(--color-primary);
+  padding: 0;
+}
+
+.md-text-field__input::placeholder {
+  color: var(--color-on-surface-variant);
+  opacity: 0;
+  transition: opacity var(--duration-short-2) var(--easing-standard);
+}
+
+/* Show placeholder when focused and label is floating */
+.md-text-field--focused .md-text-field__input::placeholder {
+  opacity: 1;
+}
+
+.md-text-field__input:disabled {
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* Textarea specific */
+textarea.md-text-field__input {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Remove native spinners for number inputs */
+.md-text-field__input[type="number"]::-webkit-inner-spin-button,
+.md-text-field__input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.md-text-field__input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ===========================================
+   LABEL STYLES
+   MD3: Floating label animation
+   - Resting: 16sp, centered
+   - Floating: 12sp, top
+   =========================================== */
+
+.md-text-field__label {
+  @apply absolute pointer-events-none;
+  font: var(--text-body-lg);
+  color: var(--color-on-surface-variant);
+  transition: all var(--duration-short-2) var(--easing-standard);
+  transform-origin: left top;
+}
+
+.md-text-field__label--floating {
+  font: var(--text-body-sm);
+}
+
+.md-text-field__label--error {
+  color: var(--color-error);
+}
+
+/* Focused label color */
+.md-text-field--focused .md-text-field__label {
+  color: var(--color-primary);
+}
+
+.md-text-field--focused .md-text-field__label--error {
+  color: var(--color-error);
+}
+
+/* ===========================================
+   PREFIX / SUFFIX TEXT
+   MD3: body-large, on-surface-variant
+   =========================================== */
+
+.md-text-field__prefix,
+.md-text-field__suffix {
+  font: var(--text-body-lg);
+  color: var(--color-on-surface-variant);
+  white-space: nowrap;
+}
+
+.md-text-field__prefix {
+  margin-right: var(--spacing-xs);
+}
+
+.md-text-field__suffix {
+  margin-left: var(--spacing-xs);
+}
+
+/* ===========================================
+   ICON STYLES
+   MD3: 24dp icons
+   =========================================== */
+
+.md-text-field__leading-icon,
+.md-text-field__trailing-icon {
+  @apply flex items-center justify-center;
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  color: var(--color-on-surface-variant);
+}
+
+.md-text-field__leading-icon {
+  margin-right: var(--spacing-lg);
+}
+
+.md-text-field__trailing-icon {
+  margin-left: var(--spacing-lg);
+}
+
+.md-text-field__leading-icon[hidden],
+.md-text-field__trailing-icon[hidden] {
+  display: none;
+}
+
+.md-text-field__leading-icon ::slotted(*),
+.md-text-field__trailing-icon ::slotted(*) {
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+}
+
+/* Error state icon color */
+.md-text-field--error .md-text-field__trailing-icon {
+  color: var(--color-error);
+}
+
+/* ===========================================
+   SUPPORTING TEXT
+   MD3: body-small, below field
+   =========================================== */
+
+.md-text-field__supporting {
+  @apply flex justify-between;
+  padding: var(--spacing-xs) var(--spacing-lg) 0;
+  font: var(--text-body-sm);
+  color: var(--color-on-surface-variant);
+}
+
+.md-text-field__supporting--error {
+  color: var(--color-error);
+}
+
+.md-text-field__supporting-text {
+  flex: 1;
+}
+
+.md-text-field__counter {
+  margin-left: var(--spacing-lg);
+  white-space: nowrap;
+}
+
+/* ===========================================
+   DISABLED STATE
+   MD3: 38% opacity content, 4% container
+   =========================================== */
+
+.md-text-field--disabled {
+  pointer-events: none;
+}
+
+.md-text-field--disabled .md-text-field__label {
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+.md-text-field--disabled .md-text-field__prefix,
+.md-text-field--disabled .md-text-field__suffix {
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+.md-text-field--disabled .md-text-field__leading-icon,
+.md-text-field--disabled .md-text-field__trailing-icon {
+  color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* ===========================================
+   INPUT WRAPPER
+   Contains prefix, input, suffix
+   =========================================== */
+
+.md-text-field__input-wrapper {
+  @apply flex flex-1 items-center;
+  min-width: 0;
+}
+
+/* ===========================================
+   FOCUS RING
+   MD3: 2px outline on focus-visible
+   =========================================== */
+
+.md-text-field:focus-within {
+  outline: none;
+}
+
+/* ===========================================
+   FILLED VARIANT
+   MD3: surface-container-highest background
+   Top corners: 4dp radius, Bottom corners: 0
+   =========================================== */
+
+.md-text-field--filled {
+  background-color: var(--color-surface-container-highest);
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+  padding: 0 var(--spacing-lg);
+}
+
+/* With leading icon */
+.md-text-field--filled.md-text-field--has-leading-icon {
+  padding-left: var(--spacing-md);
+}
+
+/* With trailing icon */
+.md-text-field--filled.md-text-field--has-trailing-icon {
+  padding-right: var(--spacing-md);
+}
+
+/* Active Indicator (Bottom Border) - 1dp default, 2dp focused */
+.md-text-field--filled::after {
+  @apply absolute bottom-0 left-0 right-0;
+  content: '';
+  height: 1px;
+  background-color: var(--color-on-surface-variant);
+  transition: all var(--duration-short-2) var(--easing-standard);
+}
+
+/* Focused state - thicker indicator */
+.md-text-field--filled.md-text-field--focused::after {
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+/* Error state */
+.md-text-field--filled.md-text-field--error::after {
+  background-color: var(--color-error);
+}
+
+.md-text-field--filled.md-text-field--error.md-text-field--focused::after {
+  height: 2px;
+  background-color: var(--color-error);
+}
+
+/* Disabled state */
+.md-text-field--filled.md-text-field--disabled {
+  background-color: color-mix(in srgb, var(--color-on-surface) 4%, transparent);
+}
+
+.md-text-field--filled.md-text-field--disabled::after {
+  background-color: color-mix(in srgb, var(--color-on-surface) 38%, transparent);
+}
+
+/* Label Positioning (Filled) */
+.md-text-field--filled .md-text-field__label {
+  left: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* With leading icon */
+.md-text-field--filled.md-text-field--has-leading-icon .md-text-field__label {
+  left: calc(var(--spacing-md) + var(--size-icon-md) + var(--spacing-lg));
+}
+
+/* Floating label */
+.md-text-field--filled .md-text-field__label--floating {
+  top: 8px;
+  transform: translateY(0);
+}
+
+/* Input Positioning (Filled) - Input moves down when label is floating */
+.md-text-field--filled .md-text-field__input-wrapper {
+  padding-top: 24px;
+  padding-bottom: 8px;
+}
+
+/* Without label - center the input */
+.md-text-field--filled.md-text-field--no-label .md-text-field__input-wrapper {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* Textarea adjustments (Filled) */
+.md-text-field--filled.md-text-field--textarea {
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+}
+
+.md-text-field--filled.md-text-field--textarea .md-text-field__input-wrapper {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+.md-text-field--filled.md-text-field--textarea .md-text-field__label {
+  top: 16px;
+  transform: translateY(0);
+}
+
+.md-text-field--filled.md-text-field--textarea .md-text-field__label--floating {
+  top: 8px;
+}
+
+/* State Layer (Hover) - 8% on-surface overlay */
+.md-text-field--filled::before {
+  @apply absolute inset-0 pointer-events-none;
+  content: '';
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+  background-color: var(--color-on-surface);
+  opacity: 0;
+  transition: opacity var(--duration-short-2) var(--easing-standard);
+}
+
+.md-text-field--filled:hover::before {
+  opacity: var(--state-hover-opacity);
+}
+
+.md-text-field--filled.md-text-field--disabled::before {
+  opacity: 0;
+}
+
+/* ===========================================
+   OUTLINED VARIANT
+   MD3: transparent background, outline border
+   All corners: 4dp radius
+   =========================================== */
+
+.md-text-field--outlined {
+  @apply bg-transparent;
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-xs);
+  padding: 0 var(--spacing-lg);
+  transition: border-color var(--duration-short-2) var(--easing-standard);
+}
+
+/* With leading icon */
+.md-text-field--outlined.md-text-field--has-leading-icon {
+  padding-left: var(--spacing-md);
+}
+
+/* With trailing icon */
+.md-text-field--outlined.md-text-field--has-trailing-icon {
+  padding-right: var(--spacing-md);
+}
+
+/* Hover state */
+.md-text-field--outlined:hover {
+  border-color: var(--color-on-surface);
+}
+
+/* Focused state */
+.md-text-field--outlined.md-text-field--focused {
+  border-color: var(--color-primary);
+  border-width: 2px;
+  /* Adjust padding to compensate for thicker border */
+  padding-left: calc(var(--spacing-lg) - 1px);
+  padding-right: calc(var(--spacing-lg) - 1px);
+}
+
+.md-text-field--outlined.md-text-field--focused.md-text-field--has-leading-icon {
+  padding-left: calc(var(--spacing-md) - 1px);
+}
+
+.md-text-field--outlined.md-text-field--focused.md-text-field--has-trailing-icon {
+  padding-right: calc(var(--spacing-md) - 1px);
+}
+
+/* Error state */
+.md-text-field--outlined.md-text-field--error {
+  border-color: var(--color-error);
+}
+
+.md-text-field--outlined.md-text-field--error:hover {
+  border-color: var(--color-on-error-container);
+}
+
+.md-text-field--outlined.md-text-field--error.md-text-field--focused {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+/* Disabled state */
+.md-text-field--outlined.md-text-field--disabled {
+  border-color: color-mix(in srgb, var(--color-on-surface) 12%, transparent);
+}
+
+/* Label Positioning (Outlined) */
+.md-text-field--outlined .md-text-field__label {
+  left: var(--spacing-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  background-color: transparent;
+}
+
+/* With leading icon */
+.md-text-field--outlined.md-text-field--has-leading-icon .md-text-field__label {
+  left: calc(var(--spacing-md) + var(--size-icon-md) + var(--spacing-lg));
+}
+
+/* Floating label - moves to top border */
+.md-text-field--outlined .md-text-field__label--floating {
+  top: 0;
+  transform: translateY(-50%);
+  left: calc(var(--spacing-lg) - var(--spacing-xs));
+  padding: 0 var(--spacing-xs);
+  background-color: var(--color-surface);
+}
+
+/* Floating with leading icon */
+.md-text-field--outlined.md-text-field--has-leading-icon .md-text-field__label--floating {
+  left: calc(var(--spacing-lg) - var(--spacing-xs));
+}
+
+/* Input Positioning (Outlined) - Centered vertically */
+.md-text-field--outlined .md-text-field__input-wrapper {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* Textarea adjustments (Outlined) */
+.md-text-field--outlined.md-text-field--textarea {
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+}
+
+.md-text-field--outlined.md-text-field--textarea .md-text-field__input-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.md-text-field--outlined.md-text-field--textarea .md-text-field__label {
+  top: 16px;
+  transform: translateY(0);
+}
+
+.md-text-field--outlined.md-text-field--textarea .md-text-field__label--floating {
+  top: 0;
+  transform: translateY(-50%);
+}
