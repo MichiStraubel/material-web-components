@@ -1,0 +1,47 @@
+{
+  "name": "@material-wc/layout",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./app-layout": {
+      "types": "./dist/app-layout/app-layout.d.ts",
+      "import": "./dist/app-layout/app-layout.js"
+    },
+    "./nav-item": {
+      "types": "./dist/nav-item/nav-item.d.ts",
+      "import": "./dist/nav-item/nav-item.js"
+    },
+    "./nav-group": {
+      "types": "./dist/nav-group/nav-group.d.ts",
+      "import": "./dist/nav-group/nav-group.js"
+    },
+    "./nav-section": {
+      "types": "./dist/nav-section/nav-section.d.ts",
+      "import": "./dist/nav-section/nav-section.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn build:css && vite build",
+    "build:css": "node ../../tools/css-builder/build.js --package=layout",
+    "dev": "vite build --watch"
+  },
+  "dependencies": {
+    "@material-wc/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "lit": "^3.2.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.0.0"
+  }
+}

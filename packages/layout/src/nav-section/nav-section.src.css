@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-section__label {
+  padding: 16px 16px 8px;
+  font-size: var(--md-sys-typescale-title-small-size, 14px);
+  font-weight: var(--md-sys-typescale-title-small-weight, 500);
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+  letter-spacing: var(--md-sys-typescale-title-small-tracking, 0.1px);
+}
+
+.nav-section__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}

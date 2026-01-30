@@ -1,0 +1,394 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  --nav-group-close-header-height: 64px; /* Must match --top-app-bar-height for alignment */
+  --nav-group-back-height: 56px;
+  --nav-group-item-height: 56px;
+  --nav-group-item-padding: 16px;
+  --nav-group-indent: 16px;
+  --nav-group-chevron-size: 24px;
+  --nav-group-slide-duration: 250ms;
+  --nav-group-expand-duration: 200ms;
+}
+
+/* ========================================
+   Container with slide animation
+   ======================================== */
+.nav-group {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+/* ========================================
+   Level Container (for slide animation)
+   ======================================== */
+.nav-group__level {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: inherit;
+}
+
+.nav-group__level--current {
+  position: relative;
+}
+
+/* Slide animations for drawer mode */
+:host([mode="drawer"]) .nav-group__level--entering-from-right {
+  animation: slide-in-from-right var(--nav-group-slide-duration) cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+:host([mode="drawer"]) .nav-group__level--exiting-to-right {
+  animation: slide-out-to-right var(--nav-group-slide-duration) cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+:host([mode="drawer"]) .nav-group__level--entering-from-left {
+  animation: slide-in-from-left var(--nav-group-slide-duration) cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+:host([mode="drawer"]) .nav-group__level--exiting-to-left {
+  animation: slide-out-to-left var(--nav-group-slide-duration) cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes slide-in-from-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-to-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes slide-in-from-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-out-to-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* ========================================
+   Close Header (Root Level)
+   Aligned to match top-app-bar menu button position.
+   Uses same height and padding as top-app-bar--compact.
+   ======================================== */
+.nav-group__close-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: var(--nav-group-close-header-height, 64px);
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+
+.nav-group__close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--md-sys-color-on-surface, #1d1b20);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-group__close-btn:hover {
+  background: var(--md-sys-color-surface-container-highest, #e6e0e9);
+}
+
+.nav-group__close-btn:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary, #6750a4);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   Back Header (Nested Levels)
+   ======================================== */
+.nav-group__back-header {
+  display: flex;
+  align-items: center;
+  min-height: var(--nav-group-back-height);
+  padding: 0 4px;
+  gap: 4px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant, #cac4d0);
+  flex-shrink: 0;
+}
+
+.nav-group__back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--md-sys-color-on-surface, #1d1b20);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-group__back-btn:hover {
+  background: var(--md-sys-color-surface-container-highest, #e6e0e9);
+}
+
+.nav-group__back-btn:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary, #6750a4);
+  outline-offset: 2px;
+}
+
+.nav-group__back-label {
+  font-size: var(--md-sys-typescale-title-medium-size, 16px);
+  font-weight: var(--md-sys-typescale-title-medium-weight, 500);
+  color: var(--md-sys-color-on-surface, #1d1b20);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========================================
+   Items Container
+   ======================================== */
+.nav-group__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ========================================
+   Navigation Item
+   ======================================== */
+.nav-group__item {
+  display: flex;
+  align-items: center;
+  min-height: var(--nav-group-item-height);
+  padding: 0 var(--nav-group-item-padding);
+  gap: 12px;
+  border: none;
+  border-radius: 28px;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+  cursor: pointer;
+  font-family: var(--md-sys-typescale-label-large-font, system-ui);
+  font-size: var(--md-sys-typescale-label-large-size, 14px);
+  font-weight: var(--md-sys-typescale-label-large-weight, 500);
+  text-align: left;
+  transition: background-color 0.2s ease;
+  position: relative;
+  width: 100%;
+}
+
+.nav-group__item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav-group__item:hover::before {
+  opacity: 0.08;
+}
+
+.nav-group__item:active::before {
+  opacity: 0.12;
+}
+
+.nav-group__item:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary, #6750a4);
+  outline-offset: 2px;
+}
+
+/* Selected state */
+.nav-group__item--selected {
+  background: var(--md-sys-color-secondary-container, #e8def8);
+  color: var(--md-sys-color-on-secondary-container, #1d192b);
+}
+
+.nav-group__item--selected::before {
+  display: none;
+}
+
+/* Parent item (has children) */
+.nav-group__item--parent {
+  padding-right: 8px;
+}
+
+/* ========================================
+   Item Icon
+   ======================================== */
+.nav-group__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-group__item-icon md-icon {
+  font-size: 24px;
+}
+
+/* ========================================
+   Item Label
+   ======================================== */
+.nav-group__item-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   Item Chevron (for parent items)
+   ======================================== */
+.nav-group__item-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nav-group-chevron-size);
+  height: var(--nav-group-chevron-size);
+  flex-shrink: 0;
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+  position: relative;
+  z-index: 1;
+  transition: transform var(--nav-group-expand-duration) ease;
+}
+
+.nav-group__item-chevron md-icon {
+  font-size: 24px;
+}
+
+/* ========================================
+   Rail Expanded Mode: Inline expansion
+   ======================================== */
+:host([mode="rail-expanded"]) .nav-group__back-header {
+  display: none;
+}
+
+/* Chevron rotates for inline expansion */
+:host([mode="rail-expanded"]) .nav-group__item--expanded .nav-group__item-chevron {
+  transform: rotate(90deg);
+}
+
+/* Children container for inline mode */
+.nav-group__children {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--nav-group-expand-duration) ease;
+  overflow: hidden;
+}
+
+.nav-group__children--expanded {
+  grid-template-rows: 1fr;
+}
+
+.nav-group__children-inner {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: var(--nav-group-indent);
+}
+
+/* Nested items styling */
+.nav-group__children .nav-group__item {
+  min-height: 48px;
+}
+
+/* Level 2 indentation */
+.nav-group__children .nav-group__children .nav-group__children-inner {
+  padding-left: calc(var(--nav-group-indent) * 2);
+}
+
+/* ========================================
+   Section Labels
+   ======================================== */
+.nav-group__section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-group__section-label {
+  padding: 16px 16px 8px;
+  font-size: var(--md-sys-typescale-title-small-size, 14px);
+  font-weight: var(--md-sys-typescale-title-small-weight, 500);
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+  letter-spacing: var(--md-sys-typescale-title-small-tracking, 0.1px);
+}
+
+/* ========================================
+   Slots
+   Only take up space when slotted content is present.
+   Uses :has() to detect slotted content.
+   ======================================== */
+.nav-group__header-slot {
+  display: none;
+}
+
+.nav-group__header-slot:has(::slotted(*)) {
+  display: block;
+  padding: 8px 12px;
+}
+
+.nav-group__footer-slot {
+  display: none;
+}
+
+.nav-group__footer-slot:has(::slotted(*)) {
+  display: block;
+  padding: 8px 12px;
+  margin-top: auto;
+}
+
+/* ========================================
+   Badge
+   ======================================== */
+.nav-group__item-badge {
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--md-sys-color-error, #b3261e);
+  color: var(--md-sys-color-on-error, #ffffff);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  margin-left: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Badge position adjusts when chevron is present */
+.nav-group__item--parent .nav-group__item-badge {
+  margin-left: 0;
+  margin-right: 8px;
+}
