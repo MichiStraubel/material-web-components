@@ -1,4 +1,4 @@
-import{b as n}from"./iframe-B-rN3J9a.js";import{n as j,e as Q}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const ne={title:"MD3 Components/Buttons/Split Button",component:"md-split-button",tags:["autodocs"],parameters:{docs:{description:{component:`
+import{b as n}from"./iframe-f7ju8_8X.js";import{n as j,e as Q}from"./ref-BIZ_3_sH.js";import"./button-B8Ka1pL1.js";import"./segmented-button-set-ByK4bwXe.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-em8Hxg-n.js";const oe={title:"MD3 Components/Buttons/Split Button",component:"md-split-button",tags:["autodocs"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Der Split Button kombiniert eine **primäre Aktion** mit einem **Dropdown-Menü** für verwandte Optionen. Ideal für:
@@ -581,4 +581,4 @@ splitButton.addEventListener('change', (e) => {
       }
     }
   }
-}`,...(X=(K=b.parameters)==null?void 0:K.docs)==null?void 0:X.source}}};const oe=["Default","WithIcon","AllVariants","AllSizes","Disabled","WithMenu","WithCustomTrailingIcon","MenuItemsWithIcons","EventHandling"];export{u as AllSizes,d as AllVariants,i as Default,m as Disabled,b as EventHandling,v as MenuItemsWithIcons,c as WithCustomTrailingIcon,r as WithIcon,p as WithMenu,oe as __namedExportsOrder,ne as default};
+}`,...(X=(K=b.parameters)==null?void 0:K.docs)==null?void 0:X.source}}};const se=["Default","WithIcon","AllVariants","AllSizes","Disabled","WithMenu","WithCustomTrailingIcon","MenuItemsWithIcons","EventHandling"];export{u as AllSizes,d as AllVariants,i as Default,m as Disabled,b as EventHandling,v as MenuItemsWithIcons,c as WithCustomTrailingIcon,r as WithIcon,p as WithMenu,se as __namedExportsOrder,oe as default};

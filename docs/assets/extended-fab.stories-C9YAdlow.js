@@ -1,4 +1,4 @@
-import{b as a}from"./iframe-B-rN3J9a.js";import{n as _,e as R}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const Y={title:"MD3 Components/Buttons/Extended FAB",component:"md-fab",tags:["autodocs"],parameters:{docs:{description:{component:`
+import{b as a}from"./iframe-f7ju8_8X.js";import{n as _,e as R}from"./ref-BIZ_3_sH.js";import"./button-B8Ka1pL1.js";import"./segmented-button-set-ByK4bwXe.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-em8Hxg-n.js";const Z={title:"MD3 Components/Buttons/Extended FAB",component:"md-fab",tags:["autodocs"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Der Extended FAB erweitert den Standard-FAB um ein **Text-Label**. Er ist ideal wenn:
@@ -348,4 +348,4 @@ fab.addEventListener('click', (e) => {
       }
     }
   }
-}`,...(q=(T=u.parameters)==null?void 0:T.docs)==null?void 0:q.source}}};const Z=["Default","WithoutIcon","AllVariants","WithAndWithoutIcon","Lowered","Disabled","PositionedExample","EventHandling"];export{r as AllVariants,i as Default,p as Disabled,u as EventHandling,c as Lowered,m as PositionedExample,d as WithAndWithoutIcon,l as WithoutIcon,Z as __namedExportsOrder,Y as default};
+}`,...(q=(T=u.parameters)==null?void 0:T.docs)==null?void 0:q.source}}};const ee=["Default","WithoutIcon","AllVariants","WithAndWithoutIcon","Lowered","Disabled","PositionedExample","EventHandling"];export{r as AllVariants,i as Default,p as Disabled,u as EventHandling,c as Lowered,m as PositionedExample,d as WithAndWithoutIcon,l as WithoutIcon,ee as __namedExportsOrder,Z as default};

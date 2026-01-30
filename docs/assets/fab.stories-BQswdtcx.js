@@ -1,4 +1,4 @@
-import{b as a}from"./iframe-B-rN3J9a.js";import{n as X,e as Y}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const ie={title:"MD3 Components/Buttons/FAB",component:"md-fab",tags:["autodocs"],parameters:{docs:{description:{component:`
+import{b as a}from"./iframe-f7ju8_8X.js";import{n as X,e as Y}from"./ref-BIZ_3_sH.js";import"./button-B8Ka1pL1.js";import"./segmented-button-set-ByK4bwXe.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-em8Hxg-n.js";const oe={title:"MD3 Components/Buttons/FAB",component:"md-fab",tags:["autodocs"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Der Floating Action Button (FAB) repräsentiert die **wichtigste Aktion** auf einem Bildschirm. Er sollte sparsam eingesetzt werden:
@@ -341,4 +341,4 @@ fab.addEventListener('click', (e) => {
       }
     }
   }
-}`,...(U=(I=f.parameters)==null?void 0:I.docs)==null?void 0:U.source}}};const oe=["Primary","Surface","Secondary","Tertiary","AllVariants","AllSizes","Lowered","Disabled","PositionedExample","EventHandling"];export{m as AllSizes,c as AllVariants,u as Disabled,f as EventHandling,p as Lowered,b as PositionedExample,i as Primary,l as Secondary,o as Surface,d as Tertiary,oe as __namedExportsOrder,ie as default};
+}`,...(U=(I=f.parameters)==null?void 0:I.docs)==null?void 0:U.source}}};const le=["Primary","Surface","Secondary","Tertiary","AllVariants","AllSizes","Lowered","Disabled","PositionedExample","EventHandling"];export{m as AllSizes,c as AllVariants,u as Disabled,f as EventHandling,p as Lowered,b as PositionedExample,i as Primary,l as Secondary,o as Surface,d as Tertiary,le as __namedExportsOrder,oe as default};

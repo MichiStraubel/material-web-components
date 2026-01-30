@@ -1,4 +1,4 @@
-import{b as t}from"./iframe-B-rN3J9a.js";import{n as ht,e as xt}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const Et={title:"MD3 Components/Buttons/Button Group",component:"md-button-group",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+import{b as t}from"./iframe-f7ju8_8X.js";import{n as ht,e as xt}from"./ref-BIZ_3_sH.js";import"./button-B8Ka1pL1.js";import"./segmented-button-set-ByK4bwXe.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-em8Hxg-n.js";const _t={title:"MD3 Components/Buttons/Button Group",component:"md-button-group",tags:["autodocs","new"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Button Groups gruppieren zusammengehörige Optionen visuell und funktional. Sie eignen sich für:
@@ -791,4 +791,4 @@ buttonGroup.addEventListener('change', (e) => {
       disable: true
     }
   }
-}`,...(ct=(pt=f.parameters)==null?void 0:pt.docs)==null?void 0:ct.source}}};const _t=["SingleSelect","MultiSelect","WithIcons","IconOnly","TextOnly","TwoButtons","FiveButtons","ConnectedShapes","Disabled","DisabledButton","SingleButton","EventHandling","Sizes","SizesWithIcons","MigrationFromSegmentedButton"];export{p as ConnectedShapes,c as Disabled,b as DisabledButton,h as EventHandling,g as FiveButtons,r as IconOnly,f as MigrationFromSegmentedButton,i as MultiSelect,v as SingleButton,d as SingleSelect,x as Sizes,y as SizesWithIcons,u as TextOnly,m as TwoButtons,s as WithIcons,_t as __namedExportsOrder,Et as default};
+}`,...(ct=(pt=f.parameters)==null?void 0:pt.docs)==null?void 0:ct.source}}};const Dt=["SingleSelect","MultiSelect","WithIcons","IconOnly","TextOnly","TwoButtons","FiveButtons","ConnectedShapes","Disabled","DisabledButton","SingleButton","EventHandling","Sizes","SizesWithIcons","MigrationFromSegmentedButton"];export{p as ConnectedShapes,c as Disabled,b as DisabledButton,h as EventHandling,g as FiveButtons,r as IconOnly,f as MigrationFromSegmentedButton,i as MultiSelect,v as SingleButton,d as SingleSelect,x as Sizes,y as SizesWithIcons,u as TextOnly,m as TwoButtons,s as WithIcons,Dt as __namedExportsOrder,_t as default};

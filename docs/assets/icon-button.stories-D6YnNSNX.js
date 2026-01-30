@@ -1,4 +1,4 @@
-import{b as t}from"./iframe-B-rN3J9a.js";import{n as ue,e as be}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const Se={title:"MD3 Components/Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+import{b as t}from"./iframe-f7ju8_8X.js";import{n as ue,e as be}from"./ref-BIZ_3_sH.js";import"./button-B8Ka1pL1.js";import"./segmented-button-set-ByK4bwXe.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-em8Hxg-n.js";const ke={title:"MD3 Components/Buttons/Icon Button",component:"md-icon-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Icon Buttons sind kompakte Buttons, die nur ein Icon ohne Label anzeigen. Sie eignen sich für:
@@ -873,4 +873,4 @@ iconButton.addEventListener('toggle', (e) => {
       }
     }
   }
-}`,...(me=(ce=h.parameters)==null?void 0:ce.docs)==null?void 0:me.source}}};const ke=["Standard","Filled","Tonal","Outlined","AllVariants","AllSizes","AllShapes","AllWidths","Toggle","ToggleWithDifferentIcons","SelectedStates","Disabled","CommonIcons","EventHandling"];export{u as AllShapes,p as AllSizes,m as AllVariants,b as AllWidths,x as CommonIcons,y as Disabled,h as EventHandling,r as Filled,c as Outlined,f as SelectedStates,o as Standard,v as Toggle,g as ToggleWithDifferentIcons,d as Tonal,ke as __namedExportsOrder,Se as default};
+}`,...(me=(ce=h.parameters)==null?void 0:ce.docs)==null?void 0:me.source}}};const we=["Standard","Filled","Tonal","Outlined","AllVariants","AllSizes","AllShapes","AllWidths","Toggle","ToggleWithDifferentIcons","SelectedStates","Disabled","CommonIcons","EventHandling"];export{u as AllShapes,p as AllSizes,m as AllVariants,b as AllWidths,x as CommonIcons,y as Disabled,h as EventHandling,r as Filled,c as Outlined,f as SelectedStates,o as Standard,v as Toggle,g as ToggleWithDifferentIcons,d as Tonal,we as __namedExportsOrder,ke as default};

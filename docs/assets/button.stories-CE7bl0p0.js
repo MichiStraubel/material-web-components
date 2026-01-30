@@ -1,4 +1,4 @@
-import{b as e}from"./iframe-B-rN3J9a.js";import{n as we,e as ze}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const Te={title:"MD3 Components/Buttons/Button",component:"md-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+import{b as e}from"./iframe-f7ju8_8X.js";import{n as we,e as ze}from"./ref-BIZ_3_sH.js";import"./button-B8Ka1pL1.js";import"./segmented-button-set-ByK4bwXe.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-em8Hxg-n.js";const Me={title:"MD3 Components/Buttons/Button",component:"md-button",tags:["autodocs","new"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Buttons kommunizieren Aktionen, die Benutzer ausführen können. Sie werden typischerweise in der gesamten UI platziert, in Bereichen wie:
@@ -589,4 +589,4 @@ button.addEventListener('click', (e) => {
       }
     }
   }
-}`,...(xe=(fe=w.parameters)==null?void 0:fe.docs)==null?void 0:xe.source}}};const Me=["Filled","Outlined","Text","Elevated","Tonal","Disabled","AllVariants","AllSizes","SizesWithVariants","DisabledStates","FullWidth","AsLink","WithIcon","WithIconVariants","IconPosition","EventHandling"];export{p as AllSizes,c as AllVariants,f as AsLink,m as Disabled,v as DisabledStates,d as Elevated,w as EventHandling,l as Filled,g as FullWidth,y as IconPosition,s as Outlined,b as SizesWithVariants,r as Text,u as Tonal,x as WithIcon,h as WithIconVariants,Me as __namedExportsOrder,Te as default};
+}`,...(xe=(fe=w.parameters)==null?void 0:fe.docs)==null?void 0:xe.source}}};const De=["Filled","Outlined","Text","Elevated","Tonal","Disabled","AllVariants","AllSizes","SizesWithVariants","DisabledStates","FullWidth","AsLink","WithIcon","WithIconVariants","IconPosition","EventHandling"];export{p as AllSizes,c as AllVariants,f as AsLink,m as Disabled,v as DisabledStates,d as Elevated,w as EventHandling,l as Filled,g as FullWidth,y as IconPosition,s as Outlined,b as SizesWithVariants,r as Text,u as Tonal,x as WithIcon,h as WithIconVariants,De as __namedExportsOrder,Me as default};

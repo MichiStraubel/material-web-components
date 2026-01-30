@@ -1,4 +1,4 @@
-import{b as e}from"./iframe-B-rN3J9a.js";import{n as le,e as se}from"./ref-DmaIIY40.js";import"./segmented-button-set-AWCoOK3b.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-BemFOqvn.js";const be={title:"MD3 Components/Buttons/FAB Menu",component:"md-fab-menu",tags:["autodocs","new"],parameters:{docs:{description:{component:`
+import{b as e}from"./iframe-f7ju8_8X.js";import{n as le,e as se}from"./ref-BIZ_3_sH.js";import"./button-B8Ka1pL1.js";import"./segmented-button-set-ByK4bwXe.js";import"./preload-helper-Dp1pzeXC.js";import"./if-defined-em8Hxg-n.js";const fe={title:"MD3 Components/Buttons/FAB Menu",component:"md-fab-menu",tags:["autodocs","new"],parameters:{docs:{description:{component:`
 ## Wann verwenden?
 
 Das FAB Menu erweitert den Standard-FAB um ein **Menü mit verwandten Aktionen**. Es ersetzt das "Speed Dial"-Pattern und gestapelte kleine FABs durch eine einheitliche, expressive Komponente.
@@ -896,4 +896,4 @@ fabMenu.addEventListener('select', (e) => {
       }
     }
   }
-}`,...(te=(ne=y.parameters)==null?void 0:ne.docs)==null?void 0:te.source}}};const fe=["Default","AllVariants","AllSizes","MenuAlignments","IconOnlyItems","WithLabels","MaxItems","Lowered","Disabled","PositionedExample","RealWorldExample","EventHandling"];export{d as AllSizes,o as AllVariants,m as Default,f as Disabled,y as EventHandling,u as IconOnlyItems,b as Lowered,c as MaxItems,r as MenuAlignments,v as PositionedExample,g as RealWorldExample,p as WithLabels,fe as __namedExportsOrder,be as default};
+}`,...(te=(ne=y.parameters)==null?void 0:ne.docs)==null?void 0:te.source}}};const ve=["Default","AllVariants","AllSizes","MenuAlignments","IconOnlyItems","WithLabels","MaxItems","Lowered","Disabled","PositionedExample","RealWorldExample","EventHandling"];export{d as AllSizes,o as AllVariants,m as Default,f as Disabled,y as EventHandling,u as IconOnlyItems,b as Lowered,c as MaxItems,r as MenuAlignments,v as PositionedExample,g as RealWorldExample,p as WithLabels,ve as __namedExportsOrder,fe as default};
