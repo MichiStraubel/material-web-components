@@ -9,11 +9,14 @@
   },
   "dependencies": {
     "@material-wc/buttons": "workspace:*",
-    "@material-wc/core": "workspace:*"
+    "@material-wc/core": "workspace:*",
+    "@material-wc/layout": "workspace:*"
   },
   "devDependencies": {
+    "@effect/schema": "^0.75.5",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/web-components-vite": "^10.1.11",
+    "effect": "^3.19.14",
     "storybook": "^10.1.11",
     "storybook-addon-tag-badges": "^3.0.4"
   }

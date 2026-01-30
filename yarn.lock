@@ -131,6 +131,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@effect/schema@npm:^0.75.5":
+  version: 0.75.5
+  resolution: "@effect/schema@npm:0.75.5"
+  dependencies:
+    fast-check: "npm:^3.21.0"
+  peerDependencies:
+    effect: ^3.9.2
+  checksum: 10c0/287a860f67eb41d54d0b46f2303eba273b35a9db41f1c2c352fc94023e88574969e03c6284d5dcefdda953f56eabdd98d2cdd268fa872f5966108f540c9e3f44
+  languageName: node
+  linkType: hard
+
 "@emnapi/core@npm:^1.7.1":
   version: 1.8.1
   resolution: "@emnapi/core@npm:1.8.1"
@@ -658,6 +669,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@material-wc/layout@workspace:*, @material-wc/layout@workspace:packages/layout":
+  version: 0.0.0-use.local
+  resolution: "@material-wc/layout@workspace:packages/layout"
+  dependencies:
+    "@material-wc/core": "workspace:*"
+    vite: "npm:^6.0.0"
+    vite-plugin-dts: "npm:^4.0.0"
+  peerDependencies:
+    lit: ^3.2.0
+  languageName: unknown
+  linkType: soft
+
 "@material-wc/root@workspace:.":
   version: 0.0.0-use.local
   resolution: "@material-wc/root@workspace:."
@@ -684,10 +707,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@material-wc/storybook@workspace:apps/storybook"
   dependencies:
+    "@effect/schema": "npm:^0.75.5"
     "@material-wc/buttons": "workspace:*"
     "@material-wc/core": "workspace:*"
+    "@material-wc/layout": "workspace:*"
     "@storybook/addon-docs": "npm:^10.1.11"
     "@storybook/web-components-vite": "npm:^10.1.11"
+    effect: "npm:^3.19.14"
     storybook: "npm:^10.1.11"
     storybook-addon-tag-badges: "npm:^3.0.4"
   languageName: unknown
@@ -1070,6 +1096,13 @@ __metadata:
     argparse: "npm:~1.0.9"
     string-argv: "npm:~0.3.1"
   checksum: 10c0/8daef890a188ae8c7c8a3b4bbfe879e4e404128640f7b771fc98f83e972928e0b2b36f877dcfed6e3d22fb51d0b6726de80cd5f828ffc4d7d0c27d829cef7f3d
+  languageName: node
+  linkType: hard
+
+"@standard-schema/spec@npm:^1.0.0":
+  version: 1.1.0
+  resolution: "@standard-schema/spec@npm:1.1.0"
+  checksum: 10c0/d90f55acde4b2deb983529c87e8025fa693de1a5e8b49ecc6eb84d1fd96328add0e03d7d551442156c7432fd78165b2c26ff561b970a9a881f046abb78d6a526
   languageName: node
   linkType: hard
 
@@ -2313,6 +2346,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"effect@npm:^3.19.14":
+  version: 3.19.14
+  resolution: "effect@npm:3.19.14"
+  dependencies:
+    "@standard-schema/spec": "npm:^1.0.0"
+    fast-check: "npm:^3.23.1"
+  checksum: 10c0/8ada627fedb6596e19d21d4adb8ad43109b9f303f7b8e864493cb9f26edccfbd16915cbe10cb6c0fa6a2ece4d3781a91a2309e72882278e85fdd37ee2177acc8
+  languageName: node
+  linkType: hard
+
 "electron-to-chromium@npm:^1.5.263":
   version: 1.5.267
   resolution: "electron-to-chromium@npm:1.5.267"
@@ -2624,6 +2667,15 @@ __metadata:
   version: 1.0.8
   resolution: "exsolve@npm:1.0.8"
   checksum: 10c0/65e44ae05bd4a4a5d87cfdbbd6b8f24389282cf9f85fa5feb17ca87ad3f354877e6af4cd99e02fc29044174891f82d1d68c77f69234410eb8f163530e6278c67
+  languageName: node
+  linkType: hard
+
+"fast-check@npm:^3.21.0, fast-check@npm:^3.23.1":
+  version: 3.23.2
+  resolution: "fast-check@npm:3.23.2"
+  dependencies:
+    pure-rand: "npm:^6.1.0"
+  checksum: 10c0/16fcff3c80321ee765e23c3aebd0f6427f175c9c6c1753104ec658970162365dc2d56bda046d815e8f2e90634c07ba7d6f0bcfd327fbd576d98c56a18a9765ed
   languageName: node
   linkType: hard
 
@@ -3993,6 +4045,13 @@ __metadata:
   version: 2.3.1
   resolution: "punycode@npm:2.3.1"
   checksum: 10c0/14f76a8206bc3464f794fb2e3d3cc665ae416c01893ad7a02b23766eb07159144ee612ad67af5e84fa4479ccfe67678c4feb126b0485651b302babf66f04f9e9
+  languageName: node
+  linkType: hard
+
+"pure-rand@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "pure-rand@npm:6.1.0"
+  checksum: 10c0/1abe217897bf74dcb3a0c9aba3555fe975023147b48db540aa2faf507aee91c03bf54f6aef0eb2bf59cc259a16d06b28eca37f0dc426d94f4692aeff02fb0e65
   languageName: node
   linkType: hard
 

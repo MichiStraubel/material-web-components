@@ -25,6 +25,9 @@ const config: StorybookConfig = {
       '@material-wc/core/icon': resolve(__dirname, '../../../packages/core/src/icon/icon.ts'),
       '@material-wc/core': resolve(__dirname, '../../../packages/core/src/index.ts'),
       '@material-wc/buttons': resolve(__dirname, '../../../packages/buttons/src/index.ts'),
+      '@material-wc/layout/app-layout': resolve(__dirname, '../../../packages/layout/src/app-layout/app-layout.ts'),
+      '@material-wc/layout/nav-item': resolve(__dirname, '../../../packages/layout/src/nav-item/nav-item.ts'),
+      '@material-wc/layout': resolve(__dirname, '../../../packages/layout/src/index.ts'),
     };
     return config;
   },
